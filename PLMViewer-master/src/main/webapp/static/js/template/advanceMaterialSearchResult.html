@@ -1,0 +1,101 @@
+<div data-ng-controller="materialCtrl">
+    <fieldset>
+        <div class="head"><span class="header"><h5><b>Material Search Result</b></h5></span></div>
+
+
+        <div>
+            <div  ng-init="showData()">
+
+                <center>
+                    <table class="table table-striped table-hover" width="100%" style="overflow-x: scroll;">
+                        <tr>
+                            
+
+                            <th class="imagetableth" ><b>Material Slot</b></th>
+                            <th class="imagetableth" ><b>CM Number</b></th>
+                            <th class="imagetableth" ><b>   Material Name   </b></th>
+                            <th class="imagetableth" ><b>Material Type</b></th>                            
+                            <th class="imagetableth" ><b>Sub Type</b></th>
+                            <th class="imagetableth" ><b>Brand</b></th>
+
+                            <th class="imagetableth" ><b>Active Material</b></th>
+                            <th class="imagetableth" ><b>CM Parent Group</b></th>
+
+                            <th class="imagetableth" ><b>Exotic Common Name</b></th>
+                            <th class="imagetableth" ><b>Exotic Material</b></th>
+                            <!-- th class="imagetableth" ><b>Life Cycle State</b></th-->
+                            <th class="imagetableth" ><b>Capacity Group</b></th>
+
+
+
+                        </tr>
+                        <tr ng-repeat="datalist in datalists| pagination: curPage * pageSize | limitTo: pageSize">
+
+
+                            <td class="val"><a href=""	ng-click="materialDetail(datalist.materialSlot, datalist.materialTypeId, 'slot')"><span
+                                        class="glyphicon sort-icon">{{datalist.materialSlot}}</span></a></td>
+                            <td class="val"><a href=""	ng-click="materialDetail(datalist.materialPartNumber, datalist.materialTypeId, 'partnumber')"><span
+                                        class="glyphicon sort-icon">{{datalist.materialPartNumber}}</span></a></td>
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.materialName}} </span></td>
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.materialType}}</span></td>                            
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.subType}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.brand}}</span></td>
+
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.activeMaterial}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.cmParentGroup}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.commonName}}</span></td>
+                            
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.material}}</span></td>
+                            <!-- td class="val"><span class="glyphicon sort-icon">{{datalist.lifeCycleState}}</span></td-->
+                            <td class="val"><span class="glyphicon sort-icon">{{datalist.materialCapacityGroup}}</span></td>
+                            
+                            
+                            
+
+                            <td class="val"><span class="glyphicon sort-icon"></span></td>
+                            <td class="val"><span class="glyphicon sort-icon"></span></td>
+                            <td class="val"><span class="glyphicon sort-icon"></span></td>
+
+
+                        </tr>
+                    </table>
+                </center>
+                <div ng-show="datalists.length" align = "center">
+
+                    <button type="button" class="btn-link" ng-disabled="curPage == 0" ng-click="curPage = curPage - 1">  <span class="glyphicon sort-icon"><b> &lt;&lt; </b></span></button>
+
+                    <span class="glyphicon sort-icon">{{curPage + 1}} of {{ numberOfPages()}}</span>
+
+                    <button type="button" class="btn-link"
+                            ng-disabled="curPage >= datalists.length / pageSize - 1"
+                            ng-click="curPage = curPage + 1"><span class="glyphicon sort-icon"><b> &gt;&gt;</b></span></button>
+                    <br><br>
+
+                </div>
+                <div align = "center">
+                    <span>Total Number of Records {{datalists.length}}</span>
+                </div>
+            </div>
+        </div>
+    <div align = "left">
+        <input type="button" name="Search" value = "" ng-click="goback('materialcriteria')" class="buttonwithbackimage" />
+
+    </div>
+    </fieldset>
+</div>
+
+
+
+
+<!--<div class='theTable'>
+    <div class='theRow'>
+        <div class='theCell' >ff</div>
+        <div class='theCell' >test</div>
+        <div class='theCell bigCell'>this is long</div>
+    </div>
+    <div class='theRow'>
+        <div class='theCell'>2nd</div>
+        <div class='theCell'>more test</div>
+        <div class='theCell'>it is still long</div>
+    </div>
+</div>-->

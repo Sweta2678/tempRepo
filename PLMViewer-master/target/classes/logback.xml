@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %5p | %t | %-55logger{55} | %m %n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="fileAppender" class="ch.qos.logback.core.FileAppender">
+		<file>/logs/PLMViewer.log</file>
+		<!--file>/cwedev/apps/apache-tomcat-8.0.14/logs/PLMViewer.log</file-->
+		<append>true</append>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+</pattern>
+		</encoder>
+	</appender>
+ 
+    <logger name="com.plmviewer" level ="INFO" />
+    <logger name="com.plmviewer.controller" level ="INFO" />
+ 
+     <logger name="com.plmviewer.service" level ="INFO" />
+    
+    <logger name="org.springframework">
+        <level value="INFO" />
+    </logger>
+ 
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="fileAppender" />
+    </root>
+</configuration>

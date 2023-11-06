@@ -1,0 +1,30 @@
+-- Table: moic_inbound.product_globalpricing_staging
+
+-- DROP TABLE moic_inbound.product_globalpricing_staging;
+
+CREATE TABLE moic_inbound.product_globalpricing_staging
+(
+    plmuniqueid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    ca1retailprice double precision,
+    ca1wholesaleprice double precision,
+    effectivedate timestamp without time zone,
+    eu1retailprice double precision,
+    eu1wholesaleprice double precision,
+    gb1retailprice double precision,
+    gb1wholesaleprice double precision,
+    jpy1retailprice double precision,
+    jpy1wholesaleprice double precision,
+    styleid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    us1retailprice double precision,
+    us1wholesaleprice double precision,
+    CONSTRAINT product_globalpricing_staging_pkey PRIMARY KEY (plmuniqueid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE moic_inbound.product_globalpricing_staging
+    OWNER to moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_globalpricing_staging TO moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_globalpricing_staging TO sinfpgd1_moic;

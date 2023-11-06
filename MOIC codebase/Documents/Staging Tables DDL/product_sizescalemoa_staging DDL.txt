@@ -1,0 +1,23 @@
+-- Table: moic_inbound.product_sizescalemoa_staging
+
+-- DROP TABLE moic_inbound.product_sizescalemoa_staging;
+
+CREATE TABLE moic_inbound.product_sizescalemoa_staging
+(
+    skuuniqueid bigint NOT NULL,
+    sizename character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    styleuniqueid bigint NOT NULL,
+    upc character varying(100) COLLATE pg_catalog."default",
+    sizerowid bigint,
+    vendorrefnumber character varying(100) COLLATE pg_catalog."default",
+    CONSTRAINT product_sizescalemoa_staging_pkey PRIMARY KEY (skuuniqueid, sizename, styleuniqueid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE moic_inbound.product_sizescalemoa_staging
+    OWNER to moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_sizescalemoa_staging TO moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_sizescalemoa_staging TO sinfpgd1_moic;

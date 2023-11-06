@@ -1,0 +1,29 @@
+<div class="content-wrapper upc-validation-wrapper">
+    <div class="mb-30 upc-validation-top-panel">
+
+          <!--<a href='{{hrefUrl}}downloadUPCValidationBySeason?season={{season}}' target="_blank" class="btn upc-validation-dl-btn">Download Report</a>-->
+
+          <div style="display: inline-block">
+            <div (mouseleave)="showDropDown = false">
+                <button class="drop-toggle btn-flat" (click)="showDropDown=!showDropDown">
+                    <span *ngIf="checkedList.length<=0">{{getSeasonArray && getSeasonArray[0]?.name}}</span>
+                    <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
+                    <img src="assets/images/down-arrow.png" />
+                </button>
+                <div class="drop-show" *ngIf="showDropDown">
+                    <label *ngFor="let msv of getSeasonArray">
+                        <input type="checkbox" [(ngModel)]="msv.checked" (change)="getSelectedValue(msv.checked,msv.name)" />
+                    <span>{{msv.name}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <a *ngIf="checkedList.length<=0" href='{{hrefUrl}}downloadUPCValidationBySeason?season={{getSeasonArray && getSeasonArray[0]?.name}}' target="_blank" class="btn upc-validation-dl-btn">Download Report</a>
+        <a *ngIf="checkedList.length>0" href='{{hrefUrl}}downloadUPCValidationBySeason?season={{checkedList.join(",")}}' target="_blank" class="btn upc-validation-dl-btn" (click)="resetSelected(false)">Download Report</a>
+
+    </div>
+    <div class="result-table upc-validation-result-table">
+       
+    </div>
+</div>

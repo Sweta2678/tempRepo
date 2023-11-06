@@ -1,0 +1,10 @@
+#
+#Thu Sep 22 22:21:41 IST 2022
+linkedResources=
+managedNatures=
+classpath=<?xml version\="1.0" encoding\="UTF-8"?>\n<classpath>\n</classpath>\n
+subprojectPaths=api;db;model;processor;shared;web
+derivedResources=.gradle;build;api/build;db/build;model/build;processor/build;shared/build;web/build
+buildScriptPath=build.gradle
+managedBuilders=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><commands/>
+buildDir=build

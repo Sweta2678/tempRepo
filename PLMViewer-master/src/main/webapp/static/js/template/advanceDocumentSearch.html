@@ -1,0 +1,50 @@
+<!--<div id = "DocumentSearch"  data-ng-controller="landingCtrl">-->
+    <div id = "DocumentSearch"  data-ng-controller="documentCtrl">
+    <div ng-show="showDocumentSearch">
+        <fieldset>
+            <div class="head"><span class="header"><h5><b>Document Search Criteria</b></h5></span></div>
+            <br><br>
+
+            <table>
+
+
+                <tr class="searchtr">
+                    <td  class ="searchLbl"  ><span class="label">Document Name </span></td>
+                    <td  class ="searchVal" ><input type="text" ng-model = "documentName" class="textboxbg"  placeholder="Document Name..." /></td>
+                    <td  class ="searchLbl" ><span class="label">Document Type</span></td>
+                    <td class ="searchVal"><select data-ng-model="documenType" data-ng-options="key as value for (key,value)  in documentmap" class="droupdown" >
+					<option value="">-Select-</option></select></td>
+
+                </tr>
+
+                <tr class="searchtr">
+
+                    <td  class ="searchLbl"  ><span class="label">Created date </span></td>
+                    <td class ="searchVal"><input type="text" id = "createddate" ng-click="showselecteddate('createddate')" ng-model = "createddate" class="textboxbg"  placeholder="createddate..." /></td>
+
+
+                </tr>
+
+                <tr class="searchtr">
+                    <td  class ="searchLbl"  ><span class="label">Updated Date </span></td>
+                    <td class ="searchVal"><input type="text" id = "updateddate" ng-click="showselecteddate('updateddate')" ng-model = "updateddate" class="textboxbg"  placeholder="updateddate..." /></td>
+                </tr>
+
+                
+
+
+
+
+            </table>
+
+            <br>
+            <!--<div align = "right"><button name="Reset" value = "Reset" ng-click="" class="SecButton"><span class=" text-success text-center">Reset<span></button>&nbsp;&nbsp<button name="Search" value = "search" ng-click="advdocumentSearch()" class="SecButton"><span class=" text-success text-center">Search<span></button></div>-->
+                                         <div align = "left">
+                                            <input type="button" name="Search" value = "" ng-click="goback('welcome')" class="buttonwithbackimage" />
+                                            <input type="button" name="Search" value = "" ng-click="advdocumentSearch()" class="buttonwithimage" />
+                                        </div>
+
+                                        </fieldset>
+                                        </div>
+
+                                        </div>

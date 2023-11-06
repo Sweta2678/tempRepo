@@ -1,0 +1,1075 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+HTML
+{
+    height: 100%;
+    overflow: auto;
+}
+.bodystyle{
+    background-image: url(/PLMViewer/static/images/bg-2.1.jpg);
+    background-attachment: fixed;
+    background-position: 100% 0%;
+    font-family: 'Lato' ,sans-serif;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;  
+
+}
+body
+{
+    background-image: url(/PLMViewer/static/images/bg-2.1.jpg);
+    background-attachment: fixed;
+    background-position: 100% 0%;
+    font-family: 'Lato' ,sans-serif;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#search
+{
+    background-color: Black;
+    height: 32px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 100%;
+}
+
+#logo
+{
+    /*text-align: center;*/
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    height: 30px;
+}
+
+
+#innerlogo
+{
+    /*text-align: center;*/
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 20%;
+    height: 5px;
+}
+
+.pargagraphstyling{
+
+    color: Black;
+
+    font-family: 'Lato' ,sans-serif;
+
+    font-size: 14px;
+
+}
+.logout {
+	color: blue;
+
+    font-family: 'Lato' ,sans-serif;
+
+    font-size: 14px;
+}
+
+#part1
+{
+    width: 35%;
+    float: left;
+    height: 100%;
+}
+
+#part2
+{
+    width: 30%;
+    float: left;
+    height: 100%;
+    text-align: center;
+}
+
+#part3
+{
+    width: 35%;
+    float: left;
+    height: 100%;
+}
+
+.mainlogo
+{
+    height: 91px;
+    width: 238px;
+    margin-top: 10px;
+    margin-bottom: 0px; /*margin-left: 550px;*/
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center;
+}
+
+#header
+{
+    color: Black;
+    margin: 0px; /* margin-left: 553px;*/
+    float: none;
+    padding: 0px;
+    border: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    height: auto;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 1px;
+    clear: both;
+    text-align: center;
+}
+
+#section
+{
+    /*padding: 0px;*/
+    color: black;
+    margin-top: 12px;
+    margin-left: 0px;
+    margin-right: 63px;
+    margin-bottom: 280px;
+    background-color: White;
+    float: left;
+    height: 800px;
+    width: 1000px;
+    font-family: 'Lato' ,sans-serif;
+}
+
+/* Top Menu */
+#menu
+{
+    /* line-height: 15px; */
+    text-align: center;
+    font-size: 14px; /* margin-left: auto;     margin-right:auto; */
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+.nav
+{
+    width: auto;
+    margin: auto;
+    list-style: none;
+    padding: 0px;
+}
+
+/* Top Menu - Level one */
+ul.nav
+{
+    position: relative; /* z-index: 100 !important;*/
+}
+ul.nav li
+{
+    display: inline-block;
+    zoom: 1; /*display: inline;  */ /*float:left;*/ /*text-align:center;   */
+    text-transform: uppercase;
+    opacity: 0.95;
+    filter: alpha(opacity=95);
+    padding-left: 5px;
+}
+
+ul.nav a
+{
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+ul.nav a:hover
+{
+    color: gray;
+    text-decoration: none;
+}
+ul.nav a:active
+{
+    color: #ffa500;
+    text-decoration: none;
+}
+ul.nav li a
+{
+    display: block;
+    color: #000000;
+    z-index: 100 !important;
+    text-decoration: none;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+}
+ul.nav li.hover, ul.nav li:hover
+{
+    color: gray;
+    position: relative;
+}
+ul.nav li.hover a
+{
+    color: gray;
+}
+
+/* Top Menu - Level two */
+ul.nav ul
+{
+    /*visibility: visible;*/
+    position: absolute; /*     top: 100%;      left: 0%;  */
+    background-color: White;
+    width: 190px;
+}
+
+ul.nav ul li
+{
+    /* width: 50px; */
+    font-weight: normal; /*color: #000;*/
+    float: none;
+    text-align: left;
+    display: block;
+    visibility: visible;
+    padding-top: 3px;
+    padding-bottom: 0px;
+}
+
+ul.nav ul li a
+{
+    /*display: block;*/
+    width: 100px; /*background-color: white;*/
+    font-size: 10px;
+    color: Black; /*visibility: visible;*/
+    text-align: left;
+}
+
+ul.nav li ul
+{
+    display: none;
+    text-align: left;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+ul.nav li:hover ul
+{
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+/* Horizontal line below the main menu */
+#menuhr
+{
+    border: 0;
+    height: 3px;
+    background-color: Black;
+}
+
+/* Side Menu */
+#sidemenu
+{
+    width: 200px;
+    padding: 0px;
+    color: black;
+    margin-top: 0px; /*margin-top:12px;*/
+    margin-left: 3px;
+    margin-right: 0px;
+    margin-bottom: 0px; /*background-color: Gray;*/
+    float: left; /*height: auto;*/
+    opacity: 0.95;
+    filter: alpha(opacity=95); /*background-color:White;*/
+    visibility: hidden;
+}
+
+.sidenav
+{
+    width: auto;
+    margin: auto;
+    list-style: none;
+    padding: 0px;
+    letter-spacing:1px;
+}
+
+ul.sidenav > li
+{
+    float: none;
+    display: block; /* padding: 0px; */
+    margin: 0px;
+    border: 0px;
+    text-decoration: none;
+    text-transform: uppercase; /* color:Gray; */ /*font-weight:bolder;*/
+    color: #000;
+    font-size: 14px; /* border-left: 1px solid #EEEEEE;  	border-right: 1px solid #EEEEEE; */ /*font-family: 'latoblack' ,sans-serif;*/
+    border-bottom: 1px solid #D7DFE4;
+    padding-top: 11px;
+    padding-bottom: 9px;
+    padding-left: 5px;
+    text-align: left;
+    line-height: 14px; /*z-index: 999;*/
+}
+
+ul.sidenav a
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+ul.sidenav > li li
+{
+    font-weight: lighter;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    padding-left: 19px; /*list-style-type:none;*/ /*text-align:left;*/
+    font-size: 12px; /*list-style:none;*/ /*text-align: left;*/
+    margin: 0px;
+    border: 0px;
+    list-style-type: none;
+    list-style: none;
+}
+
+ul.sidenav > li li:before
+{
+    content: "\2014";
+    position: absolute;
+    left: 15px;
+}
+
+ul.sidenav li ul
+{
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    letter-spacing:1px;
+}
+
+ul.sidenav li ul li a
+{
+    display: block; /*font-size: 12px !important;*/
+}
+
+.showul
+{
+    display: block;
+}
+
+.hideul
+{
+    display: none;
+}
+
+.boldul
+{
+    font-weight: bolder;
+}
+
+/* Footer */
+.font1
+{
+    color: black !important;
+    font-family: 'Lato' ,sans-serif !important;
+    font-size: 0.875em !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    /* padding-top: 10px !important;*/
+    text-align: left;
+}
+
+#headerblack
+{
+    background-color: black;
+    color: black;
+    clear: both;
+    text-align: center;
+    height: 15px;
+
+}
+
+
+#headerline
+{
+    background-color: black;
+    color: black;
+    clear: both;
+    text-align: center;
+    height: 2px;
+
+}
+#footersuper
+{
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: black;
+}
+
+#about_coach
+{
+    background-image: url(/PLMViewer/static/images/coach_logo_img.jpg);
+    background-position: right center;
+    background-repeat: no-repeat;
+    margin: 0; /* max-width: 1440px;*/
+    width: 100%;
+    padding-top: 2px;
+    float:right;
+}
+
+/* searchbox */
+#searchinput
+{
+    position: relative;
+    float: right;
+    margin-top: 20px;
+    margin-right: 35px;
+    width: 200px; 
+}
+
+::-webkit-input-placeholder
+{
+    /* WebKit browsers */
+    color: #ccc;
+    font-style:normal;
+    font-family:'Lato',sans-serif;
+    font-size:11px;  
+}
+:-moz-placeholder
+{
+    /* Mozilla Firefox 4 to 18 */
+    color: Black;
+    font-style: normal;
+    font-family:'Lato',sans-serif;
+    font-size:11px;        
+}
+::-moz-placeholder
+{
+    /* Mozilla Firefox 19+ */
+    color: Black;
+    font-style: normal;
+    font-family:'Lato',sans-serif;
+    font-size:11px;   
+}
+:-ms-input-placeholder
+{
+    /* Internet Explorer 10+ */
+    color: #ccc !important;
+    font-style: normal;
+    font-family:'Lato',sans-serif;
+    font-size:11px;    
+}
+
+#searchform
+{
+    display: block;
+    margin-bottom: 15px;
+}
+
+/*.fieldcontainer
+{
+    display: block;
+    position: relative; 
+}*/
+
+.searchfield
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    width: 60px; /* padding: 11px 7px;*/ /*padding-right: 43px;*/
+    /*background-color: #fff; *//*font-size: 1.6em;*/
+    font-size: 12px;
+    color: #ccc;
+    /*border: 1px solid #c8c8c8;*/
+    /* border-bottom-color: #d2e2e7;*/
+    float: right; /*margin-right:15px;*/
+    height: 22px;
+    margin-top:0px;
+    border-top:0px;
+    border-right:0px;
+    border-width:0px;
+    font-family:'Lato',sans-serif;
+}
+
+.searchfield:focus
+{
+    width: 150px;
+    color: #666;
+}
+
+#searchbtn
+{
+    top: 5px;
+    height: 22px;
+    width: 18px;
+    border: 0;
+    cursor: pointer;
+    zoom: 1;
+    background: url(/PLMViewer/static/images/search.png) top left no-repeat;
+    background-repeat: no-repeat;
+    filter: alpha(opacity=90);
+    opacity: 1.9;
+    float: right;
+    border-width:0px;
+}
+
+#searchbtn:hover, #searchbtn:focus
+{
+    filter: alpha(opacity=90);
+    opacity: 1.9;
+}
+.searchfield:focus + #searchbtn
+{
+    right: 10px; /* adjust btn position as the field expands */
+}
+
+/* Horizontal navigation menu */
+#horzmenu
+{
+    /*font-size: 14px;*/
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 1000px;
+    float: none;
+    visibility:hidden;
+}
+
+#horzmenu > ul
+{
+    overflow: hidden;
+    background: 0;
+    font-family: "Lato",sans-serif;
+    font-size: 14px;
+    text-align: left;
+    text-transform: uppercase;
+    margin: 0;
+    width: 400px;
+    padding-left:10px;
+}
+
+#horzmenu > ul > li
+{
+    float: left;
+    display: block;
+    margin: 0px;
+    border: 0px;
+    text-transform: uppercase;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+#horzmenu > ul > li > a
+{
+    text-decoration: none;
+    color: #000000;    
+}
+
+/* Controls */
+
+/* Label */
+.label
+{
+    font-family: "Lato",sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: Black;
+
+}
+
+
+/* Label with error */
+.labelError
+{
+    font-family: 'Lato' ,sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #cc0000;
+    text-transform: uppercase;
+}
+
+/* Textbox */
+.inputTexBox
+{
+    height: 28px;
+    border-bottom-color: BLACK;
+    border-top-color: BLACK;
+    border-left-color: BLACK;
+    border-right-color: BLACK;
+    border: 1px solid;
+    font-family: 'Times New Roman' ,sans-serif;
+    font-size: 14px;
+    color:#707070;
+}
+
+/* Textbox with error */
+.inputTexBoxError
+{
+    height: 28px;
+    border-bottom-color: #cc0000;
+    border-top-color: #cc0000;
+    border-left-color: #cc0000;
+    border-right-color: #cc0000;
+    border: 1px solid #cc0000;
+    font-family: 'Lato' ,sans-serif;
+    font-size: 14px;
+    color:#707070;
+}
+
+/* Primary button*/
+.PrmButton
+{
+    height: 28px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border: 0px;
+}
+
+/* Primary button hover*/
+.PrmButton:hover
+{
+    height: 28px;
+    background-color: #404040;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border: 0px;
+}
+
+/* Inactive button */
+.InactiveButton
+{
+    height: 28px;
+    background-color: #D0D0D0;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border: 0px;
+}
+
+/* Secondary button */
+.SecButton
+{
+    height: 28px;
+    background-color: #EEEEEE;
+    color: teal;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border-color: #000000;
+    border: 1px solid;
+
+
+
+}
+
+/* Secondary button hover*/
+.SecButton:hover
+{
+    height: 28px;
+    background-color: silver;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border-color: Black;
+    border: 1px solid;
+}
+
+/* Dropdown control */
+.div-select {
+    width: 200px;
+    height: 28px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #E8E8E8;
+    margin-left:10px;
+    display:inline-block;   
+	font-family: 'Lato' ,sans-serif;
+	font-size: 12px;
+
+
+
+
+
+}
+
+.div-select select {
+    width: 130px;
+    font-size: 12px;
+    line-height: 1;
+    border: 0;
+    height: 28px;  
+    text-transform:uppercase;
+    background-image:url(/PLMViewer/static/images/down_arrow.png);
+    background-repeat: no-repeat;
+    background-position: 80px;
+    background-color: transparent;
+    letter-spacing: 1px;
+    font-family: 'Lato',sans-serif;   
+}
+
+/* Dropdown control with error */
+.div-select-error {
+    width: 96px;
+    height: 28px;
+    overflow: hidden;
+    border: 1px solid #cc0000;
+    background-color: #E8E8E8;
+    clear: both;
+    margin-left:10px;
+    display:inline-block;  
+}
+
+.div-select-error select {
+    width: 130px;
+    font-size: 12px;
+    line-height: 1;
+    border: 0;
+    height: 28px;  
+    text-transform:uppercase;
+    background-image:url(/PLMViewer/static/images/down_arrow.png);
+    background-repeat: no-repeat;
+    background-position: 80px;
+    background-color: transparent;
+    letter-spacing: 1px;
+    font-family: 'Lato',sans-serif;
+    color:#cc0000;
+}
+
+/* Toggle Control */
+.toggleOn
+{
+    float: left;
+    display: block; 
+    margin: 0px;
+    border: 0px;
+    display: block;
+    list-style-type: none;
+    text-align: center;
+    height: 28px;
+    background-color: #D0D0D0;
+    /*background-color: Black;*/
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border: 1px solid Gray;
+    padding: 0px;
+}
+
+.toggleOff
+{
+    float: left;
+    display: block;
+    margin: 0px;
+    border: 0px;
+    display: block;
+    list-style-type: none;
+    text-align: center;
+    height: 28px;
+    background-color: White;
+    text-transform: uppercase;
+    font-family: 'Lato' ,sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 124px;
+    border: 1px solid Gray;
+    padding: 0px;
+}
+
+.toggleOn > a, .toggleOff > a
+{
+    text-decoration: none;
+    text-align: center;
+    border: 0px;
+    height:28px;
+    vertical-align:middle;    
+    position:relative;
+}
+
+.toggleOn > a
+{
+    color: White;
+} 
+
+.toggleOff > a
+{
+    color: Black;
+}
+
+/* Checkboxes */
+.CheckBoxOn
+{
+    background-image: url('/PLMViewer/static/images/ChkBxOn.gif');
+    height: 13px;
+    width: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 0px;
+    display: inline-block;
+}
+
+.CheckBox
+{
+    background-image: url('/PLMViewer/static/images/ChkBxOff.gif');
+    height: 13px;
+    width: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: 0px;
+    display: inline-block;
+}
+
+/* Table */
+
+.sizesgrid
+{
+    width: 80%;
+    height: 40px;
+}
+
+/*.sizesgrid tbody
+{
+overflow:scroll;
+}*/
+
+.sizesgrid td, .sizesgrid th{
+    padding:5px;
+    text-align:left; 
+    vertical-align:middle;
+    border:1px solid #ccc;
+    font-family:'Lato',sans-serif;
+    text-transform:uppercase;
+    font-size:12px;
+}
+.sizesgrid td
+{
+    word-wrap:break-word;
+}
+.sizesgrid th{
+    background:#EDE4DC!important;
+    /*color:Blue;*/
+    color:Gray;
+}
+.sizesgrid th a
+{color:Blue;}
+
+.sizesgrid td a
+{color:Blue;}
+
+.sizesgrid tr{
+    background:#FFF!important;    
+}
+
+.sizesgrid td{
+    border:1px solid #ccc;
+}
+
+.sizesgrid tr:nth-child(odd){
+    background:#FFF!important;
+    border: 1px solid #EEEEEE;
+}
+
+.sizesgrid tr:nth-child(even){
+    background:#F2F2F2!important;
+}
+
+.sizesgrid tr th:first-child {
+    /*width:10%;*/
+    width:1%;
+}
+.sizesgrid tr th:first-child + th {
+    /* width:13%;*/
+    width:1%;
+}
+
+.sizesgrid tr th:first-child + th + th {
+    /*width:10%;*/
+    width:5%;
+}
+
+.sizesgrid tr th:first-child + th +th +th{
+    width:15%;
+}
+
+.sizesgrid tr th:first-child + th +th +th +th{
+    width:13%;
+}
+
+.sizesgrid tr th:first-child + th +th +th +th +th{
+    width:9%;
+}
+
+.sizesgrid tr th:first-child + th +th +th +th +th +th{
+    width:12%;
+}
+.searchtr {
+	colspan :4;
+}
+.textboxbg {
+    /*background-image: url(/PLMViewer/static/images/textboxbg.png);*/
+    border: .5px solid grey;
+    width: 150px;
+    border-radius: 0px;
+    height: 20px;
+	font-size:12px;
+    font-family:'Lato',sans-serif;
+}
+
+.textboxdoublebrd {
+    border: 3px double #CCCCCC;
+    width: 230px;
+    height: 30px;
+}
+.droupdown{
+    overflow: hidden;
+    border: .5px solid grey;
+    width: 200px;
+    appearance: none;  
+    border-radius: 5px;
+    height: 20px;
+	font-size:12px;
+    font-family:'Lato',sans-serif;
+
+}
+
+.buttonwithimage {
+    background: url(/PLMViewer/static/images/button.png) no-repeat;
+    height: 27px;
+    width: 71px;
+    appearance: none;
+    display: inline-block;
+
+    line-height: 1.8;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 7px;
+
+}
+
+.buttonwithbackimage {
+    background: url(/PLMViewer/static/images/back.png) no-repeat;
+    height: 27px;
+    width: 71px;
+    appearance: none;
+    display: inline-block;
+
+    line-height: 1.8;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 7px;
+
+}
+
+.buttonwithreportimage {
+    background: url(/PLMViewer/static/images/report.png) no-repeat;
+    height: 27px;
+    width: 135px;
+    appearance: none;
+    display: inline-block;
+
+    line-height: 1.8;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 7px;
+
+}
+
+.link{
+    color:#ff0000;
+}
+.hover{
+    font-size:115%;
+}
+
+.subtitlehr{
+    background-color:#000000;
+    border-width:5px;
+    color: #0d528b;
+    height:5px;
+    lineheight:0;
+    display: inline-block;
+    text-align: left;
+    width:91%;
+    
+}
+
+.imagetableth {
+	background: url(/PLMViewer/static/images/tableheader1.png) repeat;
+    border-width: 1px;
+	padding: 2px;
+	font-size:13px;
+    font-family:'Lato',sans-serif;
+	height: 10px;
+	white-space: nowrap;
+	border-style: solid;
+	border-color: #999999;
+	/*background: url(/PLMViewer/static/images/TableHeader.png) repeat;
+	border-width: 1px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #999999;
+     overflow: auto;
+        color: white;
+       height: 15px;
+      white-space: nowrap;*/
+        
+        
+}
+.tabwithimage {
+    background: url(/PLMViewer/static/images/TableHeader.png) no-repeat;
+    height: 27px;
+    width: 71px;
+    appearance: none;
+    display: inline-block;
+
+    line-height: 1.8;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 7px;
+
+}
+.theTable{
+    display:table; 
+    width:95%; /* or whatever width for your table*/
+}
+.theRow{display:table-row}
+.theCell{
+    display:table-cell;
+    padding:0px 2px; /* just some padding, if needed*/
+    white-space: pre; /* this will avoid line breaks*/
+    border:1px solid black;
+}
+.bigCell{
+    width:100%; /* this will shrink other cells */
+}

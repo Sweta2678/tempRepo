@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<context:component-scan base-package="com.coach.middleware.batch" />
+	
+	<!-- <bean id="jobRepository"
+	class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+	<property name="transactionManager" ref="transactionManager" />
+    </bean> -->
+
+	<bean id="DeltaExtractTasklet" class="com.coach.middleware.batch.itemWriter.DeltaExtractTasklet" scope="step">
+		    <property name="DeltaExtractDAO" ref="DeltaExtractDAO" />
+	</bean>
+		
+		<bean id="DeltaExtractDAO" class="com.coach.middleware.batch.dao.DeltaExtractDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+		
+	<bean id="batchJobFailed" class="com.coach.middleware.batch.itemWriter.BatchJobFailedListener" scope="step" />
+	
+
+	<!-- Actual Job -->
+
+
+	<batch:job id="DeltaExtractJob">
+		<batch:step id="DeltaExtractExecution" >
+			<batch:tasklet ref="DeltaExtractTasklet" />
+			<!-- <batch:next on="COMPLETED" to="taskCompleted"/>
+			<batch:next on="FAILED" to="failureStep"/> -->
+		</batch:step>
+	</batch:job>
+
+	
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans> 

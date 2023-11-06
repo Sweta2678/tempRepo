@@ -1,0 +1,402 @@
+
+<div ng-repeat="(key, prop) in list[0]">
+
+
+	<div data-ng-show="prodDetail">
+
+		<form>
+			<label><h4 class="fontstyle">
+					<b>{{prop.slotNumber}} / {{prop.styleNumber}} /
+						{{prop.styleName}}</b>
+				</h4></label>
+			<div id="tabs" class="nav nav-tabs tabborder"
+				data-ng-controller="TabsCtrl">
+				<ul>
+					<li ng-repeat="tab in tabs"
+						ng-class="{active:isActiveTab(tab.url)}"
+						ng-click="onClickTab(tab)">&nbsp;&nbsp;<b>{{tab.title}}</b>&nbsp;
+					</li>
+				</ul>
+
+				<div>&nbsp;</div>
+				<div>
+
+					<div class="head">
+						<span class="header text-left"><h5>
+								<b>Product General Details</b>
+							</h5></span>
+					</div>
+
+					<div>
+						<table>
+							<tr>	<td>
+									<div>
+										 <img src="{{prop.partPrimaryImageUrl}}" width="120px" height="74px" />
+									</div>
+								</td>
+								<td>
+									<div>
+										<table>
+											<tr>
+										
+												<td class="lbl1"><span class="label">StyleNumber
+														: </span></td>
+												<td class="val1"><span>{{prop.styleNumber}} </span></td>
+												<td class="lbl1"><span class="label">Source : </span></td>
+												<td class="val1"><select data-ng-model="prodSource"
+													class="input-medium">
+														<option value="">-Select-</option>
+														<option value={{value}}
+															"ng-repeat="(key,value)  in prop.productSource">{{
+															value }}</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td class="lbl1"><span class="label">
+														Specification : </span></td>
+												<td class="val1"><select class="select input-medium"
+													ng-model="productSpecification"
+													ng-change="changeProdSpecification(productSpecification)">
+														<option value="">--Select--</option>
+														<option ng-model="productSpecification"
+															ng-repeat="value in  prop.productSpecification">
+															{{value}}</option>
+												</select></td>
+												<td class="lbl1"><span class="label">Season :</span></td>
+												<td class="val1"><select class="select input-medium"
+													ng-model="productSeason">
+														<option value="">--Select--</option>
+														<option ng-model="productSeason"
+															ng-repeat="value in  prop.productSeason">
+															{{value}}</option>
+												</select>
+											</tr>
+											<tr>
+												<td class="lbl1"><span class="label">Product
+														Lifecycle State :</span></td>
+												<td class="val1"><span>{{prop.prodLifeCycleState}}</span></td>
+												<td class="lbl1"><span class="label">SKU List :</span></td>
+												<td class="val"><select class="select input-medium"
+													ng-model="productSkuStyle"
+													ng-change="changeSkuStyle(productSkuStyle,prop.department)">
+														<option value="">--Select--</option>
+														<option ng-model="productSkuStyle"
+															ng-repeat="(key,value) in  prop.productSkuStyle">{{value}}</option>
+												</select></td>
+											</tr>
+										</table>
+									</div>
+								</td>
+								
+							</tr>
+						</table>
+					</div>
+					<div id="mainView">
+						<div ng-include="currentTab"></div>
+					</div>
+
+
+					<script type="text/ng-template" id="Details">
+  <div class= "tabborder">
+	<div id="productDetail"  >
+<fieldset>
+<div class="head"><span class="header text-left"><h5><b>Product Identification</b></h5></span></div>
+<div>&nbsp;</div>
+<div><span><h5><b>Product</b></h5></span></div>
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Slot : </span></td><td class="val"><span>{{prop.slotNumber}}</span></td>
+		<td  class ="lbl" ><span class="label">Style : </span></td><td class="val"><span>{{prop.styleNumber}}</span></td>
+	</tr>
+	<tr>
+	<td class ="lbl" ><span class="label">Abbreviated Style Name : </span></td><td class="val"><span>{{prop.abbreviatedStyleName}}</span></td>
+		<td class ="lbl" ><span class="label">Licensed Style Number : </span></td><td class="val"><span>{{prop.licensedStyleNumber}}</span></td>
+		
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Collection : </span></td><td class="val"><span>{{prop.collection}}</span></td>
+		<td class ="lbl" ><span class="label">Sub Collection :</span></td><td class="val"><span>{{prop.subCollection}}</span></td>
+	</tr>
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Class :</span></td><td class="val"><span>{{prop.productClass}}</span></td>
+		<td class ="lbl" ><span class="label">Sub Class :</span></td><td class="val"><span>{{prop.subClass}}</span></td>
+	</tr>
+	
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Adopted : </span></td><td class="val"><span>{{prop.adopted}}</span></td>
+		<td class ="lbl" ><span class="label">Gender :</span></td><td class="val"><span>{{prop.gender}}</span></td>
+	</tr>
+	
+	
+	<tr>
+	<td class ="lbl" ><span class="label">Department : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.department}}</span></td>
+	<td class ="lbl" ><span class="label">Dropped :</span></td><td class="val"><span>{{prop.dropped}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl" ><span class="label">Intro Date : </span></td><td class="val">{{prop.introDate}}</td>
+		<td class ="lbl" ><span class="label">Delete Date : </span></td><td class="val"><span>{{prop.deletedDate}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl"> <span class="label">Early Release Date :</span> </td><td class="val"><span>{{prop.productadditionDetailsVo.earlyReleaseDate}}</span></td>
+		<td></td>
+	
+	</tr>
+</table>
+</div>
+ </fieldset>   
+<fieldset>
+<div ng-show="visiblesku">
+<div><span><h5><b>SKU</b></h5></span></div>
+
+<table>
+<tr>
+		<td class ="lbl" ><span class="label">Intro Date : </span></td><td class="val"><span>{{sku.introDate}}</span></td>
+		<td  class ="lbl" ><span class="label">Early Release Date : </span></td><td class="val"><span>{{sku.earlyReleaseDate}}</span></td>
+	</tr>
+	<tr>
+		<!--td class ="lbl" ><span class="label">Factory Store type : </span></td><td class="val"><span>{{sku.skuFactoryStoreType}}</span></td-->
+<td class ="lbl" ><span class="label">Delete Date : </span></td><td class="val"><span>{{sku.deleteDate}}</span></td>
+		<td  class ="lbl" ><span class="label">Finished Good Color Code : </span></td><td class="val"><span>{{productSkuStyle}} </span></td>
+	</tr>
+</table>
+</div>
+
+</fieldset>
+
+<fieldset>
+<factory-store></factory-store>
+</fieldset>
+    </div>
+	</div>
+	</script>
+
+
+
+<script type="text/ng-template" id="Material">
+		
+<div>
+ <iframe id="txtArea1" style="display:none"></iframe>
+ 
+ 
+ 
+<table border-spacing="3">
+	<tr>	
+			<td width="30%"><h5><b>Bill Of Materials :</b></h5>		<td>
+				<td width="50%" align=left>		
+				       <select  ng-model='selectedValue'   
+							    ng-options='key as value for (key,value) in  model.bomNameMap' 
+							    ng-change='getbomDetail({{prop.ida3masterreference}},selectedValue);'>
+								</select>
+						</td>	
+						
+						
+
+					<td align=right width="20%">	<a href=""><img src="/PLMViewer/static/images/logo-excel.png"  
+									width= "30px" 
+									height= "30px" 
+									alt="export to Excel" 
+									ng-click="fnExcelReport();"/>	</a>
+					</td>
+	</tr>
+
+	</table>
+
+<div>
+<BR/>
+<table  id="skuInfo" cellspacing="0" align="center" cellpadding="0" width="90%">	
+<tr>
+<td class='Bomcaption'>SKU Information Table</td></tr>
+	 <tr>
+        <td class="tableHeader" width = "15%">SKU Group</td>
+		<td class="tableHeader" width = "10%">SKU Name</td>
+        <td class="tableHeader" width = "15%">SKU Full Name</td>
+        <td class="tableHeader" width = "10%">SKU Team</td>
+        <td class="tableHeader" width = "10%">BOM Status</td>
+        <td class="tableHeader" width = "15%">Intro Date</td>
+        <td class="tableHeader" width = "15%">FS Intro Date</td>
+    </tr>
+	
+	 <tr class="table-hover"  ng-repeat="SkuInfoVo in model.skuInfoVos">
+                <td  class='skuTableData'  width = "15%">{{SkuInfoVo.skuGroupName}} </td>
+				<td  class='skuTableData'  width = "10%">{{SkuInfoVo.skuName}} </td>
+				<td  class='skuTableData'  width = "15%">{{SkuInfoVo.skuFullName}} </td>
+				<td  class='skuTableData'  width = "10%">{{SkuInfoVo.skuTeam}} </td>
+				<td  class='skuTableData'  width = "10%">{{model.bomStatusMap[SkuInfoVo.bomSkuStatus]}}</td>
+				<td  class='skuTableData'  width = "15%">{{SkuInfoVo.introDate}} </td>
+				<td  class='skuTableData'  width = "15%">{{SkuInfoVo.fsIntroDate}} </td>	
+								
+    </tr> 
+</table>
+</div>
+<div>
+<BR/><BR/>
+<table  id="table2excel" cellspacing="0" cellpadding="0" border = "1" width="95%" align="center">	
+    <tr >
+        <td class="tableHeader" ng-repeat="column in model.columnOrder" width = "15%">{{column}}</td>
+    </tr>
+         
+	<tbody ng-init = "val = key" ng-repeat="(key,value)  in model.dataMap" font-size=5px>
+	<tr>
+        <td colspan="{{model.columnOrder.length}}"  class="tableHeaderSpec" width="100%"><b>{{model.sectionMap[key]}}</b></td></tr>
+    <tr class="table-hover"  ng-repeat="(key,value)  in value">
+                    <td  class='tableData' ng-repeat="lstvalue  in value"  width = "15%">{{lstvalue}} </td>
+    </tr>    
+
+    </tbody>
+
+	</table> 
+	</div>
+ </div>
+
+</script>
+
+					<script type="text/ng-template" id="Specifications">
+
+		<div class= "tabborder">
+		
+		  
+
+ <uib-accordion close-others="true">
+     <uib-accordion-group heading="{{prdSpec}}" ng-repeat="prdSpec in prodSpec"   ng-click="isopen=!isopen;test($event);" >
+	 
+       <a href="" ng-model="specComponentCollapsed" ng-click="getSpecComponent(prdSpec);"><strong>Components</strong></a>
+			<div  id="productSpecificationComp" ng-show="specComponentCollapsed">
+  <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="7"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="thumbnail" class="imagetableth">Thumbnail</th>
+       <th  title="component" class="imagetableth">Component</th>
+       <th  title="componentType" class="imagetableth">Component Type</th>
+       <th  title="status" class="imagetableth">Status</th>
+       <th  title="lockedBy" class="imagetableth">Locked By</th>
+	   <th  title="modifiedBy" class="imagetableth">Modified By</th>
+	   <th  title="modified" class="imagetableth">Modified</th>
+      
+     </tr>
+     <tr class="tr"  ng-repeat="prodSpec in specComponentList">
+        
+             <td  class="val">
+			 <div ng-if="prodSpec.partPrimaryImageUrl != null && ( prodSpec.partPrimaryImageUrl != 'null' || prodSpec.partPrimaryImageUrl != '')">
+   			 <a href ="" /> <img ng-src ="{{prodSpec.partPrimaryImageUrl}}" width="30px" height= "30px" 
+			          ng-click="openImagePopup(prodSpec.partPrimaryImageUrl)"/></a>
+			 
+			 </div>
+			 <div ng-if="prodSpec.partPrimaryImageUrl == null || ( prodSpec.partPrimaryImageUrl == 'null' || prodSpec.partPrimaryImageUrl == '')">
+   			 <a href ="" width="30px" height= "30px"/></a>
+			 <!--<a href ="/images/bag1.jpg" /> <img src="/images/bag1.jpg" width="30px" height= "30px"/></a>-->
+			 </div>
+                   
+                   
+			</td>
+			 <td  class="val"><span id="specName"><a href ="" ng-click="openBOM(prodSpec.partPrimaryImageUrl,prodSpec.specName,prodSpec.ida2a2,prodSpec.componentType,prop.ida3masterreference);" >{{prodSpec.specName}}</a><span></td>
+			 <td  class="val"><span id="componentType">{{prodSpec.componentType}}<span></td>
+			 <td  class="val"></td>
+			 <td  class="val">&nbsp;</td>
+			 <td  class="val">&nbsp;</td>
+			  <td  class="val">&nbsp;</td>
+			 
+       
+     </tr>
+
+ </tbody>
+ </table>
+ </div>
+		
+		<div id="documents">
+      <a href="" ng-model="specDocCollapsed" ng-click="getSpecDocument(prdSpec);"><strong>Documents</strong></a>
+
+			</a>
+			<div  id="productSpecificationDoc" ng-show="specDocCollapsed">
+  <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="3"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="thumbnail" class="imagetableth">Document Name</th>
+       <th  title="contentFileName" class="imagetableth">Document Type</th>
+       <th  title="fileSize" class="imagetableth">Primary File</th>
+       
+     </tr>
+       <tr class="tr" ng-repeat="prodDoc in specDocList">
+        <td  class="val"><a href="" ng-click="openDocumentDetails(prodDoc.documentName,prodDoc.documentTypeId)" ><span id="documentName">{{prodDoc.documentName}}<span></a></td>
+		<td  class="val"><span id="documentType">{{prodDoc.documentType}}<span></td>
+		<td class="val"><a href="" ng-click="docFileLink(prodDoc.primaryFileName,prodDoc.documentType)"><span id="primaryFile">{{prodDoc.primaryFileName}}<span></a></td></td>
+     
+     </tr>
+ </tbody>
+ </table>
+		</div>
+		</div>
+
+    </uib-accordion-group>
+   
+  </uib-accordion>
+
+	
+		</div>
+		
+
+
+	</script>
+					<script type="text/ng-template" id="Images">
+		<div id="Images" class= "tabborder">
+		 <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="5"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+
+       <th  title="thumbnail" class="imagetableth">Image ThumbNail</th>
+       <th  title="pageName" class="imagetableth">Page Name</th>
+       <th  title="source" class="imagetableth">Source</th>
+	    <th  title="pageType" class="imagetableth">Page Type</th>
+		 <th  title="pageLayout" class="imagetableth">Page layout</th>
+       
+     </tr>
+       <tr class="tr" ng-repeat="prodImage in prodImageDataList">
+        <td  class="val"><a href="" ng-click="docImageLink(prodImage.thumbNailLocation)">
+		<span id="thumbNail">{{prodImage.thumbNailLocation}}<span></a></td>
+		<td  class="val"><a href=""	ng-click="openBOM('','',prodImage.docMasterId,'',prop.ida3masterreference)"><span id="pageName">{{prodImage.pageName}}<span></a></td>
+		<td class="val"><span id="source">{{prodImage.source}}<span></td></td>
+		<td class="val"><span id="pageType">{{prodImage.pageType}}<span></td></td>
+		<td class="val"><span id="pageLayout">{{prodImage.pageLayout}}<span></td></td>
+     
+     </tr>
+ </tbody>
+ </table>
+		</div>
+	</script>
+					<script type="text/ng-template" id="Document">
+	<div  id="productDocuments" class= "tabborder">
+  <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="3"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="thumbnail" class="imagetableth">Document Name</th>
+       <th  title="contentFileName" class="imagetableth">Document Type</th>
+       <th  title="fileSize" class="imagetableth">Primary File</th>
+       
+     </tr>
+       <tr class="tr" ng-repeat="prodDoc in prodDocumentList">
+        <td  class="val"><a href="" ng-click="openDocumentDetails(prodDoc.documentName,prodDoc.documentTypeId)" ><span id="documentName">{{prodDoc.documentName}}<span></a></td>
+		<td  class="val"><span id="documentType">{{prodDoc.documentType}}<span></td>
+		<td class="val"><a href="" ng-click="docFileLink(prodDoc.primaryFileName,prodDoc.documentType)"><span id="primaryFile">{{prodDoc.primaryFileName}}<span></a></td></td>
+     
+     </tr>
+ </tbody>
+ </table>
+	</script>
+
+
+
+					<br>
+				</div>
+				<div align="left"> <input type="button" name="Search" value = "" ng-click="goback('productresult')" class="buttonwithbackimage" /></div>
+			</div>

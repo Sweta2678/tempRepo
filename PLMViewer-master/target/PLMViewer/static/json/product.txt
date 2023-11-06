@@ -1,0 +1,10 @@
+	
+        {
+		{	mainNode: "Details",	},
+		{	mainNode: "Specifications",	},
+	    {	mainNode: "Documentation",	},
+	{mainNode : "Advanced Search",
+		sublist: [  {list: "Product"},{list: "Material"},{list: "Document"} ]
+	}
+		}
+        

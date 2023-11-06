@@ -1,0 +1,123 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<context:component-scan base-package="com.coach.middleware.batch" />
+	
+	<!-- <bean id="jobRepository"
+	class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+	<property name="transactionManager" ref="transactionManager" />
+    </bean> -->
+
+	<util:properties id="sapMatLpProps" location="classpath:com/coach/middleware/batch/config/properties/SAPMATLP.properties" />
+		
+	<bean id="SapMatLpItemReader"
+	class="org.springframework.batch.item.file.MultiResourceItemReader" scope="step">
+	<property name="resources" value="file:#{jobParameters['targetDirectory']+jobParameters['targetFile']}" />
+	<!-- <property name="strict" value="true"/> -->
+	<property name="delegate" ref="SapMatLpFileItemReader" />
+	</bean>	
+
+	<bean id="SapMatLpFileItemReader"
+		class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step" >
+	<!-- <property name="strict" value="true"/> -->	
+ 	<property name="lineMapper">
+		<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+		  <!-- split it -->
+		  <property name="lineTokenizer">
+		        <bean
+			  class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+			    <property name="delimiter" value="||"/>
+			    <property name="quoteCharacter" value="@"/>
+				<property name="names" value="matNum,matDesc,upc,stdCost,retailPrice,whPrice,
+				fsTicketPrice,skipVal1,skipVal2,skipVal3,skipVal4,skipVal5,skipVal6,skipVal7,skipVal8,skipVal9,skipVal10,
+				skipVal11,skipVal12,skipVal13" />
+			</bean>
+		  </property>
+		  <property name="fieldSetMapper">   
+		      <!-- map to an object -->
+			  <bean
+			    class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+				<property name="prototypeBeanName" value="SapMatLpDTO" />
+			  </bean>			
+		  </property>
+ 
+		  </bean>
+	  </property>
+
+	</bean>
+	
+	
+	<bean id="SapMatLpItemProcessor"
+		class="com.coach.middleware.batch.itemProcessor.SapMatLpItemProcessor" />
+	<bean id="SapMatLpDTO" class="com.coach.middleware.batch.dto.SapMatLpDTO" scope="prototype" />
+
+	<bean id="SapMatLpItemWriter"
+		class="com.coach.middleware.batch.itemWriter.SapMatLpItemWriter" />
+	
+		<bean id="SapMatLPRenameFileTasklet" class="com.coach.middleware.batch.itemWriter.FileRenameTasklet" scope="step">
+		    <!-- <property name="SapMatLpVO" ref="SapMatLpVO"/> -->
+			<property name="resource" value="file:#{jobParameters['targetDirectory']+jobParameters['targetFile']}" />
+			<property name="targetDestDirectory" value="#{jobParameters['targetDestDirectory']}" />
+		</bean>
+		
+	<bean id="SapMatLpVO" name="SapMatLpVO"  class="com.coach.middleware.batch.dao.VO.SapMatLpVO" scope="prototype" />
+	
+	<bean id="batchJobFailed" class="com.coach.middleware.batch.itemWriter.BatchJobFailedListener" scope="step" />
+	<bean id="RdyFileTasklet" class="com.coach.middleware.batch.itemWriter.RdyFiletasklet" scope="step">
+		    <property name="resource" value="file:#{jobParameters['targetDirectory']+jobParameters['targetFile']}.rdy" />
+		</bean>	
+
+	<!-- Actual Job -->
+
+
+	<batch:job id="SapMatLpExtractJob">
+		<batch:step id="RdyFileCheck" >
+			<batch:tasklet ref="RdyFileTasklet" />
+			<batch:next on="COMPLETED" to="SapMatLpExtractJobReadStep"/>
+			<batch:next on="FAILED" to="failureStep"/>
+		</batch:step>
+		<batch:step id="SapMatLpExtractJobReadStep" >
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="SapMatLpItemReader" processor="SapMatLpItemProcessor"
+					writer="SapMatLpItemWriter" commit-interval="500" skip-limit="1000">
+					<batch:skippable-exception-classes>
+					<batch:include class="org.springframework.batch.item.file.transform.IncorrectTokenCountException" />
+					<batch:include class="org.springframework.batch.item.file.FlatFileParseException" />
+					<batch:include class="org.springframework.batch.core.step.skip.SkipListenerFailedException" />
+					</batch:skippable-exception-classes>
+					
+            <batch:listeners>
+                <batch:listener ref="SAPMATLPSkipListener"/>
+            </batch:listeners>
+					<batch:retry-policy>
+                    <bean class="org.springframework.retry.policy.AlwaysRetryPolicy" scope="step"/>
+                </batch:retry-policy>
+				</batch:chunk>
+			</batch:tasklet>
+			<batch:next on="COMPLETED" to="RenameFile"/>
+			<batch:next on="FAILED" to="failureStep"/>
+		</batch:step>
+		<batch:step id="RenameFile" >
+			<batch:tasklet ref="SapMatLPRenameFileTasklet" />
+		</batch:step>
+		<batch:step id="failureStep" >
+			<batch:tasklet ref="batchJobFailed" />
+		</batch:step>
+	</batch:job>
+
+	<bean id="SAPMATLPSkipListener"
+		class="com.coach.middleware.batch.itemReader.SAPMATLPSkipListener">
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans> 

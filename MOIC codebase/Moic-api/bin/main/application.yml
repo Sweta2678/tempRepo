@@ -1,0 +1,25 @@
+spring:
+  batch:
+    job:
+      enabled: false 
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl 
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  profiles:
+    active: cd_dev
+
+customer.master.outbound.joor.file.location: /apps/moic/moic_integration/customer_master/out/
+customer.master.outbound.joor.file.name: CustomerMaster.json
+customer.master.outbound.joor.batch.size: 10
+
+jobs.joor.order.file.location: /apps/moic/moic_integration/joor_orders/in/
+jobs.joor.order.file.name: JoorOrder.json
+jobs.joor.order.archive.file.location: /apps/moic/moic_integration/joor_orders/archive/
+jobs.joor.order.failed.file.location: /apps/moic/moic_integration/joor_orders/failed/
+
+jasypt.encryptor.password: busy_deck_broad
+
+skip.order.finalizedbuyarchive: true

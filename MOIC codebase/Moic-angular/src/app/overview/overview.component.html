@@ -1,0 +1,56 @@
+<div class="content-wrapper overview-wrapper">
+    <div class="mb-30 overview-top-panel">
+        <select name="fashionseason" id="fashionseason" [(ngModel)]="season" (change)="callOverviewDataApi()">
+            <option *ngFor="let season of getSeasonArray" [value]="season.name"> {{season.name}} </option>
+        </select>
+        <select name="channel" id="channel" [(ngModel)]="channel" (change)="callOverviewDataApi()">
+            <option *ngFor="let channel of getChannelList" [value]="channel"> {{channel}} </option>
+        </select>
+
+        <!--<a href='{{hrefUrl}}orderDownloadReport?season={{season}}&channel={{channel}}' target="_blank" class="btn overview-dl-or-btn">Download Order Report</a>-->
+
+        <div class="download-seperator">
+            <div (mouseleave)="showDropDown = false">
+                <button class="drop-toggle btn-flat" (click)="showDropDown=!showDropDown">
+                    <span *ngIf="checkedList.length<=0">{{getSeasonArray && getSeasonArray[0]?.name}}</span>
+                    <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
+                    <img src="assets/images/down-arrow.png" />
+                </button>
+                <div class="drop-show" *ngIf="showDropDown">
+                    <label *ngFor="let msv of getSeasonArray">
+                        <input type="checkbox" [(ngModel)]="msv.checked" (change)="getSelectedValue(msv.checked,msv.name)" />
+                    <span>{{msv.name}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <a *ngIf="checkedList.length<=0" href='{{hrefUrl}}orderDownloadReport?season={{getSeasonArray && getSeasonArray[0]?.name}}&channel={{channel}}' target="_blank" class="btn overview-dl-or-btn">Download Order Report</a>
+        <a *ngIf="checkedList.length>0" href='{{hrefUrl}}orderDownloadReport?season={{checkedList.join(",")}}&channel={{channel}}' target="_blank" class="btn overview-dl-or-btn" (click)="resetSelected(false)">Download Order Report</a>
+
+    </div>
+    <div class="result-table overview-result-table">
+        <p-table [value]="valueWithKeys">
+            <ng-template pTemplate="body" let-key>
+                <tr>
+                    <td *ngFor="let col of getOverviewUpperTable[key]">
+                        {{col}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <hr class="seperator mt-30 mb-30" />
+
+    <div class="mb-30 overview-top-panel">
+        <select name="fashionseason" id="fashionseason" [(ngModel)]="seasonArc">
+            <option *ngFor="let seasonArc of getSeasonList" [value]="seasonArc"> {{seasonArc}} </option>
+        </select>
+        <select name="channel" id="channel" [(ngModel)]="channelArc">
+            <option *ngFor="let channelArc of getChannelList" [value]="channelArc"> {{channelArc}} </option>
+        </select>
+
+        <a href='{{hrefUrl}}archivedDownload?season={{seasonArc}}&channel={{channelArc}}' target="_blank" class="btn overview-dl-arc-btn">Download Archives</a>
+    </div>
+</div>

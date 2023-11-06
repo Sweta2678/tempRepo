@@ -1,0 +1,652 @@
+<!--			  <div ng-repeat="(key, material) in material">  -->
+
+
+<div data-ng-show="materialDetail"  >
+
+    <form>
+        <label><h4 class="fontstyle"><b>{{material.materialName}}</b></h4></label>
+        <div id="tabs" class="nav-tabs tabborder" data-ng-controller="MaterialTabsCtrl">
+            <ul>
+                <li ng-repeat="tab in materialTabs" 
+                    ng-class="{active:isActiveTab(tab.url)}" 
+                    ng-click="onClickTab(tab)" >&nbsp;&nbsp;<b>{{tab.title}}</b>&nbsp;</li>
+            </ul>
+			<div>&nbsp;</div>
+
+            <div>
+                    <fieldset>
+                        <div class="head"><span class="header"><h5><b>Material General Details</b></h5></span></div>
+<div>
+<table><tr><td>
+
+                        <div><span class="label"></span><br><img src="{{material.partPrimaryImageUrl}}"  width= "75px" height= "65px"/>
+                        </div>
+						</td><td>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td class ="lbl1"><span class="label">Material Name:</span></td><td class="val1">		<span>{{material.materialName}}</span></td>
+                                    <td class ="lbl1"><span class="label">Sub Type:</span></td><td class="val1">		<span>{{material.subType}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class ="lbl1"><span class="label">Supplier:</span></td><td class="val1"><span>
+                                            <select   class="select input-medium" ng-model ="materialSupplier" ng-change="materialSupplierDetail(materialSupplier, material.materialTypeId)"
+                                                      >
+                                                <option value="">--Select--</option>
+                                                <option ng-model ="materialSupplier" value={{key}}  ng-repeat = "(key,value) in  material.materialSupplier" 
+                                                        > {{value}}</option>
+                                            </select></span>
+                                    </td>
+                                    <td class ="lbl1"><span class="label">CM Number:</span></td><td class="val1"><span>{{material.partNumber}}</span></td>
+                                </tr>
+
+                            </table>
+                        </div>
+						</td></tr></table>
+
+                    </fieldset>
+                
+            </div>
+            <div id="mainView">         <div ng-include="currentTab"></div>		</div>
+
+
+            <script type="text/ng-template" id="Details">
+                <div id="materialDetail" class = "tabborder">
+                <fieldset>
+                <div class="head"><span class="header"><h5><b>General Attributes</b></h5></span></div>
+                <div>&nbsp;</div>
+                <div><span class="header"><h5><b>Material<h5></b></span></div>
+
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">Short Name:</span></td><td class="val"><span>{{material.shortName}}</span></td>
+                <td  class ="lbl" ><span class="label">CM Number:</span></td><td class="val"><span>{{material.partNumber}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Sub Type:</span></td><td class="val"><span>{{material.subType}}</span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Variant:</span></td><td class="val"><span>{{material.variant}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Brand:</span></td><td class="val"><span>{{material.brand}}</span></td>
+                <td class ="lbl" ><span class="label">Mtl. Slot#:</span></td><td class="val"><span>{{material.ecVMMSlotNumber}}</span></td>
+                </tr>
+
+
+                <tr>
+                <td class ="lbl" ><span class="label">Concept Reference Part:</span></td><td class="val"><span>{{material.conceptReferencePart}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Pre-Concept Material:</span></td><td class="val"><span>{{material.preConceptMaterial}}</span></td>
+                <td class ="lbl" ><span class="label">Development Team:</span></td><td class="val"><span>{{material.developmentTeams}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Active Material:</span></td><td class="val"><span>{{material.activeMaterial}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">HTS Code:</span></td><td class="val">{{material.htsCode}}</td>
+                <td class ="lbl" ><span class="label">Auto Create Multi Color:</span></td><td class="val"><span>{{material.autoCreateMultiColor}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"> <span class="label">Material Used By Wearables:</span> </td><td class="val"><span>{{material.materialUsedByWearables}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Assignee:</span></td><td class="val">{{material.assignee}}</td>
+                <td class ="lbl" ><span class="label">Bulk Test Regime:</span></td><td class="val"><span>{{material.bulkTestRegime}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">CM Parent Group:</span></td><td class="val">{{material.cmParentGroup}}</td>
+                <td class ="lbl" ><span class="label">Care Instructions:</span></td><td class="val"><span>{{material.careInstructions}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Development Intros:</span></td><td class="val">{{material.devIntros}}</td>
+                <td class ="lbl" ><span class="label">Development Teams:</span></td><td class="val"><span>{{material.developmentTeams}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Early Dev. Designer Name:</span></td><td class="val">{{material.ecVEarlyDevDesingerName}}</td>
+                <td class ="lbl" ><span class="label">Material Capacity Group:</span></td><td class="val"><span>{{material.mcg}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Washing Instructions:</span></td><td class="val">{{material.washingInstructions}}</td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Surface Finish:</span></td><td class="val">{{material.surfaceFinishAllSupp}}</td>
+                </tr>	
+
+
+                </table>
+
+                <!----    Material Supplier General Details  ---->
+                <div>&nbsp;</div>
+                <div ng-show="visibleMaterialSupplier">
+
+                <div><span class="header"><h5><b>Material Supplier</b></h5></span></div>
+                <table>
+                <tr>
+                <td class ="lbl"><span class="label">Active Material Supplier:</span></td><td class ="val"><span>{{matSupplierVo.activeMaterialSupplier}} </span></td>
+                <td class ="lbl"><span class="label">Channel:</span></td><td class ="val"><span>{{matSupplierVo.channel}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Supplier Article Number:</span></td><td class ="val">{{matSupplierVo.supplierArticleNumber}}<span> </span></td>
+                <td class ="lbl"><span class="label">Product Team:</span></td><td class ="val">	<span>{{matSupplierVo.productTeam}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Unit of Measure-MS:</span></td><td class ="val"><span>{{matSupplierVo.unitOfMeasureSupp}} </span></td>
+                <td class ="lbl"></td><td class ="val"></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Country of Origin:</span></td><td class ="val">	<span>{{matSupplierVo.countryOfOrigin}} </span></td>
+                <td class ="lbl"></td><td class ="val"></td>
+                </tr> <tr>
+                <td class ="lbl"><span class="label">INCO Terms:</span></td><td class ="val"><span>{{matSupplierVo.shippingTerms}} </span></td>
+                <td class ="lbl"><span class="label">Requested By:</span></td><td class ="val"><span>{{matSupplierVo.requestedBy}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">ETD:</span></td><td class ="val">	<span> {{matSupplierVo.etd}} </span></td>
+                <td class ="lbl"><span class="label">Request Date:</span></td><td class ="val">	<span>{{matSupplierVo.requestDate}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Production Leadtime (wks):</span></td><td class ="val"><span>{{matSupplierVo.productionLeadTime}}  </span></td>
+                <td class ="lbl"></td><td class ="val"></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Production Minimum:</span></td><td class ="val">	<span>{{matSupplierVo.productionMinimum}}  </span></td>
+                <td class ="lbl"><span class="label">Initial Intro Date:</span></td><td class ="val">	<span>{{matSupplierVo.initialIntroDate}}  </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Production Tolerance:</span></td><td class ="val">	<span>{{matSupplierVo.productionTolerance}} </span></td>
+                <td class ="lbl"></td><td class ="val"></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Associated Intros:</span></td><td class ="val">	<span> {{matSupplierVo.associatedIntros}}</span></td>
+                <td class ="lbl"><span class="label">Associated Teams </span></td><td class ="val">	<span> {{matSupplierVo.associatedTeams}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Article Master Location:</span></td><td class ="val"><span>{{matSupplierVo.articleMasterLocation}} </span></td>
+                <td class ="lbl"><span class="label">FFP Date:</span></td><td class ="val">	<span>{{matSupplierVo.ffpDate}} </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Fit For Purpose Status:</span></td><td class ="val"><span>{{matSupplierVo.ffpStatus}} </span></td>
+                <td class ="lbl"><span class="label">Long Lead Time MS:</span></td><td class ="val">	<span>{{matSupplierVo.longLeadTimeMS}} </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label"> Minimum Order Quantity:</span></td><td class ="val"><span>{{matSupplierVo.minimumOrderQuantity}} </span></td>
+                <td class ="lbl"><span class="label">Surface Finish-MS(Hardware):</span></td><td class ="val"><span>{{matSupplierVo.surfaceFinishmsHardware}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Yarn Size MS:</span></td><td class ="val">	<span>{{matSupplierVo.yarnSizeMS}} </span></td>
+                <td class ="lbl"><span class="label">Ship Date:</span></td><td class ="val">	<span>{{matSupplierVo.shipDate}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Bulk Minimum - Order/Color:</span></td><td class ="val"><span>{{matSupplierVo.bulkMinimumColor}} </span></td>
+                <td class ="lbl"></td><td class ="val"></td>
+                </tr>
+
+                </table>
+                </div>
+
+                <!-- Standard Costing --->
+
+                <div class="head"><span class="header"><h5><b>Standard Costing<h5></b></span></div>
+                <div>&nbsp;</div>
+                <div><span class="header"><h5><b>Material<h5></b></span></div>
+
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">Standard Cost:</span></td><td class="val"><span>{{material.stdCostAllSupp}}</span></td>
+                <td  class ="lbl" ><span class="label">Estimated:</span></td><td class="val"><span>{{material.stdCostEstimateFlagAllSupp}}</span></td>
+                </tr>
+
+                <tr><td class ="lbl" ><span class="label">Std Cost Currency:</span></td><td class="val"><span>{{material.stdCostCurrency}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Fiscal Year Effectivity:</span></td><td class="val"><span>{{material.stdCostFyAllSupp}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Standard Cost Effectivity:</span></td><td class="val"><span>{{material.stdCostEffectivityAllSupp}}</span></td>
+                </tr>
+                </table>
+                <div>&nbsp;</div>
+                <div ng-show="visibleMaterialSupplier">
+                <div><span class="header"><h5><b>Material Supplier<h5></b></span></div>
+                <table>
+                <tr>
+                <td class ="lbl"><span class="label">Standard Cost-MS:</span></td><td class ="val"><span> {{matSupplierVo.materialPrice}} </span></td>
+                <td class ="lbl"><span class="label">Estimated-MS:</span></td><td class ="val"><span>{{matSupplierVo.stdCostEstimateFlag}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Std Cost Currency-MS:</span></td><td class ="val"><span>{{matSupplierVo.stdCostCurrencySupplier}}  </span></td>
+                <td class ="lbl"></td><td class ="val"></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Fiscal Year Effectivity-MS:</span></td><td class ="val"><span>{{matSupplierVo.stdCostFy}}  </span></td>
+                <td class ="lbl"><span class="label">Supplier Std Cost Basis:</span></td><td class ="val"><span>{{matSupplierVo.stdCostBasis}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Standard Cost Effectivity-MS:</span></td><td class ="val"><span>{{matSupplierVo.stdCostEffectivity}}  </span></td>
+                <td class ="lbl"><span class="label">Unit of Currency:</span></td><td class ="val"><span> {{matSupplierVo.unitOfCurrency}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Supplier Basis UOM:</span></td><td class ="val"><span> {{matSupplierVo.supplierBasisUOM}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Peg Rate:</span></td><td class ="val"><span>{{matSupplierVo.pegRate}}  </span></td>
+                <td class ="lbl"><span class="label">Supplier Std Cost Date:</span></td><td class ="val"><span>{{matSupplierVo.supStdCostDate}}  </span></td>
+                </tr>
+
+                </table>
+                </div>
+                <div>&nbsp;</div>
+                <div ng-show="visibleMaterialSupplier">
+                <div class="head"><span class="header"><h5><b>Material Supplier Approval</b></h5></span></div>
+                <table>
+
+
+
+                <tr>
+                <td class ="lbl"><span class="label">Article Approval:</span></td><td class ="val"><span> {{matSupplierVo.articleApproval}} </span></td>
+                <td class ="lbl"><span class="label">Article Approval Date:</span></td><td class ="val"><span>{{matSupplierVo.articleApprovalDate}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Article Approval Comments:</span></td><td class ="val"><span>{{matSupplierVo.articleApprovalComments}}  </span></td>
+                <td class ="lbl"><span class="label">Article Master Sent:</span></td><td class ="val"><span>{{matSupplierVo.articleMasterSent}}  </span></td>
+                </tr>
+                </table>
+                <div>&nbsp;</div>
+                <div class="head"><span class="header"><h5><b>Material Supplier Exotic</b></h5></span></div>
+                <table>
+                <tr>
+                <td class ="lbl"><span class="label">Exotic Material:</span></td><td class ="val"><span> {{matSupplierVo.exoticMaterial}} </span></td>
+                <td class ="lbl"><span class="label">CITES:</span></td><td class ="val"><span>{{matSupplierVo.cities}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Exotic Common Name:</span></td><td class ="val"><span>{{matSupplierVo.exoticCommonName}}  </span></td>
+                <td class ="lbl"><span class="label">Prohibited:</span></td><td class ="val"><span> {{matSupplierVo.prohibited}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Scientific Name:</span></td><td class ="val"><span>{{matSupplierVo.scientificName}}  </span></td>
+                <td class ="lbl"><span class="label">Unrestricted:</span></td><td class ="val"><span>{{matSupplierVo.unrestricted}}  </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Harvest Method:</span></td><td class ="val"><span>{{matSupplierVo.harvestMethod}}  </span></td>
+                <td class ="lbl"><span class="label">Fish and Wildlife:</span></td><td class ="val"><span> {{matSupplierVo.fishAndWildlife}} </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Place of Harvest:</span></td><td class ="val"><span> {{matSupplierVo.placeOfHarvest}} </span></td>
+                <td class ="lbl"><span class="label">Classification Date:</span></td><td class ="val"><span> {{matSupplierVo.classificationDate}} </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Classification Request Date:</span></td><td class ="val"><span>{{matSupplierVo.classificationRequestDate}}  </span></td>
+                <td class ="lbl"><span class="label"></span></td><td class ="val"><span></span></td>
+                </tr>
+
+                </table>
+                </div>
+                <!---Specifications  --->
+                <div class="head"><span class="header"><h5><b>Specifications</b></h5></span></div>
+                <div>&nbsp;</div>
+                <div><span class="header"><h5><b>Material</b></h5></span></div>
+
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">Long Lead Time:</span></td><td class="val"><span>{{material.longLeadTime}}</span></td>
+                <td  class ="lbl" ><span class="label">Mating Parts (Snap Only):</span></td><td class="val"><span>{{material.matingParts}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Material Comments:</span></td><td class="val"><span>{{material.materialComments}}</span></td>
+                <td class ="lbl" ><span class="label">Ink Color (Writing Instrument only):</span></td><td class="val"><span>{{material.inkColor}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Care Cards:</span></td><td class="val"><span>{{material.careCards}}</span></td>
+                <td class ="lbl" ><span class="label">Prong Mfg. Method (Buckle):</span></td><td class="val"><span>{{material.prongMfgMethod}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Number of Pcs.:</span></td><td class="val"><span>{{material.numberPC}}</span></td>
+                <td class ="lbl" ><span class="label">Buckle Type (Buckle only):</span></td><td class="val"><span>{{material.buckleType}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Logo Type:</span></td><td class="val"><span>{{material.logoType}}</span></td>
+                <td class ="lbl" ><span class="label">Dap (Buckle only):</span></td><td class="val"><span>{{material.dap}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Backing:</span></td><td class="val"><span>{{material.backingContentAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Orb Size (Purse Frame Only):</span></td><td class="val"><span>{{material.orbSize}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Texture:</span></td><td class="val"><span>{{material.texture}}</span></td>
+                <td class ="lbl" ><span class="label">Orb Solder Points (Purse Frame Only):</span></td><td class="val"><span>{{material.orbSolderPoints}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Chain Type (Chain Only):</span></td><td class="val"><span>{{material.chainType}}</span></td>
+                <td class ="lbl" ><span class="label">Orb Wire Length (Purse Frame Only):</span></td><td class="val"><span>{{material.orbWireLength}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Chain Length(Chain Only):</span></td><td class="val"><span>{{material.chainLength}}</span></td>
+                <td class ="lbl" ><span class="label">Channel Width (Purse Frame Only):</span></td><td class="val"><span>{{material.channelWidth}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Number of Links(Chain Only):</span></td><td class="val"><span>{{material.numLinks}}</span></td>
+                <td class ="lbl" ><span class="label">Rivet Type (Purse Frame Only):</span></td><td class="val"><span>{{material.rivetType}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Ring Type (Ring Only):</span></td><td class="val"><span>{{material.ringType}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Jaw Opening (Dogleash Only):</span></td><td class="val"><span>{{material.jawOpening}}</span></td>
+                </tr>
+
+
+                <tr>
+                <td class ="lbl" ><span class="label">Common Name (Species):</span></td><td class="val"><span>{{material.commonName}}</span></td>
+                <td class ="lbl" ><span class="label">Bulk Test Regime:</span></td><td class="val"><span>{{material.bulkTestRegime}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Average Skin Size:</span></td><td class="val"><span>{{material.averageSkinSizeAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Wearables Leather Type:</span></td><td class="val"><span>{{material.wearablesLeatherType}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Hide Segmentation:</span></td><td class="val"><span>{{material.hideSegmentation}}</span></td>
+                <td class ="lbl" ><span class="label">Samples Testing Regime:</span></td><td class="val"><span>{{material.materialTestRegime}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Leather End User:</span></td><td class="val"><span>{{material.leatherEndUse}}</span></td>
+                <td class ="lbl" ><span class="label">Finish:</span></td><td class="val"><span>{{material.patentFinish}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Grain Type:</span></td><td class="val"><span>{{material.grainTypeAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Material Type:</span></td><td class="val"><span>{{material.materialType}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Fancy:</span></td><td class="val"><span>{{material.fancy}}</span></td>
+                <td class ="lbl" ><span class="label">Packaging Category:</span></td><td class="val"><span>{{material.packagingCategory}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Dimensions:</span></td><td class="val"><span>{{material.dimensions}}</span></td>
+                <td class ="lbl" ><span class="label">Material Content:</span></td><td class="val"><span>{{material.materialContentAllSupp}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Channel User:</span></td><td class="val"><span>{{material.channelUse}}</span></td>
+                <td class ="lbl" ><span class="label">Insert Type (Paper Insert Only):</span></td><td class="val"><span>{{material.insertType}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Box Type (Box Only):</span></td><td class="val"><span>{{material.boxType}}</span></td>
+                <td class ="lbl" ><span class="label">Insert Type (Time Management Only):</span></td><td class="val"><span>{{material.insertType2}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Label Type (Label/Tag Only):</span></td><td class="val"><span>{{material.labelType}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Base Fabric Name:</span></td><td class="val"><span>{{material.baseFabricName}}</span></td>
+                <td class ="lbl" ><span class="label">Fiber Type:</span></td><td class="val"><span>{{material.fiberTypeAllSupp}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">(Face) Fabric Content:</span></td><td class="val"><span>{{material.fabricContentAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Yarn Size:</span></td><td class="val"><span>{{material.yarnSizeAllSupp}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Content w/Backing (Shell Only):</span></td><td class="val"><span>{{material.backingContentAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Knit Pile Construction:</span></td><td class="val"><span>{{material.knitPileConstruction}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Backing Content (Shell Only):</span></td><td class="val"><span>{{material.backingContentAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Knit Type:</span></td><td class="val"><span>{{material.knitType}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Fabric Weight:</span></td><td class="val"><span>{{material.faceFabricWeightAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Cotton Type:</span></td><td class="val"><span>{{material.cottonType}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Lining Weight (Lining Only):</span></td><td class="val"><span>{{material.liningWeightAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Wool Type:</span></td><td class="val"><span>{{material.woolType}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Fabric Construction:</span></td><td class="val"><span>{{material.fabricConstructionAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Pattern Repeat:</span></td><td class="val"><span>{{material.patternRepeat}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Type of Weave:</span></td><td class="val"><span>{{material.typeOfWeaveAllSupp}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Print/Dye Method:</span></td><td class="val"><span>{{material.coloringMethodAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Standard Cuttable Width:</span></td><td class="val"><span>{{material.standardCuttableWidth}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Content:</span></td><td class="val"><span>{{material.content}}</span></td>
+                <td class ="lbl" ><span class="label">Lubricated:</span></td><td class="val"><span>{{material.lubricated}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Sewing Purpose:</span></td><td class="val"><span>{{material.stitchingPurpose}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Total Content:</span></td><td class="val"><span>{{material.totalContentAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Size Designation (Label Only):</span></td><td class="val"><span>{{material.sizeDesignation}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Core Content: </span></td><td class="val"><span>{{material.coreContentAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Size Description (Label Only):</span></td><td class="val"><span>{{material.sizeDescription}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Surface Finish:</span></td><td class="val"><span>{{material.surfaceFinishAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Care Instructions (Label Only):</span></td><td class="val"><span>{{material.careInstructions}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Print/Dye Method:</span></td><td class="val"><span>{{material.coloringMethodAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Finished Goods COO (Label Only):</span></td><td class="val"><span>{{material.finishedGoodsCOO}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Thickness:</span></td><td class="val"><span>{{material.thicknessAllSupp}}</span></td>
+                <td class ="lbl" ><span class="label">Surface Content (Label only):</span></td><td class="val"><span>{{material.surfaceContent}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Label Type (Label Only):</span></td><td class="val"><span>{{material.labelType}}</span></td>
+                <td class ="lbl" ><span class="label">FS Bullet (Label Only):</span></td><td class="val"><span>{{material.fsBullet}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Label Construction (label only): </span></td><td class="val"><span>{{material.labelConstruction}}</span></td>
+                <td class ="lbl" ><span class="label">Logo Type (Label Only):</span></td><td class="val"><span>{{material.logoType}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Sided (Label Only):</span></td><td class="val"><span>{{material.sided}}</span></td>
+                <td class ="lbl" ><span class="label">Gender (Label Only):</span></td><td class="val"><span>{{material.gender}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Opening Side (Label Only):</span></td><td class="val"><span>{{material.openingSide}}</span></td>
+                <td class ="lbl" ><span class="label"> Label Size (Label Only):</span></td><td class="val"><span>{{material.labelSize}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label"> Fold Position (Label Only):</span></td><td class="val"><span>{{material.foldPosition}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Separator (Chain/Coil Only):</span></td><td class="val"><span>{{material.separator}}</span></td>
+                <td class ="lbl" ><span class="label">Tape Content (Chain/Coil Only):</span></td><td class="val"><span>{{material.tapeContentAllSupp}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Teeth Content (Chain/Coil Only):</span></td><td class="val"><span>{{material.teethContentAllSupp}}</span></td>
+                </tr>
+
+
+                </table>
+
+                <!---  Material Supplier - Specifications --->
+                <div>&nbsp;</div>
+                <div ng-show="visibleMaterialSupplier">
+                <div><span class="header"><h5><b>Material Supplier</b></h5></span></div>
+                <table>
+                <tr>
+                <td class ="lbl"><span class="label">Chemical Content:</span></td><td class ="val"><span> {{matSupplierVo.chemicalcontent}} </span></td>
+                <td class ="lbl"><span class="label">Metal Content	:</span></td><td class ="val"><span>{{matSupplierVo.metalContent}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Average Skin Size-MS:</span></td><td class ="val"><span>{{matSupplierVo.averageSkinSize}}  </span></td>
+                <td class ="lbl"><span class="label">Manufacturing Method	:</span></td><td class ="val"><span> {{matSupplierVo.manufMethod}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Hide COO:</span></td><td class ="val"><span> {{matSupplierVo.hideCOO}} </span></td>
+                <td class ="lbl"><span class="label">Material Content-MS	:</span></td><td class ="val"><span>{{matSupplierVo.materialContent}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">(Face) Fabric Content-MS:</span></td><td class ="val"><span>{{matSupplierVo.fabricContent}}  </span></td>
+                <td class ="lbl"><span class="label">Sample Minimum:</span></td><td class ="val"><span>{{matSupplierVo.sampleMinimum}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Content w/Backing (Shell Only)-MS:</span></td><td class ="val"><span>{{matSupplierVo.contentWithBacking}}  </span></td>
+                <td class ="lbl"><span class="label">Sample Leadtime (wks):</span></td><td class ="val"><span>{{matSupplierVo.sampleLeadTime}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Backing Content (Shell Only)-MS:</span></td><td class ="val"><span>{{matSupplierVobackingContent}}  </span></td>
+                <td class ="lbl"><span class="label">Backed by Mill (Shell Only):</span></td><td class ="val"><span> {{matSupplierVo.backedByMill}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Fabric Weight-MS:</span></td><td class ="val"><span>{{matSupplierVo.faceFabricWeight}}</span></td>
+                <td class ="lbl"><span class="label">Backing Leadtime (wks) (Shell only):</span></td><td class ="val"><span>{{matSupplierVo.backingLeadtime}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Fabric Construction-MS:</span></td><td class ="val"><span> {{matSupplierVo.fabricConstruction}} </span></td>
+                <td class ="lbl"><span class="label">Backing Minimum (shell only)	:</span></td><td class ="val"><span>{{matSupplierVo.backingMinimum}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Surface Finish-MS:</span></td><td class ="val"><span> {{matSupplierVo.surfaceFinishnms}} </span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Estimated CW:</span></td><td class ="val"><span>{{matSupplierVo.estCuttableWidth}}  </span></td>
+                <td class ="lbl"><span class="label">Estimated Full:</span></td><td class ="val"><span> {{matSupplierVo.estFullWidth}} </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Full Width w/Backing:</span></td><td class ="val"><span>{{matSupplierVo.fullWidth}}  </span></td>
+                <td class ="lbl"><span class="label">Cuttable Width w/Backing:</span></td><td class ="val"><span>{{matSupplierVo.cuttableWidth}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Estimated CW Face:</span></td><td class ="val"><span>{{matSupplierVo.estCuttableWidthFace}}  </span></td>
+                <td class ="lbl"><span class="label">Estimated FW Face:</span></td><td class ="val"><span>{{matSupplierVo.estFullWidthFace}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Full Width - Face Only:</span></td><td class ="val"><span>{{matSupplierVo.fullWidthFace}}  </span></td>
+                <td class ="lbl"><span class="label">Cuttable Width - Face Only:</span></td><td class ="val"><span>{{matSupplierVo.cuttableWidthFace}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Dye Method:</span></td><td class ="val"><span>{{matSupplierVo.dyeMethod}}  </span></td>
+                <td class ="lbl"><span class="label">Print Method:</span></td><td class ="val"><span>{{matSupplierVo.printMethod}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Total Content -MS:</span></td><td class ="val"><span>{{matSupplierVo.totalContentms}}  </span></td>
+                <td class ="lbl"><span class="label">Core Content -MS:</span></td><td class ="val"><span> {{matSupplierVo.coreContentms}} </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"><span class="label">Thickness -MS:</span></td><td class ="val"><span>{{matSupplierVo.thicknessms}}  </span></td>
+                <td class ="lbl"><span class="label">Print/Dye Method-MS	:</span></td><td class ="val"><span>{{matSupplierVo.coloringMethodMs}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Tape Content (Chain/Coil Only)-MS:</span></td><td class ="val"><span>{{matSupplierVo.tapeContent}}  </span></td>
+                <td class ="lbl"><span class="label">Teeth Content (Chain/Coil Only)-MS:</span></td><td class ="val"><span>{{matSupplierVo.teethContent}}  </span></td>
+                </tr>
+
+                </table>
+                </div>
+                <!---Development details  --->
+                <div class="head"><span class="header"><h5><b>Development Details</b></h5></span></div>
+                <div>&nbsp;</div>
+                <div><span class="header"><h5><b>Material</b></h5></span></div>
+                <table>
+
+                <tr>
+                <td class ="lbl" ><span class="label">CAD ATA:</span></td><td class="val"><span>{{material.cadATA}}</span></td>
+                <td class ="lbl" ><span class="label">Model ETA:</span></td><td class="val"><span>{{material.modelETA}}</span></td>	</tr><tr>
+                <td class ="lbl" ><span class="label">CAD ETA:</span></td><td class="val"><span>{{material.cadETA}}</span></td>
+                <td class ="lbl" ><span class="label">Model ATA:</span></td><td class="val"><span>{{material.modelATA}}</span></td>
+                </tr></table>
+                <div>&nbsp;</div>
+                <div ng-show="visibleMaterialSupplier">
+                <div ><span class="header"><h5><b>Material  Supplier</b></h5></span></div> 
+                <table>
+                <tr>
+                <td class ="lbl"><span class="label">Tooling Charges:</span></td><td class ="val"><span>{{matSupplierVo.toolingCharges}}</span></td>
+                <td class ="lbl"><span class="label">Tooling Paid:</span></td><td class ="val"><span>{{matSupplierVo.toolingPaid}} </span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl"></td><td class ="val"><span> </span></td>
+                <td class ="lbl"><span class="label">Tooling Paid Date:</span></td><td class ="val"><span>{{matSupplierVo.toolingPaidDate}} </span></td>
+                </tr>
+                </table>
+                </div>
+                <!---ECV Admin  --->
+                <div class="head"><span class="header"><h5><b>ECV Admin<h5></b></span></div>
+                <div>&nbsp;</div>
+                <div ><span class="header"><h5><b>Material</b></h5></span></div>
+
+                <table>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Conflict Flag:</span></td><td class="val"><span>{{material.conflictFlag}}</span></td>
+                <td class ="lbl" ><span class="label">M Current Version:</span></td><td class="val"><span>{{material.currentVersion}}</span></td>
+                </tr><tr>
+                <td class ="lbl" ><span class="label">Resolve Conflict Flag:</span></td><td class="val"><span>{{material.resolveConflictFlag}}</span></td>
+                </tr></table>
+                <div>&nbsp;</div>	
+                <div ng-show="visibleMaterialSupplier">
+                <div ><span class="header"><h5><b>Material Supplier</b></h5></span></div>
+                <table>
+                <tr>
+                <td class ="lbl"><span class="label">ConflictFlag - MS:</span></td><td class ="val"><span>{{matSupplierVo.MSconflictFlag}}  </span></td>
+                <td class ="lbl"><span class="label">MS Current Version:</span></td><td class ="val"><span>{{matSupplierVo.MScurrentVersion}}  </span></td>
+                </tr>
+                <tr>
+                <td class ="lbl"><span class="label">Resolve Conflict Flag-MS:</span></td><td class ="val"><span>{{matSupplierVo.MSresolveConflictFlag}}  </span></td>
+                <td class ="lbl"></td><td class ="val"><span> </span></td>
+                </tr>
+                </table>
+                </div>
+                </fieldset>   
+                </div>
+
+            </script>
+
+            <script type="text/ng-template" id="Colors">
+
+                <div ng-show = "materialColorList" class= "tabborder">
+                <material-color></material-color> 
+                </div>		
+                <div ng-show="materialColorDetail" class= "tabborder">
+                <material-color-detail></material-color-detail> 
+                </div>
+
+            </script>
+            <script type="text/ng-template" id="Pricing">
+                <div ng-show="materialPriceList" class= "tabborder">
+                <material-price></material-price>
+                </div>
+            </script>
+            <script type="text/ng-template" id="Document">
+                <div id="Document">
+                <p>Document Section</p>
+                </div>
+            </script>
+            <br>
+              <div align = "left"><input type="button" name="Search" value = "" ng-click="goback('materialresult')" class="buttonwithbackimage" /></div>
+        </div>
+
+        <!--	</div>  -->

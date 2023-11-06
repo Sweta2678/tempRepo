@@ -1,0 +1,119 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<context:component-scan base-package="com.coach.middleware.batch" />
+
+<!-- DB Item Reader -->
+		<bean id="productRenameDBItemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="fetchSize" value="500"/>
+		<property name="sql">
+			<value>
+		 <![CDATA[
+	            select pr.action,pr.color,pr.style,pr.oldsku,pr.newsku,pr.renamedby,pr.renameddate from PRODUCT_RENAMES pr
+                inner join  productmaster pm
+                on pm.stylenumber=pr.style 
+                where pm.department not in(select department from departments_to_skip_downstream  where jobname='PRODUCTRENAME')
+	                ]]>
+			</value>
+		</property>
+		<property name="rowMapper">
+			<bean class="com.coach.middleware.batch.dao.RowMapper.ProductRenameExtractRowMapper" />
+		</property>
+
+	</bean>
+	
+	<!-- Item Processor -->
+
+	<bean id="productRenameItemProcessor" class="com.coach.middleware.batch.itemProcessor.ProductRenameItemProcessor"/>
+		
+<!-- Flat File Item Writer -->
+
+<!-- <bean id="productRenameItemWriter" class="com.coach.middleware.batch.itemWriter.ProductRenameItemWriter"> -->
+<!-- 		<property name="productRenameFileItemWriter" ref="productRenameFileItemWriter" /> -->
+<!-- 	</bean> -->
+	
+
+
+	<bean id="productRenameFileItemWriter" name="ProductRenameFileItemWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<property name="resource" value="" />
+		<property name="shouldDeleteIfExists" value="true" />
+		<property name="lineAggregator">
+			<bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+				<property name="delimiter" value="," />
+				<property name="fieldExtractor">
+					<bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="action,color,style,oldsku,newsku,renamedby,renameddate" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="batchJobFailed" class="com.coach.middleware.batch.itemWriter.BatchJobFailedListener" scope="step" />
+
+
+<bean id="GenerateRdy" class="com.coach.middleware.batch.itemReader.GenerateRdy"
+		scope="step">
+	</bean>
+
+	<bean id="genProdRenameRDY" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<property name="resource" value="" />
+		<property name="lineAggregator">
+			<bean
+				class="org.springframework.batch.item.file.transform.DelimitedLineAggregator" />
+		</property>
+		<property name="shouldDeleteIfExists" value="true" />
+	</bean>
+
+
+	<!-- Actual Job -->
+
+
+	<batch:job id="ProductRename">
+		<batch:step id="ProductRenameProcess" >
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="productRenameDBItemReader" processor="productRenameItemProcessor"
+					writer="productRenameFileItemWriter" commit-interval="1000">
+<!-- 					<batch:streams> -->
+<!-- 						<batch:stream ref="productRenameFileItemWriter" /> -->
+<!-- 					</batch:streams> -->
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+		<batch:step id="Generate-ProdRenameRdy">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="GenerateRdy" writer="genProdRenameRDY"
+					commit-interval="1">
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>	
+	</batch:job>
+	
+	
+	
+	
+	
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans> 
+
+
+
+
+
+
+
+
+
+
+

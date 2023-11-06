@@ -1,0 +1,37 @@
+-- Table: moic_inbound.product_master_staging
+
+-- DROP TABLE moic_inbound.product_master_staging;
+
+CREATE TABLE moic_inbound.product_master_staging
+(
+    plmuniqueid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    brandid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    channel character varying(100) COLLATE pg_catalog."default",
+    debutedondate timestamp without time zone,
+    deliverycanceldate timestamp without time zone,
+    deliveryenddate timestamp without time zone,
+    deliverystartdate timestamp without time zone,
+    department character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    divisionid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    _group character varying(100) COLLATE pg_catalog."default",
+    instoredate timestamp without time zone,
+    retailprice double precision,
+    seasoncode character varying(100) COLLATE pg_catalog."default",
+    sizescaleid character varying(100) COLLATE pg_catalog."default",
+    styleactive boolean,
+    styledescription character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    styleid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    stylelinedescriptionid character varying(255) COLLATE pg_catalog."default",
+    targetcost double precision,
+    wholesaleprice double precision,
+    CONSTRAINT product_master_staging_pkey PRIMARY KEY (plmuniqueid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE moic_inbound.product_master_staging
+    OWNER to moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_master_staging TO moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_master_staging TO sinfpgd1_moic;

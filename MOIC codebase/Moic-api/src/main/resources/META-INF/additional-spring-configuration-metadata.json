@@ -1,0 +1,282 @@
+{"properties": [
+  {
+    "name": "spring.datasource-internal.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.driver-class-name'"
+  },
+  {
+    "name": "spring.datasource-internal.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.jdbc-url'"
+  },
+  {
+    "name": "spring.datasource-internal.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.username'"
+  },
+  {
+    "name": "spring.datasource-internal.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.password'"
+  },
+  {
+    "name": "spring.datasource-internal.platform",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.platform'"
+  },
+  {
+    "name": "spring.datasource-internal.hikari.idle-timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.hikari.idle-timeout'"
+  },
+  {
+    "name": "spring.datasource-internal.hikari.maximum-pool-size",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.hikari.maximum-pool-size'"
+  },
+  {
+    "name": "spring.datasource-internal.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.hikari.minimum-idle'"
+  },
+  {
+    "name": "spring.datasource-internal.hikari.pool-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.hikari.pool-name'"
+  },
+  {
+    "name": "spring.datasource-inbound.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.driver-class-name'"
+  },
+  {
+    "name": "spring.datasource-inbound.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.jdbc-url'"
+  },
+  {
+    "name": "spring.datasource-inbound.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.username'"
+  },
+  {
+    "name": "spring.datasource-inbound.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.password'"
+  },
+  {
+    "name": "spring.datasource-inbound.platform",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.platform'"
+  },
+  {
+    "name": "spring.datasource-inbound.hikari.idle-timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.hikari.idle-timeout'"
+  },
+  {
+    "name": "spring.datasource-inbound.hikari.maximum-pool-size",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.hikari.maximum-pool-size'"
+  },
+  {
+    "name": "spring.datasource-inbound.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.hikari.minimum-idle'"
+  },
+  {
+    "name": "spring.datasource-inbound.hikari.pool-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.hikari.pool-name'"
+  },
+  {
+    "name": "spring.datasource-inbound.hikari.maxPoolSize",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.hikari.maxPoolSize'"
+  },
+  {
+    "name": "spring.datasource-internal.hikari.schema",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-internal.hikari.schema'"
+  },
+  {
+    "name": "spring.datasource-inbound.hikari.schema",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-inbound.hikari.schema'"
+  },
+  {
+    "name": "jobs.moic.drop.customerMasterStaging.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'jobs.moic.drop.customerMasterStaging.enable'"
+  },
+  {
+    "name": "jobs.moic.drop.customerMasterStaging.schedule",
+    "type": "java.lang.String",
+    "description": "A description for 'jobs.moic.drop.customerMasterStaging.schedule'"
+  },
+  {
+    "name": "spring.datasource-outbound.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.driver-class-name'"
+  },
+  {
+    "name": "spring.datasource-outbound.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.jdbc-url'"
+  },
+  {
+    "name": "spring.datasource-outbound.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.username'"
+  },
+  {
+    "name": "spring.datasource-outbound.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.password'"
+  },
+  {
+    "name": "spring.datasource-outbound.platform",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.platform'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.idle-timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.idle-timeout'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.maximum-pool-size",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.maximum-pool-size'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.minimum-idle'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.pool-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.pool-name'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.maxPoolSize",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.maxPoolSize'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.schema",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.schema'"
+  },
+  {
+    "name": "jobs.joor.order.file.location",
+    "type": "java.lang.String",
+    "description": "A description for 'jobs.joor.order.file.location'"
+  },
+  {
+    "name": "jobs.joor.order.file.name",
+    "type": "java.lang.String",
+    "description": "A description for 'jobs.joor.order.file.name'"
+  },
+  {
+    "name": "jobs.joor.order.archive.file.location",
+    "type": "java.lang.String",
+    "description": "A description for 'jobs.joor.order.archive.file.location'"
+  },
+  {
+    "name": "spring.datasource-outbound.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.driver-class-name'"
+  },
+  {
+    "name": "spring.datasource-outbound.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.jdbc-url'"
+  },
+  {
+    "name": "spring.datasource-outbound.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.username'"
+  },
+  {
+    "name": "spring.datasource-outbound.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.password'"
+  },
+  {
+    "name": "spring.datasource-outbound.platform",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.platform'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.idle-timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.idle-timeout'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.maximum-pool-size",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.maximum-pool-size'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.maxPoolSize",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.maxPoolSize'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.minimum-idle'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.pool-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.pool-name'"
+  },
+  {
+    "name": "spring.datasource-outbound.hikari.schema",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource-outbound.hikari.schema'"
+  },
+  {
+    "name": "customer.master.outbound.joor.file.location",
+    "type": "java.lang.String",
+    "description": "A description for 'customer.master.outbound.joor.file.location'"
+  },
+  {
+    "name": "customer.master.outbound.joor.file.name",
+    "type": "java.lang.String",
+    "description": "A description for 'customer.master.outbound.joor.file.name'"
+  },
+  {
+    "name": "product.master.global.pricing.inbound.enable",
+    "type": "java.lang.String",
+    "description": "A description for 'product.master.global.pricing.inbound.enable'"
+  },
+  {
+    "name": "product.master.global.pricing.inbound.schedule",
+    "type": "java.lang.String",
+    "description": "A description for 'product.master.global.pricing.inbound.schedule'"
+  },
+  {
+    "name": "customer.master.outbound.joor.batch.size",
+    "type": "java.lang.String",
+    "description": "A description for 'customer.master.outbound.joor.batch.size'"
+  },
+  {
+    "name": "jobs.joor.order.failed.file.location",
+    "type": "java.lang.String",
+    "description": "A description for 'jobs.joor.order.failed.file.location'"
+  },
+  {
+    "name": "moic.sso.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'moic.sso.enabled'"
+  },
+  {
+    "name": "skip.order.finalizedbuyarchive",
+    "type": "java.lang.String",
+    "description": "A description for 'skip.order.finalizedbuyarchive'"
+  }
+]}

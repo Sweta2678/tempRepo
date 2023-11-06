@@ -1,0 +1,140 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context 
+      	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<context:component-scan base-package="com.coach.middleware.batch" />
+<!-- 	<bean id="MATPRICEExtractDBItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="fetchSize" value="5000" />
+		<property name="sql"
+			value="SELECT
+				  (SELECT cmnumber
+				  FROM materialmaster
+				  WHERE uniqueid=
+				    (SELECT materialuniqueid
+				    FROM materialsupplier ms
+				    WHERE mp.matsupplierid=ms.uniqueid
+				    )
+				  ) cmnumber,
+				  (select decode(colorsubtype,'Prints',printnumber,decode(colorsubtype,'Hardware Misc.',FINISHCODE,decode(colorsubtype,'Solids',solidcolorcode,'N/A'))) from colorMaster where uniqueid = (select coloruniqueid from materialcolor where mp.matcolorid=uniqueid)) colorcode,
+				  (SELECT vendornumber
+				  FROM Supplier s
+				  WHERE s.uniqueid =
+				    (SELECT supplieruniqueid FROM materialsupplier ms WHERE mp.matsupplierid=ms.uniqueid
+				    )
+				  ) Vendornumber,
+				  mp.pricetype,
+				  to_char(mp.todate,'mm-dd-yyyy') TODATE,
+				  mp.price,
+				  UPPER(mp.currency) CURRENCY,
+			 	  to_char(mp.fromdate,'mm-dd-yyyy') FROMDATE,
+				  mp.uniqueid,
+				  (SELECT createdate FROM materialsupplier ms WHERE mp.matsupplierid=ms.uniqueid
+				  ) createdate,
+				  (SELECT updatedate FROM materialsupplier ms WHERE mp.matsupplierid=ms.uniqueid
+				  ) updatedate
+				FROM materialpricing mp where mp.matcolorid in (select matcolorid from materialpricing where matcolorid in (select uniqueid from materialcolor where materialuniqueid  in (select uniqueid from materialmaster)))" />
+		<property name="rowMapper">
+			<bean
+				class="com.coach.middleware.batch.dao.RowMapper.MATPRICEExtractRowMapper" />
+		</property>
+	</bean> -->
+
+<bean id="MATPRICEExtractDBItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="fetchSize" value="5000" />
+		<property name="sql"
+			value="SELECT
+				                            (SELECT cmnumber
+                          FROM materialmaster
+                          WHERE uniqueid=
+                            (SELECT materialuniqueid
+                            FROM materialsupplier ms
+                            WHERE mp.matsupplierid=ms.uniqueid
+                            )
+                          ) cmnumber,
+                          (select decode(colorsubtype,'Prints',printnumber,decode(colorsubtype,'Hardware Misc.',FINISHCODE,decode(colorsubtype,'Solids',solidcolorcode,'N/A'))) from colorMaster where uniqueid = (select coloruniqueid from materialcolor where mp.matcolorid=uniqueid)) colorcode,
+                          (SELECT vendornumber
+                          FROM Supplier s
+                          WHERE s.uniqueid =
+                            (SELECT supplieruniqueid FROM materialsupplier ms WHERE mp.matsupplierid=ms.uniqueid
+                            )
+                          ) Vendornumber,
+                          mp.pricetype,
+                          to_char(mp.todate,'mm-dd-yyyy') TODATE,
+                          mp.price,
+                          UPPER(mp.currency) CURRENCY,
+                         to_char(mp.fromdate,'mm-dd-yyyy') FROMDATE,
+                          mp.uniqueid,
+                          (SELECT createdate FROM materialsupplier ms WHERE mp.matsupplierid=ms.uniqueid
+                          ) createdate,
+                          (SELECT updatedate FROM materialsupplier ms WHERE mp.matsupplierid=ms.uniqueid
+                          ) updatedate
+                        FROM materialpricing mp 
+                           where matsupplierid in
+                     (select ms.uniqueid from materialsupplier ms where ms.uniqueid in (select msuniqueid from materialcolor))  and pricetype not like 'Standard'" />
+		<property name="rowMapper">
+			<bean
+				class="com.coach.middleware.batch.dao.RowMapper.MATPRICEExtractRowMapper" />
+		</property>
+	</bean>
+
+
+	<bean id="MATPRICEExtractItemProcessor"
+		class="com.coach.middleware.batch.itemProcessor.MATPRICEExtractItemProcessor">
+		<property name="MATPRICEExtractDao" ref="MATPRICEExtractDao" />
+	</bean>
+	<bean id="MATPRICEExtractDao" class="com.coach.middleware.batch.dao.MATPRICEExtractDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="MATPRICEExtractWriter" class="org.springframework.batch.item.file.FlatFileItemWriter"
+		scope="step">
+		<property name="resource" value="file:#{jobParameters['filePath']}" />
+		<property name="lineAggregator">
+			<bean
+				class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="#{jobParameters['delimeters']}" />
+				<property name="fieldExtractor">
+					<bean
+						class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="#{jobParameters['methods']}" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+
+	<batch:job id="MATPRICEExtractJob">
+		<batch:step id="MATPRICEExtractJobReadStep">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="MATPRICEExtractDBItemReader"
+					writer="MATPRICEExtractWriter" processor="MATPRICEExtractItemProcessor"
+					commit-interval="5000" />
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+
+
+</beans> 
+
+
+
+
+
+
+
+
+
+
+

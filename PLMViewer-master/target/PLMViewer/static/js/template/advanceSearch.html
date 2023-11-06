@@ -1,0 +1,135 @@
+
+<div id = "AdvancedSearch"  data-ng-controller="landingCtrl">
+    <div ng-show="showAdvPrdSearch">
+        <fieldset>
+            <div class="head"><span class="header"><h5><b>Advance Search Criteria</b></h5></span></div>
+
+            <table>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Product Type</span></td>
+                    <td class="searchVal">
+                        <select data-ng-model="producttype"  class="droupdown"  data-ng-change="isProductTypeselected(producttype)">
+                            <option value="">-Select-</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="FootWear">FootWear</option>
+                            <option value="Fragrance">Fragrance</option>
+                            <option value="Jewelry">Jewelry</option>
+                            <option value="SunWear">SunWear</option>
+                            <option value="Watches">Watches</option>
+                            <option value="Wearables">Wearables</option>
+                        </select></td>
+                    <td class="searchVal"></td>
+                    <td style= "" ><span class="label">Department </span></td>
+
+                    <td class="searchVal"><select data-ng-model="department" data-ng-change="isdepartmentselected()" data-ng-options=" key as value for (key,value)  in advancesearchmap.DEPARTMENT" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Style Name </span></td>
+                    <td class="searchVal">&nbsp;&nbsp;<input type="text" ng-model = "styleName" class="textboxbg"  placeholder="StyleName..." /></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Style Number </span></td>
+                    <td class="searchVal">&nbsp;&nbsp;<input type="text" ng-model = "stylenumber"  class="textboxbg"  placeholder="StyleNumber..." /></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Slot </span></td>
+                    <td class="searchVal">&nbsp;&nbsp;<input type="text" ng-model = "slot" class="textboxbg"  placeholder="slot..." /></td>
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Class </span></td>
+                    <td class="searchVal"><select data-ng-model="styleclass" data-ng-options=" key as value for (key,value)  in advancesearchmap.CLASS" class="droupdown" ><option value="">-Select-</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">Sub Class </span></td>
+                    <td class="searchVal"><select data-ng-model="subclass" data-ng-options=" key as value for (key,value)  in advancesearchmap.SUBCLASS" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Collection </span></td>
+                    <td class="searchVal"><select data-ng-model="collection" data-ng-options=" key as value for (key,value)  in advancesearchmap.COLLECTION" class="droupdown" ><option value="">-Select -</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">Sub Collection </span></td>
+                    <td class="searchVal"><select data-ng-model="subcollection" data-ng-options=" key as value for (key,value)  in advancesearchmap.SUBCOLLECTION" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Team </span></td>
+                    <td class="searchVal"><select data-ng-model="team" data-ng-options=" key as value for (key,value) in advancesearchmap.TEAM" class="droupdown" ><option value="">-Select-</option></select></td>
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Intro date </span></td>
+                    <td class="searchVal"><select data-ng-model="introdate" data-ng-options=" key as value for (key,value)   in advancesearchmap.INTRODATE" class="droupdown" ><option value="">-Select-</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">FS Intro date </span></td>
+                    <td class="searchVal"><select data-ng-model="fsintrodate" data-ng-options=" key as value for (key,value)   in advancesearchmap.FSINTRODATE" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Channel Exclusive </span></td>
+                    <td class="searchVal"><select data-ng-model="channelexclusive" data-ng-options=" key as value for (key,value) in advancesearchmap.CHANNELEXCLUSIVE" class="droupdown" ><option value="">-Select-</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">Collaboration</span></td>
+                    <td class="searchVal"><select data-ng-model="collaboration" data-ng-options=" key as value for (key,value)   in advancesearchmap.COLLABORATION" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Material </span></td>
+                    <td class="searchVal"><select data-ng-model="productmaterial" data-ng-options=" key as value for (key,value)  in  advancesearchmap.MATERIAL" class="droupdown" ><option value="">-Select-</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">Look </span></td>
+                    <td class="searchVal"><select data-ng-model="look" data-ng-options=" key as value for (key,value)   in advancesearchmap.LOOK" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Attitude</span></td>
+                    <td class="searchVal"><select data-ng-model="attitude" data-ng-options=" key as value for (key,value)   in advancesearchmap.ATTITUDE" class="droupdown" ><option value="">-Select-</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">Silhouette</span></td>
+                    <td class="searchVal"><select data-ng-model="silhouette" data-ng-options=" key as value for (key,value)   in advancesearchmap.SILHOUETTE" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">LifeCycle State</span></td>
+                    <td class="searchVal"><select data-ng-model="lifecyclestate" data-ng-options=" key as value for (key,value)   in advancesearchmap.LIFECYCLESTATE" class="droupdown" ><option value="">-Select-</option></select></td>
+                </tr>
+
+                <tr class="searchtr">
+                   <td class ="searchLbl" ><span class="label">Style Group</span></td>
+                   <td class="searchVal"><select data-ng-init="stylegroupenable = true" data-ng-disabled="stylegroupenable" data-ng-model="stylegroup" data-ng-options=" key as value for (key,value)   in  advancesearchmap.STYLEGROUP" class="droupdown" ><option value="">-Select-</option></select></td>
+                </tr>
+
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Factory Store Type</span></td>
+                    <td class="searchVal"><select data-ng-model="factorystoretype" data-ng-options=" key as value for (key,value)  in advancesearchmap.FACTORYSTORETYPEPRODUCT" class="droupdown" ><option value="">-Select-</option></select></td>
+                    <td class="searchVal"></td>
+                    <td class="searchVal" ><span class="label">Gender</span></td>
+                    <td class="searchVal"><select data-ng-model="gender" data-ng-options=" key as value for (key,value)  in  advancesearchmap.GENDER" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Adopted</span></td>
+                    <td class="searchVal"><input type="radio" name="adaptoted" data-ng-model="adaptoted" value="true" > Yes  &nbsp;&nbsp; <input type="radio" name="adaptoted"  data-ng-model="adaptoted" value="false"> No </td>
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Dropped</span></td>
+                    <td class="searchVal"><input type="radio" name="dropped" data-ng-model="dropped" value="true" > Yes  &nbsp;&nbsp; <input type="radio" name="dropped"  data-ng-model="dropped" value="false"> No </td>
+                </tr>
+
+
+
+            </table>
+
+
+            <br>
+             <div align = "left">
+                 <input type="button" name="Search" value = "" ng-click="goback('welcome')" class="buttonwithbackimage" />
+                 <input type="button" name="Search" value = "" ng-click="advSearch()" class="buttonwithimage" />
+             </div>  </fieldset>
+                                        </div>
+
+                                        </div>

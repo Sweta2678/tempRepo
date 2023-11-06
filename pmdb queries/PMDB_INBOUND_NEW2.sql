@@ -1,0 +1,3 @@
+select SEGMENTATIONSILHOUETTE from productmaster where uniqueid='123584';
+
+select * from ATTRIBUTESTORE where ATTRIBUTENAME='SEGMENTATIONSILHOUETTE';

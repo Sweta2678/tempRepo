@@ -1,0 +1,112 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context 
+      	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<context:component-scan base-package="com.coach.middleware.batch" />
+<!-- 	<bean id="MATMSTRXExtractDBItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="fetchSize" value="1500" />
+		<property name="sql"
+			value="select m.cmnumber,m.SHORTNAME ,m.SUBTYPE,m.MATERIALTYPE,m.STDCOSTMATERIAL ,UPPER(ms.UNITOFMEASURESUPP) UNITOFMEASURE,ms.productionleadtime PRDLEADTIME, mc.CREATEDATE ,mc.UPDATEDATE,
+			s.VENDORNUMBER ,UPPER(mc.STATUS) STATUS,UPPER(ms.INCOTERMS) INCOTERMS,UPPER(m.STDCOSTCURRENCY) STDCOSTCURRENCY ,s.COUNTRY ,ms.content CONTENT,ms.fabriccontent FABRICCONTENT,ms.Materialcontent MATERIALCONTENT,ms.metalcontent METALCONTENT,cm.FGCOLORCODE FGCOLORCODE,cm.SHORTCOLORNAME SHORTCOLORNAME,cm.FINISHCODE FINISHCODE,SOLIDCOLORCODE SOLIDCOLORCODE,cm.PRINTNUMBER PRINTNUMBER, cm.COLORSUBTYPE,cm.COLORNAME ,mc.FINALCOLORAPPROVAL COLORAPPROVALCOMMENTS,trim(mc.QASTATUS) QASTATUS,
+			ms.INITIALINTRODATE ,ms.SUPPLIERARTICLENUMBER,ms.CUTTABLEWIDTH ,mc.SUPPLIERCOLORCODE,UPPER(ms.SURFACEFINISH) SURFACEFINISH,m.MATERIALNAME,ms.FACEFABRICWEIGHT , m.ESTIMATED ,
+			m.VARIANT,m.BRAND,m.MCG, m.GCC,decode(mc.CREATEDATE,mc.UPDATEDATE,'ADD','UPD') USERACTION from MaterialMaster m,MaterialColor mc, ColorMaster cm, materialSupplier ms, Supplier s where 
+			m.cmnumber NOT LIKE '%PT' and 
+			m.cmnumber NOT LIKE 'X%' AND 
+			m.uniqueid = ms.materialuniqueid AND 
+			m.uniqueid = mc.materialuniqueid AND 
+			mc.msuniqueid = ms.uniqueid  AND 
+			cm.uniqueid = mc.coloruniqueid AND
+			mc.suppuniqueid = s.uniqueid AND mc.updatedate>='#FromDate#' order by m.cmnumber" />
+		<property name="rowMapper">
+			<bean
+				class="com.coach.middleware.batch.dao.RowMapper.MATMSTRXExtractRowMapper" />
+		</property>
+	</bean> -->
+	
+	
+<bean id="MaterialQueryProvider" class="org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean" scope="step">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="selectClause" value="select m.cmnumber,m.SHORTNAME ,m.SUBTYPE,m.MATERIALTYPE,'0' STDCOSTMATERIAL ,UPPER(ms.UNITOFMEASURESUPP) UNITOFMEASURE,ms.productionleadtime PRDLEADTIME, mc.CREATEDATE ,mc.UPDATEDATE,
+			s.VENDORNUMBER ,UPPER(mc.STATUS) STATUS,UPPER(ms.INCOTERMS) INCOTERMS,UPPER(m.STDCOSTCURRENCY) STDCOSTCURRENCY ,s.COUNTRY ,ms.content CONTENT,ms.TOTALCONTENT TOTALCONTENT,ms.fabriccontent FABRICCONTENT,ms.Materialcontent MATERIALCONTENT,ms.metalcontent METALCONTENT,cm.FGCOLORCODE FGCOLORCODE,cm.SHORTCOLORNAME SHORTCOLORNAME,cm.FINISHCODE FINISHCODE,SOLIDCOLORCODE SOLIDCOLORCODE,cm.PRINTNUMBER PRINTNUMBER, cm.COLORSUBTYPE,cm.COLORNAME ,mc.FINALCOLORAPPROVAL COLORAPPROVALCOMMENTS,trim(mc.QASTATUS) QASTATUS,
+			(select seasongroupname from seasongroupmaster season where ltrim(rtrim(ms.INITIALINTRODATE))=season.uniqueid) INITIALINTRODATE ,ms.SUPPLIERARTICLENUMBER,ms.CUTTABLEWIDTH ,mc.SUPPLIERCOLORCODE,UPPER(ms.SURFACEFINISH) SURFACEFINISH,m.MATERIALNAME,ms.FACEFABRICWEIGHT , m.ESTIMATED ,
+			m.VARIANT,m.BRAND,m.MCG, m.GCC,decode(mc.CREATEDATE,mc.UPDATEDATE,'ADD','UPD') USERACTION, ms.uniqueid UNIQUEID"/>
+		   <property name="fromClause" value="from MaterialMaster m,MaterialColor mc, ColorMaster cm, materialSupplier ms, Supplier s"/>
+		<!-- <property name="whereClause" value="where m.cmnumber NOT LIKE '%PT' and	m.cmnumber NOT LIKE 'X%' AND m.uniqueid = ms.materialuniqueid AND m.uniqueid = mc.materialuniqueid AND mc.msuniqueid = ms.uniqueid  AND cm.uniqueid = mc.coloruniqueid AND mc.suppuniqueid = s.uniqueid AND mc.updatedate>=(select max(start_time) from BATCH_JOB_EXECUTION where job_instance_id in (select distinct job_instance_id from batch_job_instance where job_name='MATMSTRXExtractJob') and status='COMPLETED')"/> -->
+		<property name="whereClause" value="where m.cmnumber NOT LIKE '%PT' and	m.cmnumber NOT LIKE 'X%' AND m.uniqueid = ms.materialuniqueid AND m.uniqueid = mc.materialuniqueid AND mc.msuniqueid = ms.uniqueid  AND cm.uniqueid = mc.coloruniqueid AND mc.suppuniqueid = s.uniqueid AND mc.updatedate>=(select decode(max(start_time),null,to_timestamp('8-MAR-08'),max(start_time)) from BATCH_JOB_EXECUTION where job_instance_id in (select distinct job_instance_id from batch_job_instance where job_name='MATMSTRXExtractJob') and status='COMPLETED')"/>
+		<!-- <property name="whereClause" value="#{jobParameters['addedDateCondition']}"/> -->
+		<property name="sortKey" value="cmnumber" />
+	</bean>
+	
+	<bean id="MATMSTRXExtractDBItemReader"
+		class="org.springframework.batch.item.database.JdbcPagingItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="queryProvider" ref="MaterialQueryProvider" />
+		<property name="pageSize" value="700" />
+		<property name="fetchSize" value="700" />
+		<property name="rowMapper" ref="MATMSTRXExtractRowMapper" />
+	</bean>
+		<bean id="MATMSTRXExtractRowMapper"
+		class="com.coach.middleware.batch.dao.RowMapper.MATMSTRXExtractRowMapper"
+		scope="step" />
+	
+	<bean id="MATMSTRXExtractItemProcessor"
+		class="com.coach.middleware.batch.itemProcessor.MATMSTRXExtractItemProcessor">
+	<property name="MATMSTRXExtractDao" ref="MATMSTRXExtractDao" />
+	</bean>
+		<bean id="MATMSTRXExtractDao" class="com.coach.middleware.batch.dao.MATMSTRXExtractDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="MATMSTRXExtractWriter" class="org.springframework.batch.item.file.FlatFileItemWriter"
+		scope="step">
+		<property name="resource" value="file:#{jobParameters['filePath']}" />
+		<property name="lineAggregator">
+			    <bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+				<property name="format" value="#{jobParameters['delimeters']}"/> 
+				<property name="fieldExtractor">
+					<bean
+						class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="#{jobParameters['methods']}" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+ 	 
+
+	<batch:job id="MATMSTRXExtractJob">
+		<batch:step id="MATMSTRXExtractJobReadStep">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="MATMSTRXExtractDBItemReader"
+					writer="MATMSTRXExtractWriter" processor="MATMSTRXExtractItemProcessor"
+					commit-interval="1500" />
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+
+
+<!-- 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean> -->
+
+</beans> 
+
+
+
+
+
+
+
+
+
+
+

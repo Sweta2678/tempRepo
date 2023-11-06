@@ -1,0 +1,57 @@
+-- Table: moic_inbound.customer_master_staging
+
+-- DROP TABLE moic_inbound.customer_master_staging;
+
+CREATE TABLE moic_inbound.customer_master_staging
+(
+    distributionchannel character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    division character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    salesorg character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    shiptonumber character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    site character varying(80) COLLATE pg_catalog."default" NOT NULL,
+    soldtonumber character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    article character varying(50) COLLATE pg_catalog."default",
+    billingcity character varying(50) COLLATE pg_catalog."default",
+    billingcode character varying(50) COLLATE pg_catalog."default",
+    billingcountry character varying(50) COLLATE pg_catalog."default",
+    buyeremail character varying(100) COLLATE pg_catalog."default",
+    buyername character varying(100) COLLATE pg_catalog."default",
+    channelid integer,
+    contractvalidfrom timestamp without time zone,
+    contractvalidto timestamp without time zone,
+    downloadflag boolean,
+    excludefromsocreation boolean,
+    impactedbyprebuy boolean,
+    isactive boolean,
+    ponumber character varying(50) COLLATE pg_catalog."default",
+    potype character varying(50) COLLATE pg_catalog."default",
+    quantity integer,
+    salesordertypeprimary character varying(50) COLLATE pg_catalog."default",
+    salesordertypesecondary character varying(50) COLLATE pg_catalog."default",
+    salesordertypetertiary character varying(50) COLLATE pg_catalog."default",
+    segmentid integer,
+    shiptodescription character varying(255) COLLATE pg_catalog."default",
+    shippingaddress1 character varying(100) COLLATE pg_catalog."default",
+    shippingaddress2 character varying(100) COLLATE pg_catalog."default",
+    shippingcity character varying(50) COLLATE pg_catalog."default",
+    shippingcountry character varying(50) COLLATE pg_catalog."default",
+    shippingpostalcode character varying(50) COLLATE pg_catalog."default",
+    shippingstate character varying(50) COLLATE pg_catalog."default",
+    socanceldate timestamp without time zone,
+    soheaderreqdeldate timestamp without time zone,
+    soldtodescription character varying(255) COLLATE pg_catalog."default",
+    suggestedretailpricecurrency character varying(50) COLLATE pg_catalog."default",
+    target double precision,
+    upccode character varying(50) COLLATE pg_catalog."default",
+    wholesalepricecurrency character varying(50) COLLATE pg_catalog."default",
+    CONSTRAINT customer_master_staging_pkey PRIMARY KEY (distributionchannel, division, salesorg, shiptonumber, site, soldtonumber)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE moic_inbound.customer_master_staging
+    OWNER to moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.customer_master_staging TO moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.customer_master_staging TO sinfpgd1_moic;

@@ -1,0 +1,91 @@
+<div  data-ng-controller="landingCtrl"> 
+    <fieldset>
+        <div class="head"><span class="header"><h5><b>Product Search Result</b></h5></span></div>
+
+        <div>
+            <div  ng-init="showData()">
+
+                <center>
+
+                    <table class="table table-striped table-hover" >
+                        <tr>
+                            <th class="imagetableth"><b>Slot</b></td>
+                            <th class="imagetableth"><b>StyleNumber</b></th>
+                            <th class="imagetableth"><b>StyleName</b></th>
+                            <th class="imagetableth"><b>Collaboration</b></th>
+                            <th class="imagetableth"><b>LifeCycleState</b></th>
+                            <th class="imagetableth"><b>Department</b></th>
+                            <th class="imagetableth"><b>Gender</b></th>
+
+
+
+                            <!-- th class="imagetableth" ng-if="issizecalevisible"><b>sizeScale</b></th-->
+
+
+                            <th class="imagetableth"><b>Class</b></th>
+                            <th class="imagetableth"><b>SubClass</b></th>
+                            <th class="imagetableth"><b>Collection</b></th>
+                            <th class="imagetableth"><b>SubCollection</b></th>
+                            <th class="imagetableth"><b>Silhouette</b></th>
+                            <th class="imagetableth"><b>Attitude</b></th>
+                            <th class="imagetableth"><b>Look</b></th>
+                            <th class="imagetableth" ng-if="issizecalevisible"><b>Style Group</b></th>
+
+
+
+
+                        </tr>
+                        <tr  ng-repeat="datalist in datalists| pagination: curPage * pageSize | limitTo: pageSize">
+
+                            <td class="val"><a href= "" ng-click="productsearch(datalist.slotNumber, 'slot')"><span class="glyphicon sort-icon">{{ datalist.slotNumber}}</span></a></td>
+                            <td class="val"><a href= "" ng-click="productsearch(datalist.styleNumber, 'stylenumber')"><span class="glyphicon sort-icon">{{ datalist.styleNumber}}</span></a></td>
+                            <td class="val"><span class="glyphicon sort-icon">{{ datalist.styleName}} </span></td>
+
+                            <td class="val"><span class="glyphicon sort-icon">{{ datalist.collaboration}}</span></td> 
+
+                            <td class="val"><span class="glyphicon sort-icon">{{ datalist.prodLifeCycleState}}</span></td> 
+                            <td class="val"><span class="glyphicon sort-icon">{{ datalist.department}}</span></td> 
+                            <td class="val"><span class="glyphicon sort-icon">{{ datalist.gender}}</span></td> 
+
+
+
+                            <!-- td class="val"><span class="glyphicon sort-icon" ng-if="issizecalevisible">{{ datalist.sizeScale}}</span></td--> 
+
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.styleClass}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.subclass}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.collection}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.subcollection}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.silhouette}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.attitude}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" >{{ datalist.look}}</span></td>
+                            <td class="val"><span class="glyphicon sort-icon" ng-if="issizecalevisible">{{ datalist.styleGroup}}</span></td>
+
+                        </tr>
+                    </table>
+                </center>
+                <div ng-show="datalists.length" align = "center">
+
+                    <button type="button" class="btn-link" ng-disabled="curPage == 0" ng-click="curPage = curPage - 1">  <span class="glyphicon sort-icon"><b> &lt;&lt; </b></span></button>
+
+                    <span class="glyphicon sort-icon">{{curPage + 1}} of {{ numberOfPages()}}</span>
+
+                    <button type="button" class="btn-link"
+                            ng-disabled="curPage >= datalists.length / pageSize - 1"
+                            ng-click="curPage = curPage + 1"><span class="glyphicon sort-icon"><b> &gt;&gt;</b></span></button>
+                    <br><br>
+
+                </div>
+
+ 				<div align = "center">
+                    <span>Total Number of Records {{datalists.length}}</span>
+                </div>
+
+
+
+            </div>
+        </div>
+ <div align="left">
+     <input type="button" name="Search" value = "" ng-click="goback('productcriteria')" class="buttonwithbackimage" />
+     </div>
+    </fieldset>
+</div>

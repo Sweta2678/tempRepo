@@ -1,0 +1,24 @@
+<div class="content-wrapper audit-report-wrapper">
+    <div class="mb-30 audit-report-top-panel">
+        <table>
+            <tr>
+                <td>
+                    <select name="userid" id="userid" [(ngModel)]="user">
+                        <option [ngValue]="null" [disabled]="true">Select User ID</option>
+                        <option *ngFor="let user of getUserList" [value]="user"> {{user}} </option>
+                    </select>
+                </td>
+                <td>
+                    <p-calendar placeholder="From date" [(ngModel)]="fromDateValue" dateFormat="mm/dd/yy" appendTo="body"></p-calendar>
+                </td>
+                <td>
+                    <p-calendar placeholder="To date" [(ngModel)]="toDateValue" dateFormat="mm/dd/yy" appendTo="body" [minDate]="fromDateValue"></p-calendar>
+                </td>
+                <td>
+                    <a href='{{hrefUrl}}downloadUserAuditReport?userID={{user}}&fromdate={{fromDateValue | date: "MM/dd/yyyy"}}&todate={{toDateValue | date: "MM/dd/yyyy"}}'
+                        class="btn dl-ac-data-btn" target="_blank">Download Audit Report</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

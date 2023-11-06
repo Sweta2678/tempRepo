@@ -1,0 +1,101 @@
+
+<div id = "AdvancedSearch"  data-ng-controller="imageCtrl">
+    <div>
+
+        <fieldset>
+            <div class="head"><span class="header"><h5><b>Advance Images Search Criteria</b></h5></span></div>
+
+            <div><span class="header"><h5><b>Product</b></h5></span></div>
+            <table>
+
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Style Name </span></td>
+                    <td class="searchVal"><input type="text" ng-model = "stylename" class="textboxbg"  placeholder="StyleName..." /></td>
+                    <td class ="searchLbl" ><span class="label">Style Number </span></td>
+                    <td class="searchVal"><input type="text" ng-model = "stylenumber"  class="textboxbg"  placeholder="StyleNumber..." /></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class= "searchLbl" ><span class="label">Department </span></td>
+                    <td class="searchVal"><select data-ng-model="department" data-ng-change="isdepartmentselected()" data-ng-options=" key as value for (key,value)  in imagesmaplist.DEPARTMENT" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Class </span></td>
+                    <td class="searchVal"><select data-ng-model="styleclass" data-ng-options=" key as value for (key,value)  in imagesmaplist.CLASS" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                    <td class="searchLbl" ><span class="label">Sub Class </span></td>
+                    <td class="searchVal"><select data-ng-model="subclass" data-ng-options=" key as value for (key,value)  in imagesmaplist.SUBCLASS" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Collection </span></td>
+                    <td class="searchVal"><select data-ng-model="collection" data-ng-options=" key as value for (key,value)  in imagesmaplist.COLLECTION" class="droupdown" ><option value="">-Select -</option></select></td>
+
+                    <td class="searchLbl" ><span class="label">Sub Collection </span></td>
+                    <td class="searchVal"><select data-ng-model="subcollection" data-ng-options=" key as value for (key,value)  in imagesmaplist.SUBCOLLECTION" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Intro date </span></td>
+                    <td class="searchVal"><select data-ng-model="introdate" data-ng-options=" key as value for (key,value)   in imagesmaplist.INTRODATE" class="droupdown" style="width: 200px;"><option value="">-Select-</option></select></td>
+
+                    <td class="searchLbl" ><span class="label">FS Intro date </span></td>
+                    <td class="searchVal"><select data-ng-model="fsintrodate" data-ng-options=" key as value for (key,value)   in imagesmaplist.FSINTRODATE" class="droupdown" style="width: 200px;"><option value="">-Select-</option></select></td>
+
+                </tr>
+
+                <tr class="searchtr">
+
+            </table>
+            <br>
+           <div><span class="header"><h5><b>Image</b></h5></span></div>
+            <table>
+
+                <tr class="searchtr">
+                    <td class= "searchLbl" ><span class="label">Page Name: </span></td>
+                    <td class="searchVal"><input type="text" ng-model = "pagename"  class="textboxbg" placeholder="Page Name..." /></td>
+
+                </tr>
+                <tr class="searchtr">
+                    <td class= "searchLbl" ><span class="label">Page Type </span></td>
+                    <td class="searchVal"><select data-ng-model="pagetype"  data-ng-options="key as value for (key,value) in imagesmaplist.PAGETYPE" class="droupdown" ><option value="">-Select-</option></select></td>
+
+                </tr>
+
+                <tr class="searchtr">
+                    <td class= "searchLbl"><span class="label">Created From </span></td>
+                    <td class="searchVal"><input type="text" id = "createdfrom" ng-click="showselecteddate('createdfrom')" ng-model = "createdfrom" class="textboxbg"  placeholder="created From..." /></td>
+                    <td class= "searchLbl" ><span class="label">Created To </span></td>
+                    <td class="searchVal"><input type="text" id = "createdto" ng-click="showselecteddate('createdto')" ng-model = "createdto" class="textboxbg"  placeholder="created To..." /></td>
+
+                </tr>
+
+                <tr class="searchtr">
+                    <td class= "searchLbl" ><span class="label">Updated From </span></td>
+                    <td class="searchVal">	<input type="text" id = "updatedfrom" ng-click="showselecteddate('updatedfrom')" ng-model = "updatedfrom" class="textboxbg"  placeholder="updated From..." />
+        <!--input type="text" class="textboxbg"  id="updatedfrom" ng-model="updatedfrom"  uib-datepicker-popup="dd-MM-yyyy"  
+		is-open="Opened" ng-click="Opened=true"  style="width: 200px;" placeholder="updated From..." -->
+					</td>
+                    <td class= "searchLbl" ><span class="label">Updated To </span></td>
+                    <td class="searchVal"><input type="text" id = "updatedto" ng-click="showselecteddate('updatedto')" ng-model = "updatedto" class="textboxbg" placeholder="updated To..." /></td>
+
+                </tr>
+            </table>
+
+            <br>
+            
+            <div align = "left">
+            <input type="button" name="Back" value = "" ng-click="goback('welcome')" class="buttonwithbackimage" />
+            <input type="button" name="Search" value = "" ng-click="advImageSearch()" class="buttonwithimage" />
+            </div>
+            <!--<div align = "right"><button name="Reset" value = "Reset" ng-click="" class="SecButton"><span class=" text-success text-center">Reset<span></button>&nbsp;&nbsp<button name="Search" value = "search" ng-click="advSearch()" class="SecButton"><span class=" text-success text-center">Search<span></button></div>-->
+
+        </fieldset>
+    </div>
+
+</div>

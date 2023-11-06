@@ -1,0 +1,124 @@
+<div class="content-wrapper sku-wrapper">
+  <p-dialog header="Notification" [(visible)]="hideMessage" [modal]="true" appendTo="body">
+    {{ responseMessage }}
+    <p-footer>
+      <button type="button" pButton class="btn okay-btn" label="Ok" (click)="hideMessage = false"></button>
+    </p-footer>
+  </p-dialog>
+  <div class="mb-30 sku-top-panel">
+    <select name="fashionseason" id="fashionseason" [(ngModel)]="season" (change)="callSkuDataApi()">
+      <option *ngFor="let season of getSeasonList" [value]="season"> {{season}} </option>
+    </select>
+    <select name="channel" id="channel" [(ngModel)]="channel" (change)="callSkuDataApi()">
+      <option *ngFor="let channel of getChannelList" [value]="channel"> {{channel}} </option>
+    </select>
+
+   <!-- <a href='{{hrefUrl}}downloadSKUChangeReport?season={{season}}&channel={{channel}}' target="_blank" class="btn sku-dl-report-btn">Download SKU Change Report</a>-->
+   <div class="download-seperator">
+    <div (mouseleave)="showDropDown = false">
+        <button class="drop-toggle btn-flat" (click)="showDropDown=!showDropDown">
+            <span *ngIf="checkedList.length<=0">{{getSeasonArray && getSeasonArray[0]?.name}}</span>
+            <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
+            <img src="assets/images/down-arrow.png" />
+        </button>
+        <div class="drop-show" *ngIf="showDropDown">
+            <label *ngFor="let msv of getSeasonArray">
+                <input type="checkbox" [(ngModel)]="msv.checked" (change)="getSelectedValue(msv.checked,msv.name)" />
+            <span>{{msv.name}}</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<a *ngIf="checkedList.length<=0" href='{{hrefUrl}}downloadSKUChangeReport?season={{getSeasonArray && getSeasonArray[0]?.name}}&channel={{channel}}' target="_blank" class="btn sku-dl-report-btn">Download SKU Change Report</a>
+<a *ngIf="checkedList.length>0" href='{{hrefUrl}}downloadSKUChangeReport?season={{checkedList.join(",")}}&channel={{channel}}' target="_blank" class="btn sku-dl-report-btn" (click)="resetSelected(false)">Download SKU Change Report</a>
+
+  </div>
+  <div class="result-table sku-result-table">
+    <p-table [value]="valueWithKeys">
+      <ng-template pTemplate="body" let-key>
+        <tr>
+          <td *ngFor="let col of getSkuUpperTable[key]">
+            {{col}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <hr class="seperator mt-30 mb-30" />
+  <div class="info-bar">
+      <b>Instructions for Upload SKU Change List:</b>
+      File name should be <span>SKU Change List</span>, extension could be <span>.xls</span> or <span>.xlsx</span>, workbook name should be <span>SKU Change List</span>
+      <br/>
+      <b>Columns in the file should be:</b>
+      Season, OldSKU, NewSKU, Drop, Level, LevelID, Delete, EffectiveDate
+  </div>
+
+  <div class="mt-30 mb-30 sku-sku-panel">
+    <input class="search-sku" placeholder="Search SKU" type="text" [(ngModel)]="oldSKU" (ngModelChange)="this.dt.filter($event, 'oldSKU', 'contains');">
+    <a href='{{hrefUrl}}downloadSKUChangeList?season={{season}}' target="_blank" class="btn dl-sku-list-btn">Download SKU Change List</a>
+    <input style="display: none;" type="file" (change)="uploadSkuListData($event.target.files)" #skuList />
+    <button class="btn ul-sku-list-btn" (click)="skuList.value = null; skuList.click();">Upload SKU Change List</button>
+  </div>
+  <div class="result-table sku-search-result-table">
+    <p-table [value]="getSkuTableData" dataKey="idAuto" editMode="row" #dt>
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let headertitle of displayedColumnsHeading; let i=index">
+            {{headertitle}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-skuData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="skuData">
+          <td>
+            {{skuData.season}}
+          </td>
+          <td>
+            {{skuData.oldSKU}}
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="skuData.newSKU">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{skuData.newSKU}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select name="drop" id="drop" [(ngModel)]="skuData.drop">
+                  <option *ngFor="let drop of dropList" [value]="drop"> {{drop}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{skuData.drop}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            {{skuData.level}}
+          </td>
+          <td>
+            {{skuData.levelId}}
+          </td>
+          <td style="text-align:center">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(skuData)" class="row-btn row-edit-icon">
+              <img src="assets/images/pencil-icon.jpg" />
+            </button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow (click)="onRowEditSave(skuData, ri)" class="row-btn row-save-icon">
+              <img src="assets/images/save-icon.jpg" />
+            </button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow (click)="onRowEditCancel(skuData, ri)" class="row-btn row-cancel-icon">
+              <img src="assets/images/cancel-icon.jpg" />
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

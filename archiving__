@@ -1,0 +1,181 @@
+create table t (
+  x int,
+  up_dt date
+);
+
+create table t_hist as
+  select * from t;
+
+insert into t
+  select rownum, sysdate-400+rownum from dual connect by level <= 400;
+  
+create index i on t(up_dt);
+
+create or replace procedure arch_t is
+begin
+  insert into t_hist
+    select * from t
+    where  up_dt <= add_months(sysdate, -12);
+    
+  delete t
+  where  up_dt <= add_months(sysdate, -12);
+end arch_t;
+/
+select count(*) from t;
+
+COUNT(*)  
+400       
+
+select count(*) from t_hist;
+
+COUNT(*)  
+0         
+
+exec arch_t;
+
+select count(*) from t;
+
+COUNT(*)  
+366       
+
+select count(*) from t_hist;
+
+COUNT(*)  
+34  
+
+
+Is there a way to read archived data?
+
+Run a query against the table with archived data!
+
+If you want to "transparently" include current and archived data, you can build a view over the top:
+
+create view all_data as
+  select * from current_data
+  union all
+  select * from archived_data;
+  
+  
+procedure Move_Many_Records is
+begin
+  savepoint MMR;
+  insert /*+ APPEND */ into TARGET (fields)
+    select fields from SOURCE where {condition};
+  delete from SOURCE
+    where id in (select id from TARGET);
+  savepoint MMR;
+exception
+  when others then
+    rollback to savepoint MMR;
+    My_Alerts.Shit_Happens('Failed to move records!');
+    raise;
+end;
+
+
+
+CREATE TABLE random_data1 (
+  id           NUMBER,
+  small_number NUMBER(5),
+  big_number   NUMBER,
+  short_string VARCHAR2(50),
+  long_string  VARCHAR2(400),
+  created_date DATE,
+  CONSTRAINT random_data_pk PRIMARY KEY (id)
+);
+
+INSERT /*+ APPEND */ INTO random_data1
+SELECT level AS id,
+       TRUNC(DBMS_RANDOM.value(1,5)) AS small_number,
+       TRUNC(DBMS_RANDOM.value(100,10000)) AS big_number,
+       DBMS_RANDOM.string('L',TRUNC(DBMS_RANDOM.value(10,50))) AS short_string,
+       DBMS_RANDOM.string('L',TRUNC(DBMS_RANDOM.value(100,400))) AS long_string,
+       TRUNC(SYSDATE + DBMS_RANDOM.value(0,366)) AS created_date
+FROM   dual
+CONNECT BY level <= 1000000;
+COMMIT;
+
+
+create table random_data2 as
+  select count(*) from RANDOM_DATA2;
+  
+delete from RANDOM_DATA2;
+
+create index rr on random_data1(created_date); --index i created
+
+create or replace procedure dummy_procedure is
+begin
+  insert into RANDOM_DATA2
+    select * from RANDOM_DATA1
+    where  rr <= add_months(sysdate, -6);
+    
+  delete RANDOM_DATA1
+  where  rr <= add_months(sysdate, -6);
+end dummy_procedure;
+
+
+create table t (
+  x int,
+  up_dt date
+); --to create table
+
+create table t_hist as
+  select * from t;
+
+insert into t
+  select rownum, sysdate-999999+rownum from dual connect by level <= 999999; -- insert into t table -- 400 rows inserted
+  
+create index i on t(up_dt); --index i created
+
+
+create or replace procedure arch_t is
+begin
+  insert into t_hist
+    select * from t
+    where  up_dt <= add_months(sysdate, -12);
+    
+  delete t
+  where  up_dt <= add_months(sysdate, -12);
+end arch_t;
+
+
+select count(*) from t;
+
+select count(*) from t_hist;
+
+exec ARCH_T;
+
+
+
+create or replace PROCEDURE PMDB_AUTOMAIL AS
+    NEXTUPDATEDTIME TIMESTAMP; 
+    LASTUPDATEDTIME TIMESTAMP;
+    staging_batch_jobs_name varchar(100) := 'PMDB_AUTOMAIL';
+    SQL_QUERY_STMT varchar2(20000);
+    BRAND_KS varchar2(4) := 'KS';
+    BRAND_CH varchar2(4) := 'COH';
+BEGIN
+   SELECT lastupdateddate into LASTUPDATEDTIME from PMDB_OUTBOUND.staging_batch_jobs where table_name = staging_batch_jobs_name and rownum =1; 
+
+   SELECT current_timestamp into NEXTUPDATEDTIME from dual;
+
+DELETE FROM t;
+
+
+
+CREATE OR REPLACE PROCEDURE fast_proc (p_array_size IN PLS_INTEGER DEFAULT 100)
+ IS
+ TYPE ARRAY IS TABLE OF process_state%ROWTYPE;
+ l_data ARRAY;
+ CURSOR c IS SELECT * FROM process_state;
+ BEGIN
+   OPEN c;
+   LOOP
+   FETCH c BULK COLLECT INTO l_data LIMIT p_array_size;
+   FORALL i IN 1..l_data.COUNT
+   INSERT INTO process_state_archive VALUES l_data(i);
+   commit;
+   EXIT WHEN c%NOTFOUND;
+   END LOOP;
+   CLOSE c;
+ END fast_proc;
+

@@ -1,0 +1,195 @@
+	<div align="right"><a href=""	ng-click="displayMaterialColorSearch()">
+	<span   class="glyphicon sort-icon">Show Material Color Search</span></a>
+</div>                              
+  <fieldset>
+                                                <div class="head"><span class="header"><h5><b>Material Color Detail</b></h5></span></div>
+
+<div class="head"><span class="header"><h5><b>General Attributes</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">MSC Status:</span></td><td class="val"><span>{{matColorDetails.status}}</span></td>
+		<td  class ="lbl" ><span class="label">Channel:</span></td><td class="val"><span>{{matColorDetails.channel}}</span></td>
+	</tr>
+	<tr>
+	<td class ="lbl" ><span class="label">Supplier Article Number:</span></td><td class="val"><span>{{matColorDetails.supplierArticleNumber}}</span></td>
+<td  class ="lbl" ><span class="label">Product Team:</span></td><td class="val"><span>{{matColorDetails.productTeam}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Supplier Color Code:</span></td><td class="val"><span>{{matColorDetails.supplierColorCode}}</span></td>
+		<td class ="lbl" ><span class="label">Designer Name:</span></td><td class="val"><span>{{matColorDetails.designerName}}</span></td>
+	</tr>
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Unit of Measure:</span></td><td class="val"><span>{{matColorDetails.unitOfMeasure}}</span></td>
+		<td class ="lbl" ><span class="label">Quarter/Fiscal Yr/Product Type:</span></td><td class="val"><span>{{matColorDetails.QuaterFiscalYrProductType}}</span></td>
+	</tr>
+	
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Initial Intro Date:</span></td><td class="val"><span>{{matColorDetails.introDate}}</span></td>
+	</tr>
+		<tr>
+		<td class ="lbl" ><span class="label">Country of Origin:</span></td><td class="val"><span>{{matColorDetails.countryOfOrigin}}</span></td>
+		<td class ="lbl" ><span class="label">Initial Collection:</span></td><td class="val"><span>{{matColorDetails.collection}}</span></td>
+	</tr>
+	<tr>
+	<td class ="lbl" ><span class="label">INCO Terms:</span></td><td class="val"><span>{{matColorDetails.shippingTerms}}</span></td>
+	<td class ="lbl" ><span class="label">Initial Category:</span></td><td class="val"><span>{{matColorDetails.category}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl" ><span class="label">Production Leadtime (wks):</span></td><td class="val">{{matColorDetails.productionLeadTime}}</td>
+		<td class ="lbl" ><span class="label">Requested By:</span></td><td class="val"><span>{{matColorDetails.requestedBy}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl"> <span class="label">Production Minimum:</span> </td><td class="val"><span>{{matColorDetails.productionMinimum}}</span></td>
+	<td class ="lbl"> <span class="label">Request Date:</span> </td><td class="val"><span>{{matColorDetails.requestDate}}</span></td>
+   </tr>
+   
+   <tr>
+	<td class ="lbl" ><span class="label">Production Tolerance:</span></td><td class="val">{{matColorDetails.productionTolerance}}</td>
+		<td class ="lbl" ><span class="label">Associated Teams:</span></td><td class="val"><span>{{matColorDetails.associatedTeams}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl" ><span class="label">Sample Qty Min.:</span></td><td class="val">{{matColorDetails.sampleQtyMin}}</td>
+		<td class ="lbl" ><span class="label">PD & MW Reservation:</span></td><td class="val"><span>{{matColorDetails.pdMwReservation}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl" ><span class="label">Sample Qty Leadtime:</span></td><td class="val">{{matColorDetails.sampleQtyLeadtime}}</td>
+		<td class ="lbl" ><span class="label">HTS Code:</span></td><td class="val"><span>{{matColorDetails.htsCode}}</span></td>
+	</tr>
+	
+	<tr>
+	<td class ="lbl" ><span class="label">Associated Intro Dates:</span></td><td class="val">{{matColorDetails.associatedIntroDates}}</td>
+		<td class ="lbl" ><span class="label">Brand:</span></td><td class="val"><span>{{matColorDetails.mcBrand}}</span></td>
+	</tr>
+
+	
+    
+</table>
+
+<!----    Standard Costing  ---->
+                
+            <div class="head"><span class="header"><h5><b>Standard Costing</b></h5></span></div>
+            <table>
+                <tr>
+                    <td class ="lbl"><span class="label">Standard Cost:</span></td><td class ="val"><span>{{matColorDetails.stdCost}} </span></td>
+                    <td class ="lbl"><span class="label">Estimated:</span></td><td class ="val"><span>{{matColorDetails.stdCostEstimateFlag}}</span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Standard Cost Currency:</span></td><td class ="val">{{matColorDetails.standardCostCurrency}}<span> </span></td>
+                   </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Fiscal Year Effectivity:</span></td><td class ="val"><span>{{matColorDetails.stdCostFy}} </span></td>
+                    <td class ="lbl"><span class="label">Supplier Std Cost Basis:</span></td><td class ="val"><span>{{matColorDetails.stdCostBasis}} </span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Standard Cost Effectivity:</span></td><td class ="val">	<span>{{matColorDetails.stdCostEffectivity}} </span></td>
+                    <td class ="lbl"><span class="label">Unit of Currency:</span></td><td class ="val"><span>{{matColorDetails.unitOfCurrency}} </span></td>
+                </tr> <tr>
+                    <td class ="lbl"><span class="label">Peg Rate:</span></td><td class ="val"><span>{{matColorDetails.pegRate}} </span></td>
+                    <td class ="lbl"><span class="label">Supplier Basis UOM:</span></td><td class ="val"><span>{{matColorDetails.supplierBasisUOM}}  </span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Price Comments:</span></td><td class ="val">	<span> {{matColorDetails.priceComments}} </span></td>
+                    <td class ="lbl"><span class="label">Supplier Std Cost Date:</span></td><td class ="val">	<span>{{matColorDetails.supStdCostDate}}  </span></td>
+                </tr>
+            </table>
+			</div>
+		
+
+
+
+	
+			<!----    Design Review ---->
+                
+            <div class="head"><span class="header"><h5><b>Design Review</b></h5></span></div>
+            <table>
+                <tr>
+                    <td class ="lbl"><span class="label">Artwork/Color Received from Design:</span></td><td class ="val"><span>{{matColorDetails.artworkColorReceivedFromDesign}} </span></td>
+                    <td class ="lbl"><span class="label">Sample Passed to Design Date:</span></td><td class ="val"><span>{{matColorDetails.samplePassesToDesignDate}}</span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Artwork Submitted to Supplier:</span></td><td class ="val">{{matColorDetails.artworkSubmittedtoSupplier}}<span> </span></td>
+                    <td class ="lbl"><span class="label">Artwork/Color Approved by Design Date:</span></td><td class ="val">{{matColorDetails.colorApprovalDate}}<span> </span></td>
+                   </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Lab Dip/Strikeoff ETD from Supplier:</span></td><td class ="val"><span>{{matColorDetails.labDipStrikoffETDfromSupplier}} </span></td>
+                    <td class ="lbl"><span class="label">Artwork/Color Approval by Design:</span></td><td class ="val"><span>{{matColorDetails.colorApproval}} </span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Artwork/Color Passed to Design:</span></td><td class ="val">	<span>{{matColorDetails.artworkColorPassedtoDesign}} </span></td>
+                    <td class ="lbl"><span class="label">Artwork/Color Rejected by Design Date:</span></td><td class ="val"><span>{{matColorDetails.artworkRejectedbyDesign}} </span></td>
+                </tr> <tr>
+                    <td class ="lbl"><span class="label">Sample Submit Comments:</span></td><td class ="val"><span>{{matColorDetails.sampleSubmitComments}} </span></td>
+                    <td class ="lbl"><span class="label">Design Approval Comments:</span></td><td class ="val"><span>{{matColorDetails.designApprovalComments}}  </span></td>
+                </tr>
+            </table>
+			</div>
+			
+						<!----    Approval ---->
+                
+            <div class="head"><span class="header"><h5><b>Approvals</b></h5></span></div>
+            <table>
+                <tr>
+                    <td class ="lbl"><span class="label">Article Approval:</span></td><td class ="val"><span>{{matColorDetails.articleApproval}} </span></td>
+                    <td class ="lbl"><span class="label">Article Approval Date:</span></td><td class ="val"><span>{{matColorDetails.articleApprovalDate}}</span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Article Approval Comments:</span></td><td class ="val">{{matColorDetails.articleApprovalComments}}<span> </span></td>
+                    <td class ="lbl"><span class="label">Article Approval Basis:</span></td><td class ="val">{{matColorDetails.articleApprovalBasis}}<span> </span></td>
+                   </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">Final Color Approval:</span></td><td class ="val"><span>{{matColorDetails.finalColorApproval}} </span></td>
+                    <td class ="lbl"><span class="label">Final Color Approval Date:</span></td><td class ="val"><span>{{matColorDetails.finalColorApprovalDate}} </span></td>
+                </tr>
+                 <tr>
+                    <td class ="lbl"><span class="label">Color Approval Comments:</span></td><td class ="val"><span>{{matColorDetails.colorApprovalComments}} </span></td>
+                                    </tr>
+                 <tr>
+                    <td class ="lbl"><span class="label">QA Status:</span></td><td class ="val"><span>{{matColorDetails.qaApproval}} </span></td>
+                     <td class ="lbl"><span class="label">QA Status Date:</span></td><td class ="val"><span>{{matColorDetails.qaApprovalDate}} </span></td>
+                </tr>
+                
+                  <tr>
+                    <td class ="lbl"><span class="label">QA End Use:</span></td><td class ="val"><span>{{matColorDetails.endUse}} </span></td>
+                     <td class ="lbl"><span class="label">Copy Approvals to MULTI:</span></td><td class ="val"><span>{{matColorDetails.feedMulti}} </span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">EcVision Related SR:</span></td><td class ="val">	<span>{{matColorDetails.ecVRelatedSR}} </span></td>
+                    <td class ="lbl"><span class="label">Sample MW Qty:</span></td><td class ="val"><span>{{matColorDetails.sampleMWQty}} </span></td>
+                </tr> <tr>
+                    <td class ="lbl"><span class="label">Sample PD Qty:</span></td><td class ="val"><span>{{matColorDetails.samplePDQty}} </span></td>
+                    <td class ="lbl"><span class="label">Sample Requested Ship Date:</span></td><td class ="val"><span>{{matColorDetails.sampleRequestedShipDate}}  </span></td>
+                </tr>
+                
+                 <tr>
+                    <td class ="lbl"><span class="label">Sample Reservation:</span></td><td class ="val"><span>{{matColorDetails.sampleReservation}} </span></td>
+                    <td class ="lbl"><span class="label">Shipped Date:</span></td><td class ="val"><span>{{matColorDetails.shippedDate}}  </span></td>
+                </tr>
+            </table>
+			</div>
+			
+									<!----    RM Standards  ---->
+                
+            <div class="head"><span class="header"><h5><b>RM Standards</b></h5></span></div>
+            <table>
+                <tr>
+                    <td class ="lbl"><span class="label">RM Standard Issued Date:</span></td><td class ="val"><span>{{matColorDetails.rmStandardIssuedDate}} </span></td>
+                    <td class ="lbl"><span class="label">RM Standard Sent To:</span></td><td class ="val"><span>{{matColorDetails.rmStandardSentTo}}</span></td>
+                </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">RM Standard Quantity:</span></td><td class ="val">{{matColorDetails.rmStandardQuantity}}<span> </span></td>
+                    <td class ="lbl"><span class="label">Carrier:</span></td><td class ="val">{{matColorDetails.carrier}}<span> </span></td>
+                   </tr>
+                <tr>
+                    <td class ="lbl"><span class="label">AWB Number:</span></td><td class ="val"><span>{{matColorDetails.awbNumber}} </span></td>
+                </tr>
+
+            </table>
+			</div>
+                                            </fieldset>

@@ -1,0 +1,432 @@
+body, #mainWrapper {
+    height: 70%;
+    background-color:rgb(245, 245, 245);
+}
+
+body, .form-control{
+    font-size:12px!important;
+	font-family:'Lato',sans-serif;
+	
+}
+
+.floatRight{
+    float:right;
+    margin-right: 18px;
+}
+
+.has-error{
+    color:red;
+}
+
+.formcontainer{
+    background-color: #DAE8E8;
+    padding: 20px;
+}
+
+.tablecontainer{
+    padding-left: 20px;
+}
+
+.generic-container {
+    width:80%;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #EAE7E7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 20px black;
+}
+
+.custom-width {
+    width: 80px !important;
+}
+
+.search {
+    font-size:12px;
+    height: 30px;
+}
+
+.head {
+    font-family:'Lato',sans-serif;
+	font-size: 14px;
+    height:25px;
+	background-image: url(/PLMViewer/static/images/header.png);
+    background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.lbl{
+
+    padding: 7px 20px;
+    width: 10%;	
+	font-family:'Lato',sans-serif;
+	font-size: 12px;
+}
+.lbl1{
+    padding: 7px 20px;
+	font-family:'Lato',sans-serif;
+	font-size: 12px;
+}
+.val1{
+    padding: 7px 40px;
+	font-family:'Lato',sans-serif;
+	font-size: 12px;
+}
+.val{
+    padding: 7px 40px;
+    width:22%;
+	font-family:'Lato',sans-serif;
+	font-size: 12px;
+}
+
+
+.searchLbl {
+    padding: 5px 45px; 
+	font-family:'Lato',sans-serif;
+	font-size: 12px;
+}
+
+.searchVal {
+    padding: 5px 15px;
+	font-family:'Lato',sans-serif;
+	font-size: 12px;
+}
+
+.btn {
+    font-family:'Lato',sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    background: #2b3033;
+    padding: 1px 1px 1px 1px;
+    border: solid #5386a3 1px;
+
+}
+.fontstyle{
+    color: grey;
+}
+#tabs ul {
+    border-radius:2px;
+    list-style: none;
+   padding: 0px 0px 5px 0px;
+    border: 1px;
+}
+#tabs li {
+    float: left;
+    border-bottom-width: 0;
+	color:#566E7A;
+    margin:  2px;
+    padding: 1px 0px 1px;
+    font-size:14px;
+    font-family:'Lato',sans-serif;
+    cursor: pointer;
+	background-image: url(/PLMViewer/static/images/activetab.png);
+    
+}
+#mainView {
+    
+    clear: both;
+    padding: 0px 0em;
+  }
+#tabs li.active {
+	border-bottom :0;
+      color: #5b5e5d;
+	  font-color : black;
+	  background-image: url(/PLMViewer/static/images/TabActive1.png);
+}
+#treeModel li {
+    position: relative;
+    padding: 0 0 0 5px;
+    line-height: 20px;
+    font-size:12px;
+    font-family:'Lato',sans-serif;
+    color: #566E7A;
+	cursor: pointer;
+}
+
+
+#treeModel span{
+    margin: 0;
+    padding: 0;
+    list-style: none; 
+    border: none;
+    overflow: hidden;
+	font-size: 14px;
+}
+#treeModel ul{
+    margin: 0;
+    padding: 0;
+    list-style: none; 
+    border: none;
+    overflow: hidden;
+	font-size: 14px;
+}
+#treeModel li .expanded {
+    padding: 1px 10px;
+    background-image: url("http://cfile23.uf.tistory.com/image/205B973A50C13F4B19D9BD");
+    background-repeat: no-repeat;
+}
+
+#treeModel li .collapsed {
+    padding: 1px 10px;
+    background-image: url("http://cfile23.uf.tistory.com/image/1459193A50C13F4B1B05FB");
+    background-repeat: no-repeat;
+}
+
+#treeModel li .normal {
+    padding: 1px 5px;
+	color: #5b5e5d;
+    background-image: url("http://cfile23.uf.tistory.com/image/165B663A50C13F4B196CCA");
+    background-repeat: no-repeat;
+}
+#treeModel li .selected {
+    background-color: #aaddff;
+    font-weight: bold;
+    padding: 1px 5px;
+}
+.lbl {
+    font-size:13px;
+    font-family:'Lato',sans-serif;
+    font-color: #f0f0f0;
+}
+
+#loading {
+    opacity:0.7;
+    filter: alpha(opacity=20);
+    background-color:#000; 
+    background: url("http://www.chimply.com/images/samples/classic-spinner/animatedEllipse.gif") center  no-repeat;
+    width:100%; 
+    height:100%; 
+    z-index:10;
+    top:0; 
+    left:0; 
+    position:fixed;  
+}
+#veil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width:100%;
+    cursor: not-allowed;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    background: #000000 url(http://www.wingo.com/angular/AngularShieldLogo.png) no-repeat center;
+}
+#feedLoading {
+    position: absolute;
+    top:200px;
+    width:100%;
+    text-align: center;
+    font-size: 4em;
+    color:white;
+    text-shadow: 2px 2px 2px #021124;
+}
+.Loadingimage{
+    opacity:0.7;
+    filter: alpha(opacity=20);
+    background-color:#000;
+    background: url('/PLMViewer/static/images/loadingcircle.gif') center center no-repeat;
+    width:100%;
+    height:100%;
+    z-index:10;
+    top:0;
+    left:0;
+    position:fixed;  
+}
+.tabborder{
+    border:1px solid #073763;
+	 width:100%;
+}
+.modalDiv {
+	width:1100px;
+	height: 600px;
+	color: white;
+}
+
+.modalBody {
+	position:relative;
+	width:800px;
+	height: 500px;
+}
+.modalFooter {
+	text-align : right;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+       -o-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #000;
+}
+.modal-backdrop.fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+.modal-header {
+  min-height: 10.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-header .close {
+  margin-top: -2px;
+}
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+  height : 180px;
+}
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+.tableHeader{
+	font: bold 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;		
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background:  #f9f9f9 url(images/bg_header.jpg) no-repeat;
+}
+
+.Bomcaption {
+	padding: 0 0 5px 0;
+	width: 700px;	 
+	font: italic 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	text-align: left;
+}
+
+
+.tableHeaderSpec {
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;		
+	letter-spacing: 2px;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA url(images/bg_header.jpg) no-repeat;	
+	border-top: 0;
+	background:  #f3f3f3 url(images/bullet1.gif) no-repeat;
+	font: bold 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+.tableData{
+	font:  11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	border-right: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;		
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+}
+
+
+.skuTableData{
+    font:  11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	border-right: 1px solid #C1DAD7;
+    border-left: 1px solid #C1DAD7;	
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 6px 6px 6px 11px;
+	color: #4f6b72;
+
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 800px;
+    height: 800px;
+    margin: 30px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}

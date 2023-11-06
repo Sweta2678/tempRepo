@@ -1,0 +1,241 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<context:component-scan base-package="com.coach.middleware.batch" />
+
+	<util:properties id="totoExtractProp"
+		location="classpath:com/coach/middleware/batch/config/properties/TOTO.properties" />
+
+	<bean id="CustomExtractJobParam"
+		class="com.coach.middleware.batch.itemReader.CustomExtractParamBuilder">
+		<property name="properties" ref="totoExtractProp" />
+	</bean>
+
+
+	<bean id="TotoExtractDBItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="sql">
+			<value>
+		 <![CDATA[
+	                  select distinct p.STYLENUMBER styleNumber,p.uniqueid,
+	(select seasongroupname from seasongroupmaster where uniqueid= p.introdate)IntroDate, 
+	(select seasongroupname from seasongroupmaster where uniqueid= p.fsintrodate)FsIntroDate, 
+	p.DEPARTMENT DEPARTMENT,p.productname productname,p.factorystoretypeproduct factorystoretypeproduct, 
+	p.subclass subclass,p.styleclass styleclass,p.originalRetailprice retailprice, p.TOTOCOLORS TOTOCOLORS, 
+	p.TOTOCOUNTRYOFORIGIN TOTOCOUNTRYOFORIGIN,p.TOTOSIZES TOTOSIZES,p.GENDER GENDER,p.SILHOUETTE SILHOUETTE, 
+	p.TOTOCOLLECTION  TOTOCOLLECTION,p.TOTOLENGTHCM TOTOLENGTHCM,p.TOTOHEIGHTCM TOTOHEIGHTCM, 
+	p.TOTOWIDTHCM TOTOWIDTHCM, p.JEWELRYDIMENSIONS JEWELRYDIMENSIONS,p.KEYRINGDIMENSIONS KEYRINGDIMENSIONS, 
+	p.TOTOSTRAPLENGTHIN TOTOSTRAPLENGTHIN,p.TOTODROPLENGTHIN  TOTODROPLENGTHIN,p.TOTOSHELLMATERIAL TOTOSHELLMATERIAL, 
+	p.TOTOTRIMMATERIAL TOTOTRIMMATERIAL,p.TOTOLININGMATERIAL TOTOLININGMATERIAL, p.UPPERMATERIAL UPPERMATERIAL, 
+	p.ORGANIZATIONALPANEL ORGANIZATIONALPANEL,p.TOTOINTERIORPOCKET TOTOINTERIORPOCKET,p.TOTOEXTERIORPOCKET  TOTOEXTERIORPOCKET, 
+	p.CLOSURE CLOSURE,p.CREDITCARDPOCKET CREDITCARDPOCKET,p.TOTOBILLFOLDPOCKETS TOTOBILLFOLDPOCKETS,p.IDWINDOW IDWINDOW, 
+	p.COIN COIN,p.TOTOCHECKBOOK TOTOCHECKBOOK,p.HEELHEIGHT HEELHEIGHT,p.TOTOTYPEOFSOLE TOTOTYPEOFSOLE, 
+	p.ADDITIONALFEATURES ADDITIONALFEATURES,p.CARECARDCM  CARECARDCM,p.LEATHERCLEANER LEATHERCLEANER, 
+	p.LEATHERMOISTURIZER LEATHERMOISTURIZER,p.FABRICCLEANER FABRICCLEANER, p.DAMPCLOTH DAMPCLOTH 
+	FROM productMaster p ,skumaster sku 
+	WHERE 
+	p.UNIQUEID = sku.STYLEUNIQUEID and
+	p.Department not in(select department from DEPARTMENTS_TO_SKIP_DOWNSTREAM where jobname='TOTO') and
+	sku.STATUS= 'released' and 
+	p.LIFECYCLESTATE='ADOPTION' 
+	order by p.UNIQUEID	
+	                ]]>
+			</value>
+		</property>
+		<property name="rowMapper">
+			<bean class="com.coach.middleware.batch.dao.RowMapper.TotoExtractRowMapper" />
+		</property>
+
+	</bean>
+
+
+
+
+	<bean id="TotoExtractDeltaDBItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="sql">
+			<value>
+		 <![CDATA[
+	                  select distinct p.STYLENUMBER styleNumber,p.uniqueid,
+						(select seasongroupname from seasongroupmaster where uniqueid= p.introdate)IntroDate, 
+						(select seasongroupname from seasongroupmaster where uniqueid= p.fsintrodate)FsIntroDate, 
+						p.DEPARTMENT DEPARTMENT,p.productname productname,p.factorystoretypeproduct factorystoretypeproduct, 
+						p.subclass subclass,p.styleclass styleclass,p.originalRetailprice retailprice, p.TOTOCOLORS TOTOCOLORS, 
+						p.TOTOCOUNTRYOFORIGIN TOTOCOUNTRYOFORIGIN,p.TOTOSIZES TOTOSIZES,p.GENDER GENDER,p.SILHOUETTE SILHOUETTE, 
+						p.TOTOCOLLECTION  TOTOCOLLECTION,p.TOTOLENGTHCM TOTOLENGTHCM,p.TOTOHEIGHTCM TOTOHEIGHTCM, 
+						p.TOTOWIDTHCM TOTOWIDTHCM, p.JEWELRYDIMENSIONS JEWELRYDIMENSIONS,p.KEYRINGDIMENSIONS KEYRINGDIMENSIONS, 
+						p.TOTOSTRAPLENGTHIN TOTOSTRAPLENGTHIN,p.TOTODROPLENGTHIN  TOTODROPLENGTHIN,p.TOTOSHELLMATERIAL TOTOSHELLMATERIAL, 
+						p.TOTOTRIMMATERIAL TOTOTRIMMATERIAL,p.TOTOLININGMATERIAL TOTOLININGMATERIAL, p.UPPERMATERIAL UPPERMATERIAL, 
+						p.ORGANIZATIONALPANEL ORGANIZATIONALPANEL,p.TOTOINTERIORPOCKET TOTOINTERIORPOCKET,p.TOTOEXTERIORPOCKET  TOTOEXTERIORPOCKET, 
+						p.CLOSURE CLOSURE,p.CREDITCARDPOCKET CREDITCARDPOCKET,p.TOTOBILLFOLDPOCKETS TOTOBILLFOLDPOCKETS,p.IDWINDOW IDWINDOW, 
+						p.COIN COIN,p.TOTOCHECKBOOK TOTOCHECKBOOK,p.HEELHEIGHT HEELHEIGHT,p.TOTOTYPEOFSOLE TOTOTYPEOFSOLE, 
+						p.ADDITIONALFEATURES ADDITIONALFEATURES,p.CARECARDCM  CARECARDCM,p.LEATHERCLEANER LEATHERCLEANER, 
+						p.LEATHERMOISTURIZER LEATHERMOISTURIZER,p.FABRICCLEANER FABRICCLEANER, p.DAMPCLOTH DAMPCLOTH 
+						FROM PRODUCTMASTER p ,skumaster sku 
+						WHERE 
+						p.UNIQUEID = sku.STYLEUNIQUEID and 
+						p.Department not in(select department from DEPARTMENTS_TO_SKIP_DOWNSTREAM where jobname='TOTO') and 
+						sku.STATUS= 'released' and 
+						p.LIFECYCLESTATE='ADOPTION' and
+						p.stylenumber is not null and p.stylenumber in (select stylenumber from DELTA_EXTRACT)
+						order by p.UNIQUEID	
+	                ]]>
+			</value>
+		</property>
+
+		<property name="rowMapper">
+			<bean class="com.coach.middleware.batch.dao.RowMapper.TotoExtractRowMapper" />
+		</property>
+
+	</bean>
+
+	<bean id="TotoExtractItemProcessor"
+		class="com.coach.middleware.batch.itemProcessor.TotoExtractItemProcessor">
+		<property name="totoExtractDao" ref="totoExtractDao" />
+	</bean>
+
+	<bean id="totoExtractDao" class="com.coach.middleware.batch.dao.TotoExtractDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="TotoExtractWriter"
+		class="com.coach.middleware.batch.itemWriter.TotoExtractItemWriter">
+		<property name="TotoExtractFileItemWriter" ref="TotoExtractFileItemWriter" />
+	</bean>
+
+
+	<bean id="TotoExtractItemReader"
+		class="com.coach.middleware.batch.itemReader.TotoExtractItemReader"
+		scope="step">
+	</bean>
+
+
+	<bean id="genTotoRDY" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<property name="resource" value="" />
+		<property name="lineAggregator">
+			<bean
+				class="org.springframework.batch.item.file.transform.DelimitedLineAggregator" />
+		</property>
+		<property name="shouldDeleteIfExists" value="true" />
+	</bean>
+
+	<bean id="TotoExtractFileItemWriter" name="TotoExtractFileItemWriter"
+		class="org.springframework.batch.item.file.FlatFileItemWriter">
+
+		<property name="resource" value="" />
+		<property name="shouldDeleteIfExists" value="true" />
+
+		<property name="lineAggregator">
+
+			<bean
+				class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+
+				<property name="delimiter" value="|" />
+
+				<property name="fieldExtractor">
+
+					<bean
+						class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names"
+							value="derived,styleName,styleNumber,category,
+							retailPrice,seasonGroupName,totoColors,
+							totoCountryofOrigin,totoSizes,gender,silhouette,
+							totoCollection,totoLengthcm,totoHeightcm,
+							totoWidthcm,totoLengthIn,totoHeightIn,
+							totoWidthIn,jewelryDimensions,keyRingDimensions,totoStrapLengthIn,totoDropLengthIn,
+							totoStrapLengthInInch,totoDropLengthInInch,totoShellMaterial,
+							totoTrimMaterial,totoLiningMaterial,upperMaterial,
+							organizationalPanel,totoInteriorPocket,totoExteriaorPocket,
+							closures,creditCardPocket,totoBillfoldPocket,idWindow,
+							coin,totoCheckBook,heelHeight,soleType,additionalFeatures,
+							careCardCm,leatherCleaner,leatherMoisturizer,fabricCleaner,
+							dampCloth" />
+					</bean>
+
+				</property>
+
+
+			</bean>
+		</property>
+	</bean>
+
+
+	<!-- Actual Job -->
+
+
+	<batch:job id="TotoExtractJobFullMode">
+		<batch:step id="TotoExtractJobFullModeProcessing" next="Generate-Totordy">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="TotoExtractDBItemReader" writer="TotoExtractWriter"
+					processor="TotoExtractItemProcessor" commit-interval="1000">
+					<batch:streams>
+						<batch:stream ref="TotoExtractFileItemWriter" />
+					</batch:streams>
+				</batch:chunk>
+				<batch:listeners>
+					<batch:listener ref="CustomExtractJobParam" />
+				</batch:listeners>
+			</batch:tasklet>
+		</batch:step>
+		<batch:step id="Generate-Totordy">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="TotoExtractItemReader" writer="genTotoRDY"
+					commit-interval="1">
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+
+	<batch:job id="TotoExtractJobDeltaMode">
+		<batch:step id="TotoExtractJobDeltaModeProcessing" next="Generate-Totordy-Delta">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="TotoExtractDeltaDBItemReader"
+					writer="TotoExtractWriter" processor="TotoExtractItemProcessor"
+					commit-interval="1000">
+					<batch:streams>
+						<batch:stream ref="TotoExtractFileItemWriter" />
+					</batch:streams>
+				</batch:chunk>
+				<batch:listeners>
+					<batch:listener ref="CustomExtractJobParam" />
+				</batch:listeners>
+			</batch:tasklet>
+		</batch:step>
+		<batch:step id="Generate-Totordy-Delta">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="TotoExtractItemReader" writer="genTotoRDY"
+					commit-interval="1">
+				</batch:chunk>
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans> 
+
+
+
+
+
+
+
+
+
+
+

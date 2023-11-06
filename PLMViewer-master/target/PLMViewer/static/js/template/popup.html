@@ -1,0 +1,88 @@
+<div ng-controller="landingCtrl">
+
+  <div class="modalBody">
+            <!--simg ng-src="{{url}}" /-->
+			<!-- div ng-show="specImageDataList.length" align = "center">
+
+                    <button type="button" class="btn-link" ng-disabled="curPage == 0" ng-click="curPage = curPage - 1"> 
+					<span class="glyphicon sort-icon"><b> &lt;&lt; </b></span></button>
+
+                    <span class="glyphicon sort-icon">{{curPage + 1}} of {{(noOfpages)}}</span>
+
+                    <button type="button" class="btn-link"
+                            ng-disabled="curPage >= ((specImageDataList.length / 10) - 1)"
+                            ng-click="curPage = curPage + 1"><span class="glyphicon sort-icon"><b> &gt;&gt;</b></span></button>
+
+                </div -->               
+          
+   
+ <table cellspacing="0" cellpadding="0" class="tablecontainer">
+    <colgroup span="6"></colgroup>
+   <tbody>
+     <tr class="tr" >
+			<td  title="pageName" style="width=30%" class ="lbl"><span class="label">Page Name  : </span></td>
+			<td class="val1"><span>{{specImageDataList[0].pageName}}</span></td>
+     </tr>
+     
+      <tr class="tr" >
+			<td  title="pageLayout" style="width=30%" class ="lbl"><span class="label">Page Layout  : </span></td>
+			<td id="pageLayout" class="val1"><span>{{specImageDataList[0].pageLayout}}</span></td>
+	   </tr>
+	 
+      <tr class="tr" >
+		<td  title="pageDesc" style="width=30%" class ="lbl"><span class="label">Page Description  : </span></td>
+			<td id="pageDesc" class="val1"><span>{{specImageDataList[0].pageDesc}}</span></td>
+	  </tr>      
+      
+       <tr class="tr" >	   
+	   	<td  title="pageType" style="width=30%" class ="lbl"><span class="label">Page Type  : </span></td>
+			<td id="pageType" class="val1"><span>{{specImageDataList[0].pageType}}</span></td>	   
+       </tr>           	         
+   </tbody>     
+ </table>
+ 
+ <table cellspacing="0" cellpadding="0" class="table table-striped table-hover">
+   <colgroup span="6"></colgroup>
+   <tbody>
+        <tr class="tr">  
+   		   	 <th  title="secondarycontentfile" class="imagetableth">Secondary Content File</th>   
+        </tr>
+            
+    
+ 		<tr class="tr" ng-repeat="secondaryContentfile in specImageDataList[0].secondarycontentfile.split(',')" ng-if="secondarycontentfile !=='null'">
+		    <td class="val"><a href="" ng-click="docImageLink('/LCSWImagesDocuments/'+secondaryContentfile)">
+		    <span id="secondarycontentfile">{{secondaryContentfile}}<span></a>
+			</td>
+    	 </tr>
+   </tbody>
+  </table>
+ 
+  <table cellspacing="0" cellpadding="0" class="table table-striped table-hover">
+   <colgroup span="6"></colgroup>
+
+   <tbody>
+     <tr class="tr" >      
+	   <th  title="imagePosition" class="imagetableth">Image Position</th>
+	   <th  title="image" class="imagetableth">Image</th>
+	   
+     </tr>
+	 
+       <tr class="tr" ng-repeat="imgDataList in specImageDataList" ng-if="imgDataList.image !== 'null' ">
+		<td class="val"><span id="imagePostion">{{imgDataList.imagePosition}}<span></td>
+		<td class="val"><a href="" ng-click="docImageLink('/LCSWImagesDocuments/'+imgDataList.image)">
+		<span id="image">{{imgDataList.image}}<span></a>
+		</td>
+	
+     </tr>    
+     
+ </tbody>
+ </table>
+
+
+  
+  </div>
+        <div class="modalFooter">            
+            <button class="btn btn-warning" ng-click="cancel()">Close</button>
+        </div>
+
+</div>

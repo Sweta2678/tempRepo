@@ -1,0 +1,175 @@
+<!--div ng-repeat="(key, documentDetailsData) in documentDetailsData"  --> 
+
+
+<div  data-ng-show="docDetails" >
+
+    <form>
+        <label><h4 class="fontstyle">{{documentDetailsData.documentName}}</h4></label>
+        <div id="tabs" class="nav-tabs tabborder" data-ng-controller="DocumentTabsCtrl">
+            <ul>
+                <li ng-repeat="tab in documentTabs" ng-class="{active:isActiveTab(tab.url)}" 
+				ng-click="onClickTab(tab)" ><b>&nbsp;&nbsp;{{tab.title}}&nbsp;&nbsp;</b></li>
+            </ul>
+            <div id="mainView">         <div ng-include="currentTab"></div>		</div>
+  <script type="text/ng-template" id="Details">
+                <div id="documentDetail">
+                <fieldset>
+                <div class="head"><span class="header"><h5><b>Document Detail : </b></h5></span></div>
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">Name:</span></td><td class="val"><span>{{documentDetailsData.documentName}}</span></td>
+                <td  class ="lbl" ><span class="label">Type:</span></td><td class="val"><span>{{documentDetailsData.documentType}}</span></td>
+                </tr>
+                </table>
+
+                <div class="head"><span class="header"><h5><b>Certificate Of Compactability</b></h5></span></div>
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">COC Expiration Date:</span></td>
+                <td class="val"><span>{{documentDetailsData.cocExpiration}}</span></td>
+
+                </tr>
+
+                </table>
+                <div class="head"><span class="header"><h5><b>General Attributes</b></h5></span></div>
+
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">Department</span></td><td class="val"><span>{{documentDetailsData.department}}</span></td>
+                <td class ="lbl" ><span class="label">Accessories Silhouettes</span></td><td class="val"><span>{{documentDetailsData.accessoriesSilhouettes}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Class</span></td><td class="val"><span>{{documentDetailsData.class}}</span></td>
+                <td class ="lbl" ><span class="label">Sub Class</span></td><td class="val"><span>{{documentDetailsData.subClass}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Collection</span></td><td class="val"><span>{{documentDetailsData.collection}}</span></td>
+                <td class ="lbl" ><span class="label">Sub Collection</span></td><td class="val"><span>{{documentDetailsData.subCollection}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Intro date</span></td><td class="val"><span>{{documentDetailsData.introdate}}</span></td>
+                <td class ="lbl" ><span class="label">Season</span></td><td class="val"><span>{{documentDetailsData.season}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Slot/StyleNumber</span></td><td class="val"><span></span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Accessories Department</span></td><td class="val"><span>{{documentDetailsData.accessoriesdepartment}}</span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Wearable Department</span></td><td class="val"><span>{{documentDetailsData.wearDept}}</span></td>
+                <td class ="lbl" ><span class="label">Wearable Silhouettes</span></td><td class="val"><span>{{documentDetailsData.wearSilhouette}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Engineering Construction Detail Type:</span></td><td class="val"><span>{{documentDetailsData.engConstdtl}}</span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Final SP Pattern</span></td><td class="val"><span>{{documentDetailsData.finalSPpattern}}</span></td>
+                <td class ="lbl" ><span class="label">Cli</span></td><td class="val"><span></span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Intended Users</span></td><td class="val"><span>{{documentDetailsData.intendedUsers}}</span></td>
+                <td class ="lbl" ><span class="label">PRN Type</span></td><td class="val"><span>{{documentDetailsData.prnType}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Document Type </span></td><td class="val"><span>{{documentDetailsData.documentType}}</span></td>
+                <td class ="lbl" ><span class="label">Year</span></td><td class="val"><span>{{documentDetailsData.year}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Service Provider</span></td><td class="val"><span>{{documentDetailsData.serviceProvider}}</span></td>
+                <td class ="lbl" ><span class="label">Internal Office</span></td><td class="val"><span>{{documentDetailsData.internalOffice}}</span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Supplier Type</span></td><td class="val"><span>{{documentDetailsData.supplierType}}</span></td>
+                <td class ="lbl" ><span class="label">Supplier </span></td><td class="val"><span>{{documentDetailsData.supplier}}</span></td>
+                </tr>
+
+
+                </table>
+
+
+                <div class="head"><span class="header"><h5><b>Material Safety Test</b></h5></span></div>
+
+
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">CM Number</span></td><td class="val"><span>{{documentDetailsData.cmNumber}}</span></td>
+                <td class ="lbl" ><span class="label">External Analytical Status</span></td><td class="val"><span>{{documentDetailsData.externalAnalyticalStatus}}</span></td>
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">External Analytical Status Date</span></td><td class="val"><span>{{documentDetailsData.externalAnalyticalStatusDate}}</span></td>
+                <td class ="lbl" ><span class="label">External Testing Facility</span></td><td class="val"><span>{{documentDetailsData.externalTestingFacility}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">External Testing Type</span></td><td class="val"><span>{{documentDetailsData.externaStatuslTestingType}}</span></td>
+                <td class ="lbl" ><span class="label">Internal XRF Status</span></td><td class="val"><span>{{documentDetailsData.internalXFStatus}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Internal XRF Test Date</span></td><td class="val"><span>{{documentDetailsData.internalXRFTestDate}}</span></td>
+                <td class ="lbl" ><span class="label">Reason For Failure</span></td><td class="val"><span>{{documentDetailsData.reasonForFailure}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Specify Un-Listed Testing Facility</span></td><td class="val"><span>{{documentDetailsData.otherExternalTestingFacility}}</span></td>
+                <td class ="lbl" ><span class="label">Specify Un-Listed Testing Type</span></td><td class="val"><span>{{documentDetailsData.otherExterTestingType}}</span></td>
+                </tr>
+
+                <tr>
+                <td class ="lbl" ><span class="label">Test Performed By</span></td><td class="val"><span>{{documentDetailsData.testPerformedBy}}</span></td>
+
+                </tr>
+                <tr>
+                <td class ="lbl" ><span class="label">Construction Details</span></td><td class="val"><span>{{documentDetailsData.constructiondetails}}</span></td>
+                <td class ="lbl" ><span class="label">Status</span></td><td class="val"><span>{{documentDetailsData.status}}</span></td>
+                </tr>
+
+
+
+                </table>
+
+                <div class="head"><span class="header"><h5><b>On Site Inspection<h5></b></span></div>
+
+                <table>
+                <tr>
+                <td class ="lbl" ><span class="label">OSI Inspection Date:</span></td><td class="val"><span>{{documentDetailsData.osilnspectionDate}}</span></td>
+                <td class ="lbl" ><span class="label">OSI Score:</span></td><td class="val"><span>{{documentDetailsData.osiScore}}</span></td>
+
+                </tr>
+                </table>
+
+                <div class="head"><span class="header"><h5><b>Primary File</b></h5></span></div>
+                <table class="table table-striped table-hover" width="100%" >
+
+                <tr  ng-repeat="docFileLnk in documentDetailsData.primaryFileList | pagination: curPage * pageSize | limitTo: pageSize">
+                <td class="val"><a href=""	ng-click="docFileLink(docFileLnk,documentDetailsData.documentType)">
+                <span class="glyphicon sort-icon">{{docFileLnk}}</span></a></td>
+
+                </tr>
+
+                </table>
+				
+				 <div class="head"><span class="header"><h5><b>Secondary File</b></h5></span></div>
+                <table class="table table-striped table-hover" width="100%">
+                       <tr  ng-repeat="docFileLnk in documentDetailsData.secondaryFileList | pagination: curPage * pageSize | limitTo: pageSize">
+                <td class="val"><a href=""	ng-click="docFileLink(docFileLnk,documentDetailsData.documentType)">
+                <span class="glyphicon sort-icon">{{docFileLnk}}</span></a></td>
+                </tr>
+
+                </table>
+
+                </fieldset>	   
+                </div>
+            </script>
+        </div>
+        <div align = "left">
+            <input type="button" name="Search" value = "" ng-click="goback('documentresult')" class="buttonwithbackimage" />
+
+        </div>
+</div>
+

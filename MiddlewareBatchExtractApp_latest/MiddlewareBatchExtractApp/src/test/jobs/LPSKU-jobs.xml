@@ -1,0 +1,199 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context 
+      	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+ 
+ 	<context:component-scan base-package="com.coach.middleware.batch" />
+
+ 	
+
+	 
+	 <bean id="lpskuQueryProvider" class="org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean" scope="step">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="selectClause" value="select  pm.sizescale as sizescalename,sku.Skumasterid as Skumasterid,sku.name as skuname,sku.UNIQUEID as skuuniqueid,pm.styleclass as classcode,pm.UNIQUEID as produniqueid,sku.STYLEUNIQUEID as skustyleid,pm.LIFECYCLESTATE,pm.gcc as gcc,pm.HandbagSize as HandbagSize,pm.Renegade as Renegade,pm.TARGETCOST as TARGETCOST,pm.WHOLESALEPRICE as WHOLESALEPRICE,pm.retailprice as retailprice,pm.slot as slot,pm.Stylenumber as Stylenumber,pm.abbrStyleName as abbrStyleName,pm.department as department,pm.subClass as subClass,pm.collection as collection,pm.subCollection as subCollection,pm.material as material,sku.material as skumaterial,pm.gender as gender,pm.silhouette as silhouette,pm.factorystoreTypeProduct as factorystoreTypeProduct,pm.productName as productName,pm.planExclusion as planExclusion,sku.COLORUNIQUEID as skuCOLORUNIQUEID,sku.status as skustatus,sku.skuBomStatus as skuBomStatus,sku.longLeadTimeMaterial as longLeadTimeMaterial,sku.oneTimeBuy as oneTimeBuy,pm.team as team,sku.teamDesigner1 as teamDesigner1,sku.teamEngineer as teamEngineer,sku.teamPreProduction as teamPreProduction,sku.teamProduction as teamProduction,sku.dualDevelopment as dualDevelopment,sku.factorystoreTypeSKU as factorystoreTypeSKU,sku.SIGNATURETYPE as skuSIGNATURETYPE,pm.SIGNATURETYPE as pmSIGNATURETYPE,sku.CREATEDate as createdate,sku.updatedate as modifydate,sku.introDate as skuintroDate,pm.introDate as introDate,sku.fsIntroDate as skufsIntroDate,pm.fsIntroDate as fsIntroDate,sku.deleteDate as skudeleteDate,pm.deleteDate as deleteDate,sku.fsDeleteDate as skufsDeleteDate,pm.fsDeleteDate as fsDeleteDate,'full' as exemode"/>
+		   
+		   <property name="fromClause" value="from productmaster pm left outer join skumaster sku on pm.UNIQUEID = sku.STYLEUNIQUEID"/>
+		<property name="whereClause" value="#{jobParameters['condition']}"/>
+		<property name="sortKey" value="Skumasterid" />
+	</bean>
+	
+	
+	
+
+	<bean id = "LPSKUExtractRowMapper" class="com.coach.middleware.batch.dao.RowMapper.LPSKUExtractRowMapper"  scope="step"/>
+	 
+ <bean id="LPSKUExtractDBItemReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
+	        <property name="dataSource" ref="dataSource" />
+	 	   <!--   <property name="sql" value= "select  pm.sizescale as sizescalename,sku.Skumasterid as Skumasterid,sku.name as skuname,sku.UNIQUEID as skuuniqueid,pm.styleclass as classcode,pm.UNIQUEID as produniqueid,sku.STYLEUNIQUEID as skustyleid,pm.LIFECYCLESTATE,pm.gcc as gcc,pm.HandbagSize as HandbagSize,pm.Renegade as Renegade,pm.TARGETCOST as TARGETCOST,sku.TARGETCOST as SKUTARGETCOST,pm.WHOLESALEPRICE as WHOLESALEPRICE,pm.retailprice as retailprice,pm.slot as slot,pm.Stylenumber as Stylenumber,pm.abbrStyleName as abbrStyleName,pm.department as department,pm.subClass as subClass,pm.collection as collection,pm.subCollection as subCollection,pm.material as material,sku.material as skumaterial,pm.gender as gender,pm.silhouette as silhouette,pm.factorystoreTypeProduct as factorystoreTypeProduct,pm.productName as productName,pm.planExclusion as planExclusion,sku.COLORUNIQUEID as skuCOLORUNIQUEID,sku.status as skustatus,sku.skuBomStatus as skuBomStatus,pm.longLeadTime as productlongLeadTimeMaterial,sku.longLeadTimeMaterial as longLeadTimeMaterial,pm.oneTimeBuy as productoneTimeBuy,sku.oneTimeBuy as oneTimeBuy,pm.team as team,sku.team as skuteam,sku.teamDesigner1 as teamDesigner1,sku.teamEngineer as teamEngineer,sku.teamPreProduction as teamPreProduction,sku.teamProduction as teamProduction,pm.dualDevelopment as productdualDevelopment,sku.dualDevelopment as dualDevelopment,sku.factorystoreTypeSKU as factorystoreTypeSKU,sku.SIGNATURETYPE as skuSIGNATURETYPE,pm.SIGNATURETYPE as pmSIGNATURETYPE,sku.CREATEDate as createdate,sku.updatedate as modifydate,sku.introDate as skuintroDate,pm.introDate as introDate,sku.fsIntroDate as skufsIntroDate,pm.fsIntroDate as fsIntroDate,sku.deleteDate as skudeleteDate,pm.deleteDate as deleteDate,sku.fsDeleteDate as skufsDeleteDate,pm.fsDeleteDate as fsDeleteDate,'full' as exemode from productmaster pm left outer join skumaster sku on pm.UNIQUEID = sku.STYLEUNIQUEID where pm.LIFECYCLESTATE in ('ADOPTION','LINEREVIEW','MERCHDROPPED','DESIGNMERCH')" /> -->
+	 	     <!-- <property name="sql" value= "select  pm.keystylecosting as keystylecosting,pm.sizescaleid as sizescalename,sku.Skumasterid as Skumasterid,sku.name as skuname,sku.UNIQUEID as skuuniqueid,pm.styleclass as classcode,pm.UNIQUEID as produniqueid,sku.STYLEUNIQUEID as skustyleid,pm.LIFECYCLESTATE,pm.gcc as gcc,pm.HandbagSize as HandbagSize,pm.Renegade as Renegade,pm.TARGETCOST as TARGETCOST,sku.TARGETCOST as SKUTARGETCOST,pm.WHOLESALEPRICE as WHOLESALEPRICE,pm.retailprice as retailprice,pm.slot as slot,pm.Stylenumber as Stylenumber,pm.abbrStyleName as abbrStyleName,pm.department as department,pm.subClass as subClass,pm.composition as collection,pm.platform as subCollection,pm.material as material,sku.material as skumaterial,pm.gender as gender,pm.silhouette as silhouette,pm.factorystoreTypeProduct as factorystoreTypeProduct,pm.productName as productName,pm.planExclusion as planExclusion,sku.COLORUNIQUEID as skuCOLORUNIQUEID,sku.status as skustatus,sku.skuBomStatus as skuBomStatus,pm.longLeadTime as productlongLeadTimeMaterial,sku.longLeadTimeMaterial as longLeadTimeMaterial,pm.oneTimeBuy as productoneTimeBuy,sku.oneTimeBuy as oneTimeBuy,pm.team as team,sku.team as skuteam,sku.teamDesigner1 as teamDesigner1,sku.teamEngineer as teamEngineer,sku.teamPreProduction as teamPreProduction,sku.teamProduction as teamProduction,pm.dualDevelopment as productdualDevelopment,sku.dualDevelopment as dualDevelopment,sku.factorystoreTypeSKU as factorystoreTypeSKU,sku.SIGNATURETYPE as skuSIGNATURETYPE,pm.SIGNATURETYPE as pmSIGNATURETYPE,sku.CREATEDate as createdate,sku.updatedate as modifydate,sku.introDate as skuintroDate,pm.introDate as introDate,sku.fsIntroDate as skufsIntroDate,pm.fsIntroDate as fsIntroDate,sku.deleteDate as skudeleteDate,pm.deleteDate as deleteDate,sku.fsDeleteDate as skufsDeleteDate,pm.fsDeleteDate as fsDeleteDate,'full' as exemode from productmaster pm left outer join skumaster sku on pm.UNIQUEID = sku.STYLEUNIQUEID where #{jobParameters['condition']}" /> -->
+	 	      <property name="sql" value= "select  pm.keystylecosting as keystylecosting,pm.sizescaleid as sizescalename,sku.Skumasterid as Skumasterid,sku.name as skuname,sku.UNIQUEID as skuuniqueid,pm.styleclass as classcode,pm.UNIQUEID as produniqueid,sku.STYLEUNIQUEID as skustyleid,pm.LIFECYCLESTATE,pm.gcc as gcc,pm.licensed as license,pm.HandbagSize as HandbagSize,pm.Renegade as Renegade,pm.TARGETCOST as TARGETCOST,sku.TARGETCOST as SKUTARGETCOST,pm.WHOLESALEPRICE as WHOLESALEPRICE,pm.retailprice as retailprice,pm.slot as slot,pm.Stylenumber as Stylenumber,pm.abbrStyleName as abbrStyleName,pm.department as department,pm.subClass as subClass,pm.composition as collection,pm.platform as subCollection,pm.material as material,sku.material as skumaterial,pm.gender as gender,pm.silhouette as silhouette,pm.factorystoreTypeProduct as factorystoreTypeProduct,pm.productName as productName,pm.planExclusion as planExclusion,sku.COLORUNIQUEID as skuCOLORUNIQUEID,sku.status as skustatus,sku.skuBomStatus as skuBomStatus,pm.longLeadTime as productlongLeadTimeMaterial,sku.longLeadTimeMaterial as longLeadTimeMaterial,pm.oneTimeBuy as productoneTimeBuy,sku.oneTimeBuy as oneTimeBuy,pm.team as team,sku.team as skuteam,sku.teamDesigner1 as teamDesigner1,sku.teamEngineer as teamEngineer,sku.teamPreProduction as teamPreProduction,sku.teamProduction as teamProduction,pm.dualDevelopment as productdualDevelopment,sku.dualDevelopment as dualDevelopment,sku.factorystoreTypeSKU as factorystoreTypeSKU,sku.SIGNATURETYPE as skuSIGNATURETYPE,pm.SIGNATURETYPE as pmSIGNATURETYPE,sku.CREATEDate as createdate,sku.updatedate as modifydate,sku.introDate as skuintroDate,pm.introDate as introDate,sku.fsIntroDate as skufsIntroDate,pm.fsIntroDate as fsIntroDate,sku.deleteDate as skudeleteDate,pm.deleteDate as deleteDate,sku.fsDeleteDate as skufsDeleteDate,pm.fsDeleteDate as fsDeleteDate,'full' as exemode from productmaster pm left outer join skumaster sku on pm.UNIQUEID = sku.STYLEUNIQUEID where #Condition#" /> 
+	 	       
+	 	   
+	 	    <property name="fetchSize" value="500"/>
+	 	    <property name="rowMapper">
+	            <bean class="com.coach.middleware.batch.dao.RowMapper.LPSKUExtractRowMapper" />
+	        </property>
+	  </bean> 
+	  
+	   
+	 
+
+ 		<bean id="LPSKUExtractStagingItemReader"
+	        class="org.springframework.batch.item.database.JdbcCursorItemReader" scope="step">
+	        <property name="dataSource" ref="dataSource" />
+	          <property name="fetchSize" value = "100" />
+	 	    <property name="sql" value= "#{jobParameters['stagQuery']}"	 />
+	 	    <property name="rowMapper">
+	            <bean class="com.coach.middleware.batch.dao.RowMapper.FlexExtractRowMapper" />
+	        </property>
+		</bean>
+	  
+
+	  <bean id="LPSKUExtractItemProcessor" name = "lpskuExtractItemProcessor" class="com.coach.middleware.batch.itemProcessor.LPSKUExtractItemProcessor">
+	 	<property name="attributeExtractDAO" ref="attributeExtractDAO"/>
+
+  
+  
+	 	
+	  </bean>
+
+		 
+
+
+	<bean id="attributeExtractDAO" class="com.coach.middleware.batch.dao.AttributeExtractDaoImpl">
+ 		<property name="dataSource" ref="dataSource" />
+ 	</bean> 
+	
+	
+
+
+	<bean id="LPSKUExtractFileItemWriter" class="org.springframework.batch.item.file.FlatFileItemWriter" scope="step">    
+        <property name="resource" value="file:#{jobParameters['filePath']}" />
+        <property name="lineAggregator">
+            <bean class="org.springframework.batch.item.file.transform.FormatterLineAggregator">
+              <property name="format" value="#{jobParameters['delimeters']}"/> 
+            
+ 			    <property name="fieldExtractor">
+                     <bean
+                        class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+                       <property name="names" value="#{jobParameters['methods']}"/> 
+                    
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+ 	 
+ 	
+ 	
+ 	
+ 	
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+ 
+   
+	        
+    <batch:job id="LPSKUExtractJob">
+		
+       	<batch:step id="step1" next = "step2">
+            <batch:tasklet transaction-manager="transactionManager">
+                <batch:chunk reader="LPSKUExtractDBItemReader" writer="LPSKUExtractWriter" processor="LPSKUExtractItemProcessor" commit-interval="500" />
+            </batch:tasklet> 
+         </batch:step>
+         
+         <batch:step id="step2">
+            <batch:tasklet transaction-manager="transactionManager">
+                 <batch:chunk reader="LPSKUExtractStagingItemReader" writer="LPSKUExtractFileItemWriter" commit-interval="100" />
+            </batch:tasklet>
+        </batch:step>
+        
+    </batch:job>
+    
+   
+    <bean id="LPSKUExtractDBItemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="itemPreparedStatementSetter">
+			<bean class="com.coach.middleware.StatementSetter.LPSKUextractStatementSetter" />
+		</property>
+		<property name="sql" value="INSERT INTO FLEXLPSKUEXTRACT (SLOT,
+														 STYLENUMBER,
+														 SKUNAME,
+														 SKUMASTERID,
+														 SIZESCALESIZE,
+														 SKUGROUPCODE,
+														 SKUGROUPDESC,
+														 ABBRSTYLENAMECOLOR,
+														 DEPARTMENT,
+														 CCLASS,
+														 SUBCLASS,
+														 COLLECTION,
+														 COLLECTIONDESC,
+														 SUBCOLLECTION,
+														 INTRODATE,
+														 FSINTRODATE,
+														 SKUINTRODATE,
+														 SKUFSINTRODATE,
+														 MATERIALTYPE,
+														 MATERIALVALUE,
+														 SKUSTATUS,
+														 SKUBOMSTATUS,
+														 RETAILPRICE,
+														 WHPRICE,
+														 TARGETCOST,
+														 MATERIALCODE,
+														 SIGNATURETYPE,
+														 SIGNATUREDESC,
+														 MATERIALDESC,
+														 LONGLEADTIMEMATERIAL,
+														 ONETIMEBUY,
+														 GENDER,
+													 	 TEAM,
+														 TEAMDESIGNER1,
+														 TEAMENGINEER,
+														 TEAMPREPRODUCTION,
+														 TEAMPRODUCTION,
+														 SILHOUETTECODE,
+														 SILHOUETTEDESC,
+														 RENEGADE,
+														 EARLYCOSTING,
+														 DUALDEVELOPMENT,
+														 HANDBAGSIZE,
+														 FACTORYSTORETYPEPRODUCT,
+														 FACTORYSTORETYPESKU,
+														 DELETEDATE,
+														 FSDELETEDATE,
+														 SKUDELETEDATE,
+														 SKUFSDELETEDATE,
+														 PRODUCTNAME,
+														 PLANEXCLUSION,
+														 KEYSTYLECOSTING,
+														 SECONDEDITSG,
+														 FINALEDITSG,
+														 CREATESTAMP,
+														 MODIFYSTAMP,
+														 GCC,
+														 LICENSED,
+														 VENDORREFERENCENUMBER
+														 )VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" />
+		
+		
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+  
+    <bean id="LPSKUExtractWriter" name ="DBItemWriter" class="com.coach.middleware.batch.itemWriter.LPSKUExtractItemWriter">
+    	<property name="LPSKUExtractDBItemWriter" ref="LPSKUExtractDBItemWriter" />
+    </bean>
+   
+     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ 
+</beans> 
+
+
+
+

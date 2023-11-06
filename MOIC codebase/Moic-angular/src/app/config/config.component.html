@@ -1,0 +1,213 @@
+<div class="content-wrapper config-wrapper">
+  <div class="info-bar">
+      <b>Instructions for Upload Customer Data:</b>
+      File name should be <span>Customer Report</span>, extension could be <span>.xls</span> or <span>.xlsx</span>, workbook name should be <span>Customer Report</span>
+      <br/>
+      <b>Columns in the file should be:</b>
+      Sold To Number, Sold To Description, Ship To Number, Ship To Description, Sales Organization, Distribution Channel, Division, Channel, Exclude From SO Creation, Sales Order Type Primary, Sales Order Type Secondary, Sales Order Type Tertiary, Segment, Site, Target, Suggested Retail Price Currency, WholeSale Price Currency, isActive, Sent To Joor
+  </div>
+  <p-dialog header="Notification" [(visible)]="hideMessage" [modal]="true" appendTo="body">
+    {{ responseMessage }}
+    <p-footer>
+      <button type="button" pButton class="btn okay-btn" label="Ok" (click)="hideMessage = false"></button>
+    </p-footer>
+  </p-dialog>
+  <div class="mb-30 config-top-panel">
+    <input placeholder="Sold to Number" type="text" [(ngModel)]="soldToNumber" (ngModelChange)="this.dt.filter($event, 'soldToNumber', 'contains');">
+    <input placeholder="Sold to Description" type="text" [(ngModel)]="soldToDescription" (ngModelChange)="this.dt.filter($event, 'soldToDescription', 'contains');">
+    <a href='{{hrefUrl}}downloadCustomerReport' class="btn dl-ac-data-btn" target="_blank">Download Customer Data</a>
+    <input style="display: none;" type="file" (change)="uploadCustData($event.target.files)" #file />
+    <button class="btn ul-ac-data-btn" (click)="file.value=null;file.click()">Upload Customer Data</button>
+  </div>
+  <div class="result-table config-result-table">
+    <!--<p-table [value]="getConfigTableData" dataKey="soldToNumber" editMode="row" [paginator]="true" [rows]="10" 
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,15,20]" #dt>-->
+    <p-table [value]="getConfigTableData" dataKey="index" editMode="row" #dt>
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let headertitle of displayedColumnsHeading; let i=index">
+            {{headertitle}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-configData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="configData">
+          <td class="text-align-right">
+            {{configData.soldToNumber}}
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="configData.soldToDescription">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.soldToDescription}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td class="text-align-right">
+            {{configData.shipToNumber}}
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="configData.shipToDescription">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.shipToDescription}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            {{configData.salesOrg}}
+          </td>
+          <td>
+            {{configData.distributionChannel}}
+          </td>
+          <td>
+            {{configData.division}}
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select name="channel" id="channel" [(ngModel)]="configData.channel">
+                  <option *ngFor="let channel of getChannelList" [value]="channel"> {{channel}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.channel}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select name="excludeFromSOCreation" id="excludeFromSOCreation" [(ngModel)]="configData.excludeFromSOCreation">
+                  <option *ngFor="let excludeFromSOCreation of booleanValue" [value]="excludeFromSOCreation"> {{excludeFromSOCreation}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.excludeFromSOCreation}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="configData.salesOrderTypePrimary">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.salesOrderTypePrimary}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="configData.salesOrderTypeSecondary">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.salesOrderTypeSecondary}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="configData.salesOrderTypeTertiary">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.salesOrderTypeTertiary}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select name="impactedByPreBuy" id="impactedByPreBuy" [(ngModel)]="configData.impactedByPreBuy">
+                  <option *ngFor="let impactedByPreBuy of booleanValue" [value]="impactedByPreBuy"> {{impactedByPreBuy}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.impactedByPreBuy}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select name="segment" id="segment" [(ngModel)]="configData.segment">
+                  <option *ngFor="let segment of getSegmentList" [value]="segment"> {{segment}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.segment}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            {{configData.site}}
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="configData.target">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.target}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select #key name="suggestedRetailPriceCurrency" id="suggestedRetailPriceCurrency" [(ngModel)]="configData.suggestedRetailPriceCurrency">
+                  <option *ngFor="let retailCur of Object.keys(getRetailList)" [value]="retailCur"> {{getRetailList[retailCur]}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.suggestedRetailPriceCurrency}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select #key name="wholeSalePriceCurrency" id="wholeSalePriceCurrency" [(ngModel)]="configData.wholeSalePriceCurrency">
+                  <option *ngFor="let wholesaleCur of Object.keys(getWholesaleList)" [value]="wholesaleCur"> {{getWholesaleList[wholesaleCur]}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.wholeSalePriceCurrency}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <select name="sendToJoor" id="sendToJoor" [(ngModel)]="configData.sendToJoor">
+                  <option *ngFor="let sendToJoor of booleanValue" [value]="sendToJoor"> {{sendToJoor}} </option>
+                </select>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{configData.sendToJoor}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td style="text-align:center">
+            <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow (click)="onRowEditInit(configData, ri)" class="row-btn row-edit-icon">
+              <img src="assets/images/pencil-icon.jpg" />
+            </button>
+            <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow (click)="onRowEditSave(configData, ri)" class="row-btn row-save-icon">
+              <img src="assets/images/save-icon.jpg" />
+            </button>
+            <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow (click)="onRowEditCancel(configData, ri)" class="row-btn row-cancel-icon">
+              <img src="assets/images/cancel-icon.jpg" />
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div>

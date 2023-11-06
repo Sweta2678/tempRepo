@@ -1,0 +1,47 @@
+
+<div id="treeModel">
+    <div ng-show="ProductTreeModel" ng-repeat="prd in product">
+        <span><b>{{prd.styleName}}</b></span><br>
+        <ul>
+
+            <li style="list-style-type: none;"  ng-class="normal" ng-repeat="item in items" ng-click="showStates(item)">
+                &nbsp;&nbsp;<img src="/PLMViewer/static/images/arrow.png" height="10px" width="10px"></img>&nbsp;
+                <a href = "" ng-click="showpage(item, 'Style#', prd.styleNumber)"><b>{{item.mainNode}}</b></a>
+
+            </li>
+
+
+
+
+        </ul>
+    </div>
+
+
+    <div ng-show="MaterialTreeModel">
+        <span><b>{{material.materialName}}</b></span><br>
+        <ul>
+
+            <li style="list-style-type: none;"  ng-class="normal" ng-repeat="item in items" ng-click="showStates(item)">
+                &nbsp;&nbsp;<img src="/PLMViewer/static/images/arrow.png" height="10px" width="10px"></img>&nbsp;
+                <a href = "" ng-click="showpage(item, subItem, material.partNumber)"><b>{{item.mainNode}}</b></a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div ng-show="DocumentTreeModel">
+<span><b>{{documentDetailsData.documentName}}</b></span><br>
+    <ul>
+
+        <li style="list-style-type: none;"  ng-class="normal" ng-repeat="item in items" ng-click="showStates(item)">
+            &nbsp;&nbsp;<img src="/PLMViewer/static/images/arrow.png" height="10px" width="10px"></img>&nbsp;
+            <a href = "" ng-click="showpage(item, subItem, material.partNumber)"><b>{{item.mainNode}}</b></a>
+        </li>
+    </ul>
+</div>
+</div>
+
+
+

@@ -1,0 +1,49 @@
+moic.sso.enabled: false
+spring:
+  batch:
+    job:
+      enabled: false 
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl 
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource-internal:
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://localhost:5432/moic
+    username: 'moic'
+    password: 'root'
+    platform: postgresql
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: WriteHikariPool
+      schema: moic
+  datasource-inbound: 
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://localhost:5432/moic
+    username: 'moic'
+    password: 'root'
+    platform: postgresql
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      maxPoolSize: 10
+      minimum-idle: 5
+      pool-name: ReadHikariPool
+      schema: moic_inbound
+  datasource-outbound: 
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://localhost:5432/moic
+    username: 'moic'
+    password: 'root'
+    platform: postgresql
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      maxPoolSize: 10
+      minimum-idle: 5
+      pool-name: ReadHikariPool
+      schema: moic_outbound

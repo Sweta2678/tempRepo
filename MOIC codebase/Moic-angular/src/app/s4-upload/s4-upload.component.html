@@ -1,0 +1,43 @@
+<div class="content-wrapper s4-upload-wrapper">
+    <div class="mb-30 s4-upload-top-panel">
+       <!-- <select name="fashionseason" id="fashionseason" [(ngModel)]="season">
+            <option *ngFor="let season of getSeasonList" [value]="season"> {{season}} </option>
+        </select>-->
+        <div style="display: inline-block">
+            <div (mouseleave)="showDropDown = false">
+                <button class="drop-toggle btn-flat" (click)="showDropDown=!showDropDown">
+                    <span *ngIf="checkedList.length<=0">{{getSeasonArray && getSeasonArray[0]?.name}}</span>
+                    <span *ngIf="checkedList.length>0">{{checkedList.join(', ')}}</span>
+                    <img src="assets/images/down-arrow.png" />
+                </button>
+                <div class="drop-show" *ngIf="showDropDown">
+                    <label *ngFor="let msv of getSeasonArray">
+                        <input type="checkbox" [(ngModel)]="msv.checked" (change)="getSelectedValue(msv.checked,msv.name)" />
+                    <span>{{msv.name}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <select name="channel" id="channel" [(ngModel)]="channel">
+            <option *ngFor="let channel of getChannelList" [value]="channel"> {{channel}} </option>
+        </select>
+       <!-- <a href='{{hrefUrl}}downloadPreviewS4?season={{season}}&channel={{channel}}' target="_blank" class="btn upload-preview-btn">Preview</a>-->
+       <a *ngIf="checkedList.length<=0" href='{{hrefUrl}}downloadPreviewS4?season={{getSeasonArray && getSeasonArray[0]?.name}}&channel={{channel}}' target="_blank" class="btn upload-preview-btn">Preview</a>
+       <a *ngIf="checkedList.length>0" href='{{hrefUrl}}downloadPreviewS4?season={{checkedList.join(",")}}&channel={{channel}}' target="_blank" class="btn upload-preview-btn" (click)="resetSelected(false)">Preview</a>
+        <button *ngIf="showUploadBtn" class="btn s4-upload-btn" (click)="confirmMessage = true">Upload to S4</button>
+    </div>
+</div>
+<p-dialog header="Confirmation" [(visible)]="confirmMessage" [modal]="true" appendTo="body">
+    Are you sure you want to send these final orders for selected Fashion Season and Channel to S4? 
+    <p-footer>
+        <button type="button" pButton class="btn yes-btn" label="Yes" (click)="uploadS4ConfirmBtn()"></button>
+        <button type="button" pButton class="btn no-btn" label="No" (click)="confirmMessage = false"></button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Notification" [(visible)]="notificationMsg" [modal]="true" appendTo="body">
+    {{ responseMessage }}
+    <p-footer>
+      <button type="button" pButton class="btn okay-btn" label="Ok" (click)="notificationMsg = false"></button>
+    </p-footer>
+  </p-dialog>

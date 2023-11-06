@@ -1,0 +1,74 @@
+<div id = "MaterialSearch"  data-ng-controller="materialCtrl">
+    <div ng-show="showmaterialSearch">
+        <fieldset>
+            <div class="head"><span class="header"><h5><b>Material Search Criteria</b></h5></span></div>
+
+            <table>
+
+                <tr class="searchtr">
+                    <td class ="searchLbl" ><span class="label">Material Name </span></td>
+                    <td class ="searchVal"><input type="text" ng-model = "materialname" class="textboxbg" style="width: 150px;" placeholder="Materialname..." /></td>
+                     <td  class ="searchLbl" ><span class="label">Short Name </span></td>
+                    <td class ="searchVal"><input type="text" ng-model = "materialshotname" class="textboxbg" style="width: 150px;" placeholder="ShortName..." /></td>
+                   
+                   </tr>
+                
+                <tr class="searchtr">
+                 <td class ="searchLbl" ><span class="label">CM Number </span></td>
+                    <td class ="searchVal"><input type="text" ng-model = "cmnumber"  class="textboxbg" style="width: 150px;" placeholder="CMNumber..." /></td>
+                    <td class ="searchLbl" ><span class="label">Material Slot </span></td>
+                    <td class ="searchVal"><input type="text" ng-model = "materialslot" class="textboxbg" style="width: 150px;" placeholder="Material Slot..." /></td>
+                
+                </tr>
+                
+                
+                <tr class="searchtr">
+                    <td  class ="searchLbl"  ><span class="label">Material Type </span></td>
+                    <td class ="searchVal"><select data-ng-model="materialtype" data-ng-options="key as value for (key,value) in materialmap.MATERIALTYPE" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+                    <td  class ="searchLbl"  ><span class="label">Material Sub Type</span></td>
+                    <td class ="searchVal"><select data-ng-model="materialsubtype" data-ng-options="key as value for (key,value)  in materialmap.MATERIALSUBTYPE" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+                </tr>
+                
+                 <tr class="searchtr">
+                    <td  class ="searchLbl"  ><span class="label">Active Material</span></td>
+                    <td class ="searchVal"><select data-ng-model="activematerial" data-ng-options="key as value for (key,value) in materialmap.ACTIVEMATERIAL" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+                 <td  class ="searchLbl"  ><span class="label">Capacity Group </span></td>
+                    <td class ="searchVal"><select data-ng-model="capacitytype" data-ng-options="key as value for (key,value)  in materialmap.MCG" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+               </tr>
+
+                <tr class="searchtr">
+                    <!-- td  class ="searchLbl" ><span class="label">Lifecycle State</span></td>
+                    <td class ="searchVal"><select data-ng-model="lifecyclestate" data-ng-options="key as value for (key,value)  in materialmap.LIFECYCLESTATE" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td-->
+                    <td  class ="searchLbl" ><span class="label">Brand</span></td>
+                    <td class ="searchVal"><select data-ng-model="brand" data-ng-options="key as value for (key,value)  in materialmap.BRAND" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+                    <td  class ="searchLbl"  ><span class="label">CM parent group </span></td>
+                    <td class ="searchVal"><select data-ng-model="cmparentgroup" data-ng-options="key as value for (key,value) in materialmap.CMPARENTGROUP" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+                  
+                </tr>
+
+            
+                <!-- tr class="searchtr">
+                    <td  class ="searchLbl"  ><span class="label">Exotic Material </span></td>
+                    <td class ="searchVal"><select data-ng-model="exoticmaterial" data-ng-options="key as value for (key,value)  in materialmap.ExoticMaterial" class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td>
+                    <td  class ="searchLbl"  ><span class="label">Exotic Common Name </span></td>
+                    <td class ="searchVal"><select data-ng-model="exoticcomonname" data-ng-options="key as value for (key,value)  in materialmap.EXOTICCOMMONNAME" class="droupdown" style="width: 150px;"><option value="">-Select -</option></select></td>
+               
+                </tr-->
+
+                
+
+
+
+
+
+            </table>
+
+            <br>
+           <div align = "left">
+                <input type="button" name="Search" value = "" ng-click="goback('welcome')" class="buttonwithbackimage" />
+               <input type="button" name="Search" value = "" ng-click="advMaterialSearch()" class="buttonwithimage" /></div>
+
+                                        </fieldset>
+                                        </div>
+  
+                                        </div>

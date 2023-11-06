@@ -1,0 +1,828 @@
+<div class="head"><span class="text-left"><h5><b>Factory Store</b></h5></span></div>
+<div id="productDetail">
+<div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Product Factory Store Type	 : </span></td>
+		<td class="val"><span>{{prop.productadditionDetailsVo.factorystoreTypeProduct}}</span></td>
+		<td class ="lbl" ><span class="label">Product Identity : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.productidentity}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">FS Intro Date : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.fsIntroDate}}</span></td>
+		<td class ="lbl" ><span class="label">FS Delete Date : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.fsDeleteDate}}</span></td>
+		
+	</tr>
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+
+<table>
+	<tr>																																	
+		<td class ="lbl" ><span class="label">SKU Factory Store Type : </span></td><td class="val"><span>{{skuAdditionalDetails.factorystoreTypeSku}}</span></td>
+					
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label"> FS Intro Date : </span></td><td class="val"><span>{{skuAdditionalDetails.fsIntroDate}}</span></td>
+		<td class ="lbl" ><span class="label">FS Delete Date : </span></td><td class="val"><span>{{skuAdditionalDetails.fsDeleteDate}}</span></td>
+		
+	</tr>
+</table>
+</div>
+
+<!--*****************************************************-->
+<div class="head"><span class="header text-left"><h5><b>General Attributes</b></h5></span></div>
+    <div>&nbsp;</div>
+    
+    <div><span ><h5><b>Product</b></h5></span></div>
+
+    <table>
+        <tr>
+            <td class ="lbl" ><span class="label">Attitude        : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.attitude}}</span></td>
+            <td class ="lbl" ><span class="label">Look : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.look}}</span></td>
+        </tr>
+        
+    </table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+    <div><span ><h5><b>SKU</b></h5></span></div>
+
+    <table>
+        <tr>
+            <td  class ="lbl" ><span class="label"> Look : </span></td><td class="val"><span>{{skuAdditionalDetails.look}}</span></td>
+            <td class ="lbl" ><span class="label">Sku Group : </span></td><td class="val"><span>{{skuAdditionalDetails.coachSkuGroup}}</span></td>
+
+        </tr>
+                                <tr>
+            <td  class ="lbl" ><span class="label"> Sku Status : </span></td><td class="val"><span>{{skuAdditionalDetails.status}}</span></td>
+            <td class ="lbl" ><span class="label">Style #, FG Color Code : </span></td><td class="val"><span>{{skuAdditionalDetails.styleFGColorCode}}</span></td>
+
+        </tr>
+    </table>
+</div>
+
+
+<!--  *************************************************-->
+
+<!--  >General <-->
+<div class="head"><span class="header text-left"><h5><b>Merch Identification</b></h5></span></div>
+<div id="productDetail">
+<div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Silhouette : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.silhouette}}</span></td>
+		<td class ="lbl" ><span class="label">Material : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.material}}</span></td>
+	</tr>
+<tr>
+		<td class ="lbl" ><span class="label">Parent Style : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.parentStyle}}</span></td>
+		<td class ="lbl" ><span class="label">Special Product : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.specialProduct}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Channel Exclusive : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.channelExclusive}}</span></td>
+		<td class ="lbl" ><span class="label">Cross Body : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.crossBody}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Lens Type : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.lens}}</span></td>
+		<td class ="lbl" ><span class="label">Cost Agreements : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.costAgreement}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Plan Exclusion : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.planExclusion}}</span></td>
+		<td class ="lbl" ><span class="label">Face color : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.facecolor}}</span></td>
+	</tr>
+		<tr>
+		<td class ="lbl" ><span class="label">Case Size : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.watchCaseSize}}</span></td>
+		<td class ="lbl" ><span class="label">Case Shape : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.watchCaseShape}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Logo Type : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.signatureType}}</span></td>
+		<td class ="lbl" ><span class="label">Style Group : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.styleGroup}}</span></td>
+	</tr>
+			<tr>
+		<td class ="lbl" ><span class="label">Updated : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.updated}}</span></td>
+		<td class ="lbl" ><span class="label">Handbag Size : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.handbagSize}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Bench Style for Silhouette : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.benchStyleForSilhoutte}}</span></td>
+	</tr>
+			<tr>
+		<td class ="lbl" ><span class="label">Size Scale : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.sizeScale}}</span></td>
+		<td class ="lbl" ><span class="label">Bench style for Target Margin : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.benchStyleforTargetMargin}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Attitudinal Segments : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.attitudinalSegments}}</span></td>
+		<td class ="lbl" ><span class="label">Embellishment : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.emblishment}}</span></td>
+	</tr>
+			<tr>
+		<td class ="lbl" ><span class="label">Collaboration : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.collaboration}}</span></td>
+		<td class ="lbl" ><span class="label">Hardware Color : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.hardwareColor}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Gifting : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.gifting}}</span></td>
+		<td class ="lbl" ><span class="label">One Time Buy : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.oneTimeBuy}}</span></td>
+		
+	</tr>	
+				<tr>
+		<td class ="lbl" ><span class="label">Long Lead Time Material : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.longLeadTimeMaterial}}</span></td>
+		<td class ="lbl" ><span class="label">Product Segmentation : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.productSegmentation}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Print : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.pint}}</span></td>
+		<td class ="lbl" ><span class="label">Heel Height : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.heelHeight1}}</span></td>
+	</tr>	
+
+	<tr>
+		<td class ="lbl" ><span class="label">Sole Type : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.soletype}}</span></td>
+		<td class ="lbl" ><span class="label">Toe Type : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.toetype}}</span></td>
+	</tr>	
+					<tr>
+		<td class ="lbl" ><span class="label">Toe Shape: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.toeshape}}</span></td>
+		<td class ="lbl" ><span class="label">Functionality : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.function}}</span></td>
+	</tr>
+	<tr>
+		<!-- <td class ="lbl" ><span class="label">Gender : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.gender}}</span></td> -->
+		<td class ="lbl" ><span class="label">PDT Type : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.pdtType}}</span></td>
+	</tr>	
+
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Channel Exclusive : </span></td><td class="val"><span>{{skuAdditionalDetails.channelExclusive}}</span></td>
+		<td class ="lbl" ><span class="label">Logo Type : </span></td><td class="val"><span>{{skuAdditionalDetails.signatureType}}</span></td>			
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Face Color : </span></td><td class="val"><span>{{skuAdditionalDetails.facecolor}}</span></td>
+		<td class ="lbl" ><span class="label">Material : </span></td><td class="val"><span>{{skuAdditionalDetails.material}}</span></td>
+		
+	</tr>
+		<tr>
+		<td class ="lbl" ><span class="label">Hardware Color : </span></td><td class="val"><span>{{skuAdditionalDetails.hardwareColor}}</span></td>
+		<td class ="lbl" ><span class="label">Exotic : </span></td><td class="val"><span>{{skuAdditionalDetails.exotic}}</span></td>			
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Long Lead Time Material : </span></td><td class="val"><span>{{skuAdditionalDetails.longLeadTimeMaterial}}</span></td>
+		<td class ="lbl" ><span class="label">One Time Buy : </span></td><td class="val"><span>{{skuAdditionalDetails.oneTimeBuy}}</span></td>
+		
+	</tr>
+</table>
+</div>
+<!--  >Team <-->
+<div class="head"><span class="text-left"><h5><b>Team</b></h5></span></div>
+<div id="productDetail">
+<div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Team : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.team}}</span></td>
+	</tr>
+<tr>
+		<td class ="lbl" ><span class="label">Merchant 1 : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamMerchant1}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Designer 1 : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamDesigner1}}</span></td>
+		<td class ="lbl" ><span class="label">Designer 2 : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamDesigner2}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Advanced Developer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamAD}}</span></td>
+		<td class ="lbl" ><span class="label">Assistant Advanced Developer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamAsstAD}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Design Developer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamDD}}</span></td>
+		<td class ="lbl" ><span class="label">Assistant Design Developer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamAsstDD}}</span></td>
+	</tr>
+		<tr>
+		<td class ="lbl" ><span class="label">Production : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamProduction}}</span></td>
+		<td class ="lbl" ><span class="label">Pre-Production : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamPreProduction}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Engineer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamEngineer}}</span></td>
+		<td class ="lbl" ><span class="label">Technical Designer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamTechnicalDesigner}}</span></td>
+	</tr>
+			<tr>
+		<td class ="lbl" ><span class="label">Assistant Designer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.teamAsstDesigner}}</span></td>
+	</tr>
+
+	</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Team : </span></td><td class="val"><span>{{skuAdditionalDetails.team}}</span></td>
+	</tr>
+<tr>
+		<td class ="lbl" ><span class="label">Merchant 1 : </span></td><td class="val"><span>{{skuAdditionalDetails.teamMerchant1}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Designer 1 : </span></td><td class="val"><span>{{skuAdditionalDetails.teamDesigner1}}</span></td>
+		<td class ="lbl" ><span class="label">Designer 2 : </span></td><td class="val"><span>{{skuAdditionalDetails.teamDesigner2}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Advanced Developer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamAD}}</span></td>
+		<td class ="lbl" ><span class="label">Assistant Advanced Developer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamAsstAD}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Design Developer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamDD}}</span></td>
+		<td class ="lbl" ><span class="label">Assistant Design Developer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamAsstDD}}</span></td>
+	</tr>
+		<tr>
+		<td class ="lbl" ><span class="label">Production : </span></td><td class="val"><span>{{skuAdditionalDetails.teamProduction}}</span></td>
+		<td class ="lbl" ><span class="label">Pre-Production : </span></td><td class="val"><span>{{skuAdditionalDetails.teamPreProduction}}</span></td>
+	</tr>
+	<tr>
+		<td class ="lbl" ><span class="label">Engineer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamEngineer}}</span></td>
+		<td class ="lbl" ><span class="label">Technical Designer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamTechnicalDesigner}}</span></td>
+	</tr>
+			<tr>
+		<td class ="lbl" ><span class="label">Assistant Designer : </span></td><td class="val"><span>{{skuAdditionalDetails.teamAsstDD}}</span></td>
+	</tr>
+
+	</table>
+
+</div>
+<!-- Merchandising -Full Price-->
+<div class="head"><span class="text-left"><h5><b>Merchandising -Full Price</b></h5></span></div>
+<div id="productDetail">
+<div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Calc WH Price or WH MU% : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.calcWholeSale1}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Original Retail Price : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.retailPrice | number : 2}}</span></td>
+		<td class ="lbl" ><span class="label">Original Wholesale Target MU%: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.wholesaleMUPct | number:2}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original WholeSale price : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.wholesalePrice | number : 2}}</span></td>
+		<td class ="lbl" ><span class="label">Average Cost : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.averageCost|number:0}}</span></td>
+	</tr>
+			<tr>
+		<td  class ="lbl" ><span class="label">Original Trade MU% : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.tradeMUPct|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Original Target Cost : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.targetCost|number:2}}</span></td>
+	</tr>
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Calc WH Price or WH MU%	: </span></td><td class="val"><span>{{skuAdditionalDetails.calcWholeSale1}}</span></td>
+		<td class ="lbl" ><span class="label">Current Cost Wholesale MU %: </span></td><td class="val"><span>{{skuAdditionalDetails.stdCostWsaleMUPct}}</span></td>
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Original Wholesale Target MU% : </span></td><td class="val"><span>{{skuAdditionalDetails.wholesaleMUPct|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Original Target Cost : </span></td><td class="val"><span>${{skuAdditionalDetails.targetCost | number : 2}}</span></td>
+		
+	</tr>
+</table>
+</div>
+
+
+<!-----merch table --->
+<div class="head"><span class="text-left"><h5><b>Merchandising -Full Price</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+  <table class="table table-striped table-hover" >
+   <colgroup span="11"></colgroup>
+     <tr class="tr" >
+       <th  title="calcWHPrice" class="imagetableth">Calc WH Price or WH MU%</th>
+       <th  title="startDate" class="imagetableth">Start Date</th>
+       <th  title="endDate" class="imagetableth">End Date</th>
+       <th  title="retailPrice" class="imagetableth">Retail Price</th>
+       <th  title="tradeMU" class="imagetableth">Trade MU%</th>
+	   <th  title="whPrice" class="imagetableth">WH Price</th>
+	   <th  title="whMU" class="imagetableth">WH MU%</th>
+	   <th  title="tradeCost" class="imagetableth">Trade Cost</th>
+	   <th  title="poCost" class="imagetableth">PO Cost</th>
+	   <th  title="freight" class="imagetableth">Freight</th>
+	   <th  title="totalCost" class="imagetableth">Total Cost</th>
+     </tr>
+     <tr class="tr"  ng-repeat="productMerchFullPrice in prop.merchandisingFullPrice">
+        
+             <td  class="val"><span id="calcWHPrice">{{productMerchFullPrice.wholeSalePrice}}<span></td>
+			 <td  class="val"><span id="startDate">{{productMerchFullPrice.startDate}}<span></td>
+			<td  class="val"><span id="endDate">{{productMerchFullPrice.endDate}}<span></td>
+			<td  class="val"><span id="retailPrice">{{productMerchFullPrice.retailPrice}}<span></td>
+			<td  class="val"><span id="tradeMU">{{productMerchFullPrice.tradeMU}}<span></td>
+			<td  class="val"><span id="WHPrice">{{productMerchFullPrice.WHPrice}}<span></td>
+			<td  class="val"><span id="WHMU">{{productMerchFullPrice.WHMU}}<span></td>
+			<td  class="val"><span id="targetCost">{{productMerchFullPrice.targetCost}}<span></td>
+			<td  class="val"><span id="POcost">{{productMerchFullPrice.POcost}}<span></td>
+			<td  class="val"><span id="freight">{{productMerchFullPrice.freight}}<span></td>
+			<td  class="val"><span id="totalCost">{{productMerchFullPrice.totalCost}}<span></td>
+     </tr>
+
+ </table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+  <table class="table table-striped table-hover" >
+   <colgroup span="7"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="calcWHPrice" class="imagetableth">Calc WH Price or WH MU%</th>
+       <th  title="startDate" class="imagetableth">Start Date</th>
+       <th  title="endDate" class="imagetableth">End Date</th>
+       <th  title="retailPrice" class="imagetableth">Retail Price</th>
+       <th  title="tradeMU" class="imagetableth">Trade MU%</th>
+	   <th  title="whPrice" class="imagetableth">WH Price</th>
+	   <th  title="whMU" class="imagetableth">WH MU%</th>
+	   <th  title="tradeCost" class="imagetableth">Trade Cost</th>
+	   <th  title="poCost" class="imagetableth">PO Cost</th>
+	   <th  title="freight" class="imagetableth">Freight</th>
+	   <th  title="totalCost" class="imagetableth">Total Cost</th>
+     </tr>
+     <tr class="tr"  ng-repeat="skuMerchFullPrice in skuAdditionalDetails.merchandisingFullPrice">
+        
+             <td  class="val"><span id="calcWHPrice">{{skuMerchFullPrice.wholeSalePrice}}<span></td>
+			 <td  class="val"><span id="startDate">{{skuMerchFullPrice.startDate}}<span></td>
+			<td  class="val"><span id="endDate">{{skuMerchFullPrice.endDate}}<span></td>
+			<td  class="val"><span id="retailPrice">{{skuMerchFullPrice.retailPrice}}<span></td>
+			<td  class="val"><span id="tradeMU">{{skuMerchFullPrice.tradeMU}}<span></td>
+			<td  class="val"><span id="WHPrice">{{skuMerchFullPrice.WHPrice}}<span></td>
+			<td  class="val"><span id="WHMU">{{skuMerchFullPrice.WHMU}}<span></td>
+			<td  class="val"><span id="targetCost">{{skuMerchFullPrice.targetCost}}<span></td>
+			<td  class="val"><span id="POcost">{{skuMerchFullPrice.POcost}}<span></td>
+			<td  class="val"><span id="freight">{{skuMerchFullPrice.freight}}<span></td>
+			<td  class="val"><span id="totalCost">{{skuMerchFullPrice.totalCost}}<span></td>
+     </tr>
+
+ </tbody>
+ </table>
+</div>
+<!-- Merch Identification-->										
+<!-- Merchandising -Factory Price-->
+<div class="head"><span class="text-left"><h5><b>Merchandising -Factory</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Merchandising Factory Prices : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.merchFactoryPrices}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Original FS Ticket Prices : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.fsTicketPrice | number : 2}}</span></td>
+		<td class ="lbl" ><span class="label">Original FS Promo Price : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.fsPromoPrice | number : 2}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original % off Retail : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.pctOffRetail|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Original % off Ticket: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.pctOffTicket|number:2}}</span></td>
+	</tr>
+			<tr>
+		<td  class ="lbl" ><span class="label">Rounding : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.rounding}}</span></td>
+	</tr>
+				<tr>
+		<td  class ="lbl" ><span class="label">Additive : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.additive}}</span></td>
+	</tr>
+
+</table>
+</div>
+<!--- Merch Factory Table --->
+<div class="head"><span class="text-left"><h5><b>Merchandising -Factory Price</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+  <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="8"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="calcWHPrice" class="imagetableth">Calc WH Price or WH MU%</th>
+       <th  title="startDate" class="imagetableth">Start Date</th>
+       <th  title="endDate" class="imagetableth">End Date</th>
+       <th  title="retailPrice" class="imagetableth">% OFF Retail</th>
+       <th  title="tradeMU" class="imagetableth">FS Ticket</th>
+	   <th  title="pctOffTicket" class="imagetableth">%OFF Ticket</th>
+	   <th  title="fsPromoPrice" class="imagetableth">FS Promo Price</th>
+	   <th  title="rounding" class="imagetableth">Rounding</th>
+	   
+     </tr>
+     <tr class="tr"  ng-repeat="productMerchFactoryPrice in prop.merchandisingFactoryPrice">
+        
+             <td  class="val"><span id="calcWHPrice">{{productMerchFactoryPrice.merchFactoryPrices}}<span></td>
+			 <td  class="val"><span id="startDate">{{productMerchFactoryPrice.startDate}}<span></td>
+			<td  class="val"><span id="endDate">{{productMerchFactoryPrice.endDate}}<span></td>
+			<td  class="val"><span id="retailPrice">{{productMerchFactoryPrice.offRetail}}<span></td>
+			<td  class="val"><span id="fsTicket">{{productMerchFactoryPrice.fsTicket}}<span></td>
+			<td  class="val"><span id="pctOffTicket">{{productMerchFactoryPrice.pctOffTicket}}<span></td>
+			<td  class="val"><span id="fsPromoPrice">{{productMerchFactoryPrice.fsPromoPrice}}<span></td>
+			<td  class="val"><span id="rounding">{{productMerchFactoryPrice.rounding}}<span></td>
+
+     </tr>
+
+ </tbody>
+ </table>
+</div>
+
+
+<!-- Merchandising - CJI Price -->
+<div class="head"><span class="text-left"><h5><b>Merchandising -CJI</b></h5> </span></div>
+<div>&nbsp;</div>
+<div id="productDetail">
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Merchandising CJI Prices : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.merchCJIPrices}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Original Premium Rate : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.premiumRate|number:3}}</span></td>
+		<td class ="lbl" ><span class="label">Original Fx Rate: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.fxRate}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original Japanese Yet (Retail) : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.jpYenRetail}}</span></td>
+		<td class ="lbl" ><span class="label">Original JPN W/Tax: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.jpYenRetailWithTax}}</span></td>
+	</tr>
+
+</table>
+</div>
+
+<!--- Merch CJI Table --->
+<div class="head"><span class="text-left"><h5><b>Merchandising -CJI </b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+  <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="7"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="merchCJIPrice" class="imagetableth">Merchandising CJI Prices</th>
+       <th  title="startDate" class="imagetableth">Start Date</th>
+       <th  title="endDate" class="imagetableth">End Date</th>
+       <th  title="cjiJPY" class="imagetableth">CJI JPY</th>
+       <th  title="jypInclTax" class="imagetableth">JYP Incl. Tax</th>
+	   <th  title="pctOffTicket" class="imagetableth">FX Rate</th>
+	   <th  title="fsPromoPrice" class="imagetableth">Premium Rate</th>
+	   
+     </tr>
+     <tr class="tr"  ng-repeat="productMerchCJIPrice in prop.merchandisingCJIPrice">
+        
+             <td  class="val"><span id="enterYen">{{productMerchCJIPrice.merchCJIPrices}}<span></td>
+			 <td  class="val"><span id="startDate">{{productMerchCJIPrice.startDate}}<span></td>
+			<td  class="val"><span id="endDate">{{productMerchCJIPrice.endDate}}<span></td>
+			<td  class="val"><span id="cjiJPY">{{productMerchCJIPrice.cjiJPY}}<span></td>
+			<td  class="val"><span id="jpyTaxIncluded">{{productMerchCJIPrice.jpyTaxIncluded}}<span></td>
+			<td  class="val"><span id="fxrate">{{productMerchCJIPrice.fxRate}}<span></td>
+			<td  class="val"><span id="premiumRate">{{productMerchCJIPrice.premiumRate}}<span></td>
+
+     </tr>
+
+ </tbody>
+ </table>
+</div>
+
+
+<!-- --Merchandising -Licensed--->
+
+<div class="head"><span class="text-left"><h5><b>Merchandising -Licensed Price</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	
+	<tr>
+		<td  class ="lbl" ><span class="label">Original Freight Cost  : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.freightCost|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Original Overhead: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.overhead|number:2}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original PO Cost% : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.poCost|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Original Total Cost: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totalCost|number:2}}</span></td>
+	</tr>
+			<tr>
+		<td  class ="lbl" ><span class="label">UPC Code : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.upccode}}</span></td>
+
+	</tr>
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Original Feight Cost	: </span></td><td class="val"><span>{{skuAdditionalDetails.freightCost}}</span></td>
+		<td class ="lbl" ><span class="label">Original Overhead : </span></td><td class="val"><span>{{skuAdditionalDetails.overhead|number:2}}</span></td>
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Original PO Cost% : </span></td><td class="val"><span>{{skuAdditionalDetails.poCost|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Original Total Cost : </span></td><td class="val"><span>{{skuAdditionalDetails.totalCost|number:2}}</span></td>
+		
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">UPC Code : </span></td><td class="val"><span>{{skuAdditionalDetails.upccode}}</span></td>
+		</tr>
+</table>
+</div>
+	<!-- Size scale table -->
+	
+<div ng-show="visiblesku">
+<div class="head"><span class="text-left"><h5><b>Size Scale Table</b></h5></span></div>
+<div>&nbsp;</div>
+<div><span ><h5><b>SKU</b></h5></span></div>
+ <table cellspacing="2" cellpadding="2" class="table">
+   <colgroup span="3"></colgroup>
+
+   <tbody>
+     <tr class="tr" >
+       <th  title="size" class="imagetableth">Size</th>
+       <th  title="upc" class="imagetableth">UPC</th>
+       <th  title="vendorRef" class="imagetableth">Vendor Ref#</th>
+  
+     </tr>
+     <tr class="tr"  ng-repeat="sizeScalemoa in skuAdditionalDetails.sizeScaleMoa">
+        
+             <td  class="val"><span id="moaSize">{{sizeScalemoa.moaSize}}<span></td>
+			 <td  class="val"><span id="upc">{{sizeScalemoa.upc}}<span></td>
+			<td  class="val"><span id="vendorRefNumber">{{sizeScalemoa.vendorRefNumber}}<span></td>
+
+     </tr>
+
+ </tbody>
+ </table>
+</div>
+							
+<!-- Tools for trade --->
+<div class="head"><span class="text-left"><h5><b>Tools for Trade</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	
+	<tr>
+		<td  class ="lbl"><span class="label">Launch Colors  : </span></td><td class="val" style= "width:40px;padding: 7px 40px;" ><span>{{prop.productadditionDetailsVo.totoColors}}</span></td>
+		<td class ="lbl" ><span class="label">Jewelry Dimensions  : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.jewelryDimensions}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">TOTO Shell : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoShellMaterial}}</span></td>
+		<td class ="lbl" ><span class="label">TOTO Trim : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoTrimMaterial}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">TOTO Lining  : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoLiningMaterial}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Length (cm) : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoLengthCm|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Long Strap Drop Length (cm) : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoStrapLengthIn|number:2}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Height (cm)  : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoHeightCm|number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Short Strap Drop Length (cm) : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoDropLengthIn|number:2}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Width (cm) : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoWidthCm|number:2}}</span></td>
+
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Interior Pocket  : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoInteriorPocket}}</span></td>
+		<td class ="lbl" ><span class="label">Exterior Pocket : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoExteriorPocket}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Closure : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.closures}}</span></td>
+		<td class ="lbl" ><span class="label">Organizational Panel : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.organizationalPanel}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Credit Card Pockets : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.creditCardPocket}}</span></td>
+		<td class ="lbl" ><span class="label">Billfold Pockets : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoBillfoldPockets}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">ID Window : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.idwindow}}</span></td>
+		<td class ="lbl" ><span class="label">Checkbook : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoCheckbook}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Coin : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.coin}}</span></td>
+		<td class ="lbl" ><span class="label">Additional Features : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.additionalFeatures}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Key Ring Dimensions : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.keyringDimensions}}</span></td>
+		<td class ="lbl" ><span class="label">Care / CM #: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.careCardCm}}</span></td>
+	</tr>
+	
+	<tr>
+		<td  class ="lbl" ><span class="label">Upper Material : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.upperMaterial}}</span></td>
+		<td class ="lbl" ><span class="label">Leather Cleaner : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.leatherCleaner}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Type of Sole : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoTypeOfSole}}</span></td>
+		<td class ="lbl" ><span class="label">Leather Moisturizer : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.leatherMoisturizer}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Sizes : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoSizes}}</span></td>
+		<td class ="lbl" ><span class="label">Fabric Cleaner : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.fabricCleaner}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">TOTO Collection : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.totoCollection}}</span></td>
+		<td class ="lbl" ><span class="label">Damp Cloth : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.dampCloth}}</span></td>
+	</tr>
+</table>
+</div>
+<!-- SKU Group --->
+
+	<div class="head"><span class="text-left"><h5><b>SKU Group</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<table>
+ <tr class="tr"  ng-repeat="skuGrp in prop.skuGroupTable">
+        
+             <td  class="val"><span id="moaSize">{{skuGrp}}<span></td>
+			 </tr>
+			 </table>
+<!---GM %-->
+
+<div class="head"><span class="text-left"><h5><b>GM %</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Original Final Std FS Ticket GM % : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.stdFSTicketGMPct|number:1}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original Final Std FS Promo GM % : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.stdFSPromoGMPct|number:1}}</span></td>
+		
+	</tr>
+			<tr>
+		<td  class ="lbl" ><span class="label">Original Target Retail GM% : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.targetRetailGMPct|number:1}}</span></td>
+<td class ="lbl" ><span class="label">Original Target FS Ticket GM %: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.targetFSTargetGMPct|number:1}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original Target FS Promo GM % : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.targetFSPromoGMPct|number:1}}</span></td>
+		
+	</tr>
+			<tr>
+		<td  class ="lbl" ><span class="label">Working Cost 1 Retail GM% : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.workingCost1RetailGMPct}}</span></td>
+<td class ="lbl" ><span class="label">Original Working Cost 1 FS Ticket GM %: </span></td><td class="val"><span>{{prop.productadditionDetailsVo.workingCost1FSTargetGMPct}}</span></td>
+	</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original Working Cost 1 FS Promo GM % : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.workingCost1FSPromoGMPct}}</span></td>
+		
+	</tr>
+			<tr>
+		<td  class ="lbl" ><span class="label">Average Current Cost MarkUp %  : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.averagestdCostWsaleMUPct}}</span></td>
+
+	</tr>
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+	
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Original Final Std Retail GM%	: </span></td><td class="val"><span>{{skuAdditionalDetails.stdRetailGMPct|number:1}}</span></td>
+		</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Original Final Std FS Promo GM % : </span></td><td class="val"><span>{{skuAdditionalDetails.stdFSPromoGMPct|number:1}}</span></td>
+		<td class ="lbl" ><span class="label">Original Final Std FS Ticket GM % : </span></td><td class="val"><span>{{skuAdditionalDetails.stdFSTicketGMPct|number:1}}</span></td>
+		
+	</tr>
+	<tr>
+			<td  class ="lbl" ><span class="label">Original Target Retail GM% : </span></td><td class="val"><span>{{skuAdditionalDetails.targetRetailGMPct|number:1}}</span></td>
+		</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Original Target FS Promo GM % : </span></td><td class="val"><span>{{skuAdditionalDetails.targetFSPromoGMPct|number:1}}</span></td>
+		<td class ="lbl" ><span class="label">Original Target FS Ticket GM % : </span></td><td class="val"><span>{{skuAdditionalDetails.targetFSTargetGMPct|number:1}}</span></td>
+		
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Original Working Cost 1 FS Promo GM %  : </span></td><td class="val"><span>{{skuAdditionalDetails.workingCost1FSPromoGMPct}}</span></td>
+		<td  class ="lbl" ><span class="label">Working Cost 1 Retail GM%  : </span></td><td class="val"><span>{{skuAdditionalDetails.workingCost1RetailGMPct}}</span></td>
+		</tr>
+			<tr>
+			<td  class ="lbl" ><span class="label">Original Working Cost 1 FS Ticket GM % : </span></td><td class="val"><span>{{skuAdditionalDetails.workingCost1FSTargetGMPct}}</span></td>
+		</tr>
+</table>
+</div>
+<!--SAP-->	
+
+<div class="head"><span class="text-left"><h5><b>SAP</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Average Working Cost 1 : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.averageWorkingCost1 | number:2}}</span></td>
+		<td class ="lbl" ><span class="label">Average Working Cost 2 : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.averageWorkingCost2 |number:2}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Average Final Standard Cost : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.averageFinalStandardCost | number:2}}</span></td>
+<td class ="lbl" ><span class="label">Average Current Cost : </span></td><td class="val"><span>${{prop.productadditionDetailsVo.averageCurrentCost | number:2}}</span></td>
+	</tr>
+
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+	
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Working Cost 1	: </span></td><td class="val"><span>${{skuAdditionalDetails.workingCost1|number:2}}</span></td>
+		</tr><td class ="lbl" ><span class="label">Final Standard Cost : </span></td><td class="val"><span>${{skuAdditionalDetails.finalStandard}}</span></td>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Current Cost : </span></td><td class="val"><span>${{skuAdditionalDetails.stdCost}}</span></td>
+		<td class ="lbl" ><span class="label">Working Cost 2 : </span></td><td class="val"><span>${{skuAdditionalDetails.workingCost2|number:2}}</span></td>
+	</tr>
+	<tr>
+	<td  class ="lbl" ><span class="label">FP Net Sales Qty: </span></td><td class="val"><span>{{skuAdditionalDetails.fpNetSalesQty}}</span></td>
+		<td class ="lbl" ><span class="label">FP Net Sales Cost : </span></td><td class="val"><span>${{skuAdditionalDetails.fpNetSalesCost|number:2}}</span></td>
+	
+ 		</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">FS Net Sales Cost : </span></td><td class="val"><span>${{skuAdditionalDetails.fsNetSalesCost}}</span></td>
+		<td class ="lbl" ><span class="label">FP Wholesale Net Sales : </span></td><td class="val"><span>${{skuAdditionalDetails.fpWholesaleNetSales|number:2}}</span></td>
+		
+	</tr>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">FS Wholesale Net Sales  : </span></td><td class="val"><span>${{skuAdditionalDetails.fsWholesaleNetSales|number:0}}</span></td>
+		<td  class ="lbl" ><span class="label">FS Net Sales Qty : </span></td><td class="val"><span>{{skuAdditionalDetails.fsNetSalesQty|number:2}}</span></td>
+		</tr>
+			<tr>
+			<td  class ="lbl" ><span class="label">PLC : </span></td><td class="val"><span>{{skuAdditionalDetails.abcCode}}</span></td>
+		<td  class ="lbl" ><span class="label">MPG : </span></td><td class="val"><span>{{skuAdditionalDetails.mpg}}</span></td>
+		</tr>
+		<tr>
+		<td  class ="lbl" ><span class="label">Unit Volume (FP) : </span></td><td class="val"><span>{{skuAdditionalDetails.unitVolumeFP}}</span></td>
+		</tr>
+			<tr>
+			<td  class ="lbl" ><span class="label">Unit Volume (FS) : </span></td><td class="val"><span>{{skuAdditionalDetails.unitVolumeFS}}</span></td>
+		</tr>
+</table>
+</div>								
+<!--  Design Identification -->
+
+
+<div class="head"><span class="text-left"><h5><b>Design Identification</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	
+	<tr>
+		<td class ="lbl" ><span class="label">Adopted Design Option : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.adoptedDesignOption}}</span></td>
+		<td class ="lbl" ><span class="label">Design Sample Facility : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.sampleFacility}}</span></td>
+	</tr>
+	<tr>
+		<td  class ="lbl" ><span class="label">Design Request Comments : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.designRequestComments}}</span></td>
+	</tr>
+
+</table>
+</div>
+<div>&nbsp;</div>
+<div ng-show="visiblesku">
+<div><span ><h5><b>SKU</b></h5></span></div>
+	
+<table>
+	<tr>
+		<td class ="lbl" ><span class="label">Design Request Comments: </span></td><td class="val"><span>{{skuAdditionalDetails.designRequestComments}}</span></td>
+		</tr><td class ="lbl" ><span class="label">Final Standard Cost : </span></td><td class="val"><span>${{skuAdditionalDetails.finalStandard|number:0}}</span></td>
+	<tr>
+	
+		<td  class ="lbl" ><span class="label">Design Sample Facility  : </span></td><td class="val"><span>{{skuAdditionalDetails.sampleFacility}}</span></td>
+	</tr>
+	
+</table>
+</div>	
+<!-- GCC Requirements -->							
+<div class="head"><span class="text-left"><h5><b>GCC Requirements</b></h5></span></div>
+<div id="productDetail"><div>&nbsp;</div>
+<div><span ><h5><b>Product</b></h5></span></div>
+
+<table>
+	
+	<tr>
+		<td class ="lbl" ><span class="label">GCC Required : </span></td><td class="val"><span>{{prop.productadditionDetailsVo.gcc}}</span></td>
+		</tr>
+	
+</table>
+</div>								
+
+
+	
+

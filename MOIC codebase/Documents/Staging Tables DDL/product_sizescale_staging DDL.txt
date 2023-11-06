@@ -1,0 +1,27 @@
+-- Table: moic_inbound.product_sizescale_staging
+
+-- DROP TABLE moic_inbound.product_sizescale_staging;
+
+CREATE TABLE moic_inbound.product_sizescale_staging
+(
+    plmuniqueid character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    basesize character varying(255) COLLATE pg_catalog."default",
+    createdate timestamp without time zone,
+    department character varying(100) COLLATE pg_catalog."default",
+    lastupdatedate timestamp without time zone,
+    sizelist character varying(2000) COLLATE pg_catalog."default" NOT NULL,
+    sizescale character varying(2000) COLLATE pg_catalog."default" NOT NULL,
+    sizescalemsg character varying(2000) COLLATE pg_catalog."default" NOT NULL,
+    status character varying(255) COLLATE pg_catalog."default",
+    updatedate timestamp without time zone,
+    CONSTRAINT product_sizescale_staging_pkey PRIMARY KEY (plmuniqueid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE moic_inbound.product_sizescale_staging
+    OWNER to moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_sizescale_staging TO moic_app_user;
+
+GRANT ALL ON TABLE moic_inbound.product_sizescale_staging TO sinfpgd1_moic;

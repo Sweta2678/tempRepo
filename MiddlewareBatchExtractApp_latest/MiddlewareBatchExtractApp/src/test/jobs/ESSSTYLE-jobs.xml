@@ -1,0 +1,281 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context 
+      	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="com.coach.middleware.batch" />
+
+
+
+	<bean id="ESSSTYLEExtractRowMapper"
+		class="com.coach.middleware.batch.dao.RowMapper.ESSSTYLEExtractRowMapper"
+		scope="step" />
+
+
+
+	<bean id="ESSSTYLEExtractDBItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"
+		scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="fetchSize" value="100" />
+		<property name="sql"
+			value="select p.stylenumber STYLE,
+  SUBSTR(concat(p.stylenumber,concat(' ',p.productname)),0,100) DEFAULTALIAS,
+SUBSTR(p.Department,0,3) DEPARTMENT,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='DEPARTMENT'
+  AND valuekey               = p.department
+   AND upper(objectName)             ='PRODUCT'
+  ),0,50) DEPARTMENTDESC,
+  SUBSTR(p.styleclass,0,3) CLASS,
+  SUBSTR(concat(p.Department , p.styleclass),0,6) DEPTCLASS,
+    SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='STYLECLASS'
+  AND valuekey               = p.styleClass
+   AND upper(objectName)             ='PRODUCT'
+  ),0,50) CLASSDESC,
+    SUBSTR( p.subclass,0,3) SUBCLASS,
+  SUBSTR(concat(p.Department,concat(p.styleclass,p.subclass)),0,9) DEPTCLASSSUB,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='SUBCLASS'
+  AND valuekey               = p.subClass
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50) SUBCLASSDESC,
+   (SELECT  SUBSTR(seasongroupname,INSTR(seasongroupname,'FY'),4) FROM seasongroupmaster WHERE uniqueid = s.introDate
+  )introYear,
+    (SELECT  replace(to_char(startdate,'MM/DD/YYYY'),substr(to_char(startdate,'MM/DD/YYYY'),instr(to_char(startdate,'MM/DD/YYYY'),'/',1,2)+1,4),substr(seasongroupname,instr(seasongroupname,'/',1,2)+1,4)) FROM seasongroupmaster WHERE uniqueid = s.introDate
+  )introdate,
+  (SELECT  replace(to_char(startdate,'MM/DD/YYYY'),substr(to_char(startdate,'MM/DD/YYYY'),instr(to_char(startdate,'MM/DD/YYYY'),'/',1,2)+1,4),substr(seasongroupname,instr(seasongroupname,'/',1,2)+1,4))
+  FROM seasongroupmaster
+  WHERE uniqueid = s.DeleteDate
+  )deletedate,
+   TO_CHAR(p.retailprice,'FM9999999') RTLPRICE,
+  p.wholesaleprice WHPRICE,
+decode(p.targetcost,0,p.TargetCost,TO_CHAR(p.TargetCost,'FM9999999.00')) TARGETCOST,
+  p.AverageWorkingCost1 WORKINGCOST,
+  s.stdcost STDCOST,
+ SUBSTR( p.composition,0,3) COLLECTION,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='COMPOSITION'
+  AND valuekey               = p.COMPOSITION
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50) COLLECTIONDESC,
+    'Null' SEASON,
+  NULL SEASONDESC,
+  SUBSTR( p.signaturetype,0,3) SIGNATURETYPE,
+   SUBSTR((SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='LOGOTYPE'
+  AND trim(valuekey)         = p.signaturetype
+  ) ,0,50)SIGNATURETYPEDESC,
+   SUBSTR( s.hardwarecolor ,0,3)HARDWARECOLOR,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='HARDWARECOLOR'
+  AND valuekey               = s.hardwarecolor
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50) HARDWARECOLORDESC,
+SUBSTR(p.material,0,3) MATERIAL,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='MATERIAL'
+  AND trim(valuekey)         = p.Material
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50)Materialdesc,
+  SUBSTR(
+  (SELECT display3
+  FROM attributestore
+  WHERE upper(attributename) ='MATERIAL'
+  AND trim(valuekey)         = p.Material
+  AND upper(objectName)             ='PRODUCT'
+  ),0,3)MaterialGroup,
+  SUBSTR(
+  (SELECT display4
+  FROM attributestore
+  WHERE upper(attributename) ='MATERIAL'
+  AND trim(valuekey)         = p.Material
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50)MaterialGroupdesc,
+   SUBSTR( p.silhouette,0,3) SILHOUETTE,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='SILHOUETTE'
+  AND trim(valuekey)         = p.silhouette
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50) SILHOUETTEDESC,
+  SUBSTR( p.gender,0,3) GENDER,
+  SUBSTR(
+  (SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='GENDER'
+  AND trim(valuekey)         = p.gender
+  AND UPPER(objectName)      ='PRODUCT'
+  ),0,50) GENDERDESC,
+  'No' UPDATED,
+  p.specialproduct SPECIALPRODUCT,
+   (SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='HANDBAGSIZE'
+  AND trim(valuekey)         =p.HANDBAGSIZE
+  AND upper(objectName)             ='PRODUCT'
+  ) HANDBAGSIZE,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='SPECIALPRODUCT'
+  AND trim(valuekey)         = p.specialproduct
+  AND upper(objectName)             ='PRODUCT'
+  ),0,25) SPECIALPRODUCTDESC,
+   SUBSTR(p.supermasterstyle,0,10) PARENTSTYLE,
+    (SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='MASTERSTYLE'
+  AND trim(valuekey)         =p.MASTERSTYLE
+  AND upper(objectName)             ='PRODUCT'
+  ) STYLEGROUP,
+  NULL BENCHMARKSTYLE,
+  NULL CHANNELEXCLUSIVE,
+   (SELECT  SUBSTR(seasongroupname,INSTR(seasongroupname,'FY'),4) FROM seasongroupmaster WHERE uniqueid = s.fsintrodate
+  ) fsintroyear,
+    (SELECT replace(to_char(startdate,'MM/DD/YYYY'),substr(to_char(startdate,'MM/DD/YYYY'),instr(to_char(startdate,'MM/DD/YYYY'),'/',1,2)+1,4),substr(seasongroupname,instr(seasongroupname,'/',1,2)+1,4))
+  FROM seasongroupmaster
+  WHERE uniqueid = s.fsintrodate
+  ) fsIntroDate,
+  (SELECT replace(to_char(startdate,'MM/DD/YYYY'),substr(to_char(startdate,'MM/DD/YYYY'),instr(to_char(startdate,'MM/DD/YYYY'),'/',1,2)+1,4),substr(seasongroupname,instr(seasongroupname,'/',1,2)+1,4))
+  FROM seasongroupmaster
+  WHERE uniqueid = s.fsDeleteDate
+  ) fsDeleteDate,
+    (SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='FACTORYSTORETYPEPRODUCT'
+  AND trim(valuekey)         =p.FACTORYSTORETYPEPRODUCT
+  AND upper(objectName)             ='PRODUCT'
+  ) FACTORYTYPE,
+    (SELECT   SUBSTR(seasongroupname,INSTR(seasongroupname,'FY'),4)  FROM seasongroupmaster WHERE uniqueid = s.Deletedate
+  )Deleteyear,
+     SUBSTR((SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='PLANEXCLUSION'
+  AND trim(valuekey)         = p.planexclusion 
+  AND UPPER(objectName)      ='PRODUCT'
+  ),0,20) PLANEXCLUSION,
+    (SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='STATUS'
+  AND trim(valuekey)         = S.STATUS 
+  AND UPPER(objectName)      ='SKU'
+  )STATUS,
+  (SELECT substr(seasongroupname,INSTR(seasongroupname,'FY'),4) FROM seasongroupmaster WHERE uniqueid = s.fsDeletedate
+  )fsDeleteyear,
+     SUBSTR((SELECT display
+  FROM attributestore
+  WHERE upper(attributename) ='LICENSED'
+  AND trim(valuekey)         = p.licensed
+  AND UPPER(objectName)      ='PRODUCT'
+  ),0,3) LICENSED,
+   SUBSTR(p.platform ,0,3)SUBCOLLECTION,
+  SUBSTR(
+  (SELECT display2
+  FROM attributestore
+  WHERE upper(attributename) ='PLATFORM'
+  AND valuekey               = p.platform
+  AND upper(objectName)             ='PRODUCT'
+  ),0,50) SUBCOLLECTIONDESC
+from productmaster p,skumaster s where (p.slot IN
+  (SELECT slot FROM delta_extract
+  ) or p.stylenumber in (select stylenumber from delta_extract))
+AND p.uniqueid     =s.styleuniqueid
+AND p.stylenumber is not null
+AND p.slot is not null 
+AND p.Department is not null
+AND p.Department not in(select department from DEPARTMENTS_TO_SKIP_DOWNSTREAM where jobname='ESSSTYLE')
+and p.styleclass is not null
+and p.subclass is not null
+and  p.licensed is not null
+and s.status is not null
+and upper(s.status) not like 'PRERELEASED' and upper(s.status) not like 'FSPRERELEASED' 
+AND (p.introdate is not null or p.fsintrodate is not null)" />
+		<property name="rowMapper">
+			<bean
+				class="com.coach.middleware.batch.dao.RowMapper.ESSSTYLEExtractRowMapper" />
+		</property>
+
+	</bean>
+
+	<bean id="ESSSTYLEExtractItemProcessor"
+		class="com.coach.middleware.batch.itemProcessor.ESSSTYLEExtractItemProcessor">
+		<property name="ESSSTYLEExtractDao" ref="ESSSTYLEExtractDao" />
+	</bean>
+
+	<bean id="ESSSTYLEExtractDao"
+		class="com.coach.middleware.batch.dao.ESSSTYLEExtractDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="ESSSTYLEExtractWriter" name="DBItemWriter"
+		class="com.coach.middleware.batch.itemWriter.ESSSTYLEExtractItemWriter">
+		<property name="ESSSTYLEExtractDBItemWriter" ref="ESSSTYLEExtractDBItemWriter" />
+	</bean>
+
+
+
+	<bean id="ESSSTYLEExtractDBItemWriter"
+		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="assertUpdates" value="true" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="sql"
+			value="insert into ESSSTYLE(STYLE,DEFAULTALIAS,DEPARTMENT,DEPARTMENTDESC,CLASS,DEPTCLASS,CLASSDESC,SUBCLASS,DEPTCLASSSUB,SUBCLASSDESC,INTROYEAR,INTRODATE,DELETEDATE,RTLPRICE,WHPRICE,TARGETCOST,WORKINGCOST,STDCOST,COLLECTION,COLLECTIONDESC,SEASON,SEASONDESC,SIGNATURETYPE,SIGNATURETYPEDESC,HARDWARECOLOR,HARDWARECOLORDESC,MATERIAL,MATERIALDESC,MATERIALGROUP,MATERIALGROUPDESC,SILHOUETTE,SILHOUETTEDESC,GENDER,GENDERDESC,UPDATED,SPECIALPRODUCT,HANDBAGSIZE,SPECIALPRODUCTDESC,PARENTSTYLE,STYLEGROUP,BENCHMARKSTYLE,CHANNELEXCLUSIVE,FSINTROYEAR,FSINTRODATE,FSDELETEDATE,FACTORYTYPE,DELETEYEAR,PLANEXCLUSION,STATUS,FSDELETEYEAR,LICENSED,SUBCOLLECTION,SUBCOLLECTIONDESC) 
+			values(:STYLE,:DEFAULTALIAS,:DEPARTMENT,:DEPARTMENTDESC,:CLASS,:DEPTCLASS,:CLASSDESC,:SUBCLASS,:DEPTCLASSSUB,:SUBCLASSDESC,:INTROYEAR,:INTRODATE,:DELETEDATE,:RTLPRICE,:WHPRICE,:TARGETCOST,:WORKINGCOST,:STDCOST,:COLLECTION,:COLLECTIONDESC,:SEASON,:SEASONDESC,:SIGNATURETYPE,:SIGNATURETYPEDESC,:HARDWARECOLOR,:HARDWARECOLORDESC,:MATERIAL,:MATERIALDESC,:MATERIALGROUP,:MATERIALGROUPDESC,:SILHOUETTE,:SILHOUETTEDESC,:GENDER,:GENDERDESC,:UPDATED,:SPECIALPRODUCT,:HANDBAGSIZE,:SPECIALPRODUCTDESC,:PARENTSTYLE,:STYLEGROUP,:BENCHMARKSTYLE,:CHANNELEXCLUSIVE,:FSINTROYEAR,:FSINTRODATE,:FSDELETEDATE,:FACTORYTYPE,:DELETEYEAR,:PLANEXCLUSION,:STATUS,:FSDELETEYEAR,:LICENSED,:SUBCOLLECTION,:SUBCOLLECTIONDESC)">
+		</property>
+		<property name="itemSqlParameterSourceProvider">
+			<bean
+				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+
+	</bean>
+
+
+
+	<batch:job id="ESSSTYLEExtractJob">
+		<batch:step id="ESSSTYLEFullExtractJobReadStep">
+			<batch:tasklet transaction-manager="transactionManager">
+				<batch:chunk reader="ESSSTYLEExtractDBItemReader"
+					writer="ESSSTYLEExtractWriter" processor="ESSSTYLEExtractItemProcessor"
+					commit-interval="100" />
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans> 
+
+
+
+
+
+
+
+
+
+
+

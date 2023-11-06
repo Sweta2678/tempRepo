@@ -1,0 +1,23 @@
+• Shutdown procedure in Prod CoachSmartPrd and Processor
+o #su – coachSmartPrd
+o # cd /cweprd/apps/CoachSmartPrd/tomcat/bin
+o #./shutdown.sh
+o Check if the CoachSmart process is running
+o #ps –ef | grep –i coachSmart
+o Check the PID of processor application
+o #ps –ef | grep –i processor
+o #kill -9 <PID in above step)
+• Startup procedure in Prod CoachSmartPrd and Processor
+o #su – coachSmartPrd
+o # cd /cweprd/apps/CoachSmartPrd/tomcat/bin
+o #./startup.sh
+o Check if the CoachSmart process is running
+o #ps –ef | grep –i coachSmart
+o Start the process application
+o Check the latest jar file for processor and start the java application as below
+o #cd /cweprd/apps/CoachSmartPrd/processor
+o java $JAVA_OPTS -jar processor-x.x.x.jar(latest jar file) &
+o Check the processor application logs
+o #cd /cweprd/apps/CoachSmartPrd/processor/logs
+o #tail –f startup-processor.log and check for below line
+o “Processor application started in *******”

@@ -1,0 +1,41 @@
+<!-- <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:batch="http://www.springframework.org/schema/batch"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+ 
+      <!--   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@AICDEVDB1.global.coach.com:1521/AICDEV" />
+        <property name="username" value="PMDB_Outbound" />
+        <property name="password" value="PMDBout8c" />
+    </bean> -->
+    
+      <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@CIGNEX:1521/orcl" />
+        <property name="username" value="PMDB_OUTBOUND" />
+        <property name="password" value="PMDB_OUTBOUND" />
+    </bean>
+    
+    
+    <bean id="transactionManager"
+		class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+ 
+	<!-- create job-meta tables automatically -->
+<!-- 	<jdbc:initialize-database data-source="dataSource">
+	<jdbc:script location="org/springframework/batch/core/schema-drop-oracle10g.sql" />
+	<jdbc:script location="classpath:com/coach/middleware/batch/scripts/schema-oracle10g.sql" />
+	</jdbc:initialize-database> -->
+  
+</beans> 

@@ -1,0 +1,304 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: din-2014,sans-serif; }
+
+body {
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    margin: 0;
+}
+.btn {
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 9px 30px 6px;
+    border: none;
+    cursor: pointer;
+    outline: 0;
+    margin-right: 20px;
+    text-decoration: none;
+}
+select, input, .ui-inputtext, .btn-flat {
+    padding: 8px 10px 5px;
+    margin-right: 20px;
+    outline: none;
+    border: 1px solid #767676;
+    border-radius: 3px;
+}
+.btn-flat {
+    background: white;
+    min-width: 250px;
+    text-align: left;
+    max-width: 250px;
+    position: relative;
+    cursor: pointer;
+}
+.btn-flat img {
+    position: absolute;
+    top: 36%;
+    right: 5px;
+}
+.download-seperator {
+    border-left: 5px solid #fd0;
+    padding-left: 20px;
+    display: inline-block;
+}
+.drop-show {
+    padding: 4px;
+    width: 240px;
+    background-color: #FFF;
+    border: 1px solid #767676;
+    position: absolute;
+    z-index: 100;
+    margin-left: 1px;
+    -webkit-box-shadow: 0 6px 10px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 6px 10px rgba(0,0,0,.15);
+    box-shadow: 0 6px 10px rgba(0,0,0,.15);
+}
+.drop-show label{
+    display:block;
+    font-size:15px;
+    cursor: pointer;
+}
+.drop-show label input{
+    vertical-align: top;
+    margin-right: 5px;
+}
+.drop-show label span{
+    display:inline-block;
+}
+.headerwrapper {
+    background: #fd0;
+    height: 130px;
+}
+.headerwrapper img {
+    width: 250px;
+}
+.headerwrapper h1 {
+    margin-top: -25px;
+    margin-left: 28px;
+}
+.leftnav ul {
+    float: left;
+    background: #000;
+    margin-top: 0;
+    padding-left: 0;
+}
+.leftnav ul li {
+    list-style: none;
+}
+.leftnav ul li a {
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 15px;
+    display: block;
+    font-weight: bold;
+}
+.leftnav ul li a.active-link {
+    background: #fff;
+    color: #000;
+}
+.main-wrapper {
+    position: relative;
+    min-height: 500px;
+}
+.content-wrapper {
+    padding: 30px;
+    float: left;
+}
+.mb-30 {
+    margin-bottom: 30px;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+.result-table table, 
+.result-table table td,
+.result-table table th {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    table-layout: auto;
+    width: auto;
+}
+.result-table table td,
+.result-table table th {
+    padding: 5px 10px;
+}
+.overview-result-table tr:first-child,
+.overview-result-table tr:last-child,
+.overview-result-table td:nth-last-child(-n+2),
+.moq-result-table tr:first-child,
+.moq-result-table tr:last-child,
+.moq-result-table td:last-child,
+.sku-result-table tr:first-child,
+.sku-result-table tr:last-child,
+.sku-result-table td:last-child,
+.result-table table th {
+    font-weight: bold;
+   /* background: #f8f9fa;*/
+   background: #FEFCF3;
+}
+.overview-result-table td, 
+.moq-result-table td, 
+.sku-result-table td {
+    text-align: right;
+}
+.overview-result-table tr td:first-child,
+.moq-result-table tr td:first-child,
+.sku-result-table tr td:first-child {
+    text-align: left;
+}
+.overview-result-table tr:first-child td,
+.moq-result-table tr:first-child td,
+.sku-result-table tr:first-child td,
+.result-table table th {
+    text-align: left;
+}
+.seperator {
+    border-top: 5px solid #fd0;
+}
+.config-wrapper {
+    width: 83%;
+}
+
+.p-inputtext.p-error, .p-inputtext.p-invalid, .p-inputtext.ng-dirty.ng-invalid {
+    border-color: #f44336;
+}
+
+.row-btn {
+    background: transparent;
+    border: 0px none;
+    outline: 0;
+    padding: 5px;
+    cursor: pointer;
+}
+.row-btn .ui-button-text {
+    display: none;
+}
+.alert-box {
+    padding: 10px 20px;
+    color: #856404;
+    background-color: #fff3cd;
+    border: 2px solid #ffeeba;    
+    border-left: 10px solid #856404;
+    border-radius: .25rem;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4eddaf0;
+    border-color: #c3e6cb;
+}
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7daf0;
+    border-color: #f5c6cb;
+}
+
+.ui-widget-content {
+    border: 1px solid #D5D5D5;
+    background: #ffffff;
+    color: #222222;
+}
+.ui-widget-header {
+    border: 1px solid #d9d9d9;
+    color: #1b1d1f;
+    font-weight: normal;
+    background: #f6f7f9 0 0 repeat-x;
+    background: -moz-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f6f7f9), color-stop(100%, #ebedf0));
+    background: -webkit-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
+    background: -o-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
+    background: -ms-linear-gradient(top, #f6f7f9 0%, #ebedf0 100%);
+    background: linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+}
+.ui-corner-top {
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.ui-corner-all {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.ui-shadow {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+}
+.ui-dialog {
+    position: fixed;
+    padding: 0;
+    overflow: hidden;
+    left: 30% !important;
+    top: 20% !important;
+    width: 500px;
+}
+.ui-dialog.ui-widget .ui-dialog-titlebar .ui-dialog-title {
+    font-size: 1.25em;
+}
+.ui-dialog.ui-widget .ui-dialog-titlebar,
+.ui-dialog.ui-widget .ui-dialog-content {
+    padding: 1em 1.5em;
+}
+.ui-widget-overlay {
+    background-color: #424242;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+.btn.yes-btn {
+    background: #70AD47;
+}
+.btn.no-btn {
+    background: #DD3030;
+}
+.text-align-right {
+    text-align: right;
+}
+.loader-overlay {
+    position:fixed;
+    display:block;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color:rgba(74,74,74,.8);
+    z-index:99999;
+  }
+.mat-progress-spinner {
+    position:absolute !important;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #fd0 !important;
+}
+.info-bar {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    padding: .75rem 1.25rem;
+    margin-bottom: 30px;
+    border: 1px solid #bee5eb;
+    border-radius: .25rem;
+}
+.info-bar span {
+    color: #062c33;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.ui-state-disabled {
+    opacity: 0.35;
+    filter: Alpha(Opacity=35);
+}
+.ui-datepicker td>a {
+    cursor: pointer;
+}

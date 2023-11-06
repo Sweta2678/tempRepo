@@ -1,0 +1,26 @@
+<div id = "MaterialReport"  data-ng-controller="materialCtrl">
+    <div ng-show="showmaterialReport">
+ <form name="myForm">
+        <fieldset>
+            <div class="head"><span class="header"><h5><b>Where Used BOM Report</b></h5></span></div>
+	 <iframe id="txtArea1" style="display:none"></iframe>
+
+            <table>               
+                <tr class="searchtr">
+                 <td class ="searchLbl" ><span class="label">CM Number </span></td>
+                    <td class ="searchVal"><input type="text" ng-model = "cmnumber"  class="textboxbg" style="width: 150px;" placeholder="CMNumber..." /></td>
+                    <td  class ="searchLbl"  ><span class="label">Department </span></td>
+                   <!--hr> <td class ="searchVal"><select data-ng-model="selectedDepartment" data-ng-options="key as value for (key,value) in departmentmap"  multiple class="droupdown" style="width: 150px;"><option value="">-Select-</option></select></td-->
+                     <td class ="searchVal"> 	<hr><br>    <select name="multipleSelect" id="multipleSelect" ng-model="selectedDepartment" ng-options="key as value for (key,value) in departmentmap"  multiple>
+					  <option value="">-Select-</option>  </select>		</td>		 
+                </tr>
+            </table>
+
+            <br>
+           <div align = "left">
+                <input type="button" name="Search" value = "" ng-click="goback('welcome')" class="buttonwithbackimage" />
+				<input type="button" name="Search" value = "" ng-click="generateReport(cmnumber,selectedDepartment)" class="buttonwithreportimage" /></div>
+        </fieldset>
+		</form>
+       </div>  
+  </div>

@@ -1,0 +1,32 @@
+<div class="headerwrapper">
+    <img class="logo" alt="Tapestry Logo" src="assets/images/logo-tapestry.svg" onerror="this.src='/assets/images/logo-tapestry.png'">
+    <h1>Market Order Intake & Consolidation (MOIC)</h1>
+</div>
+<div class="leftnav" *ngIf="roleResPages">
+    <ul>
+        <li *ngIf="roleResPages.hasOverview">
+            <a routerLink="/overview" routerLinkActive="active-link">Overview</a>
+        </li>
+        <li *ngIf="roleResPages.hasMoq">
+            <a routerLink="/moq" routerLinkActive="active-link">MOQ</a>
+        </li>
+        <li *ngIf="roleResPages.hasSKUChange">
+            <a routerLink="/sku-change" routerLinkActive="active-link">SKU Change</a>
+        </li>
+        <li *ngIf="roleResPages.hasUPCValidation">
+            <a routerLink="/upc-validation" routerLinkActive="active-link">UPC Validation</a>
+        </li>
+        <li *ngIf="roleResPages.hasS4UploadFile">
+            <a routerLink="/s4-upload" routerLinkActive="active-link">S4 Upload File</a>
+        </li>
+        <li *ngIf="roleResPages.hasConfig">
+            <a routerLink="/config" routerLinkActive="active-link">CONFIG</a>
+        </li>
+        <li *ngIf="roleResPages.hasAuditReport">
+            <a routerLink="/auditreport" routerLinkActive="active-link">Audit Report</a>
+        </li>
+    </ul>
+</div>
+<div class="loader-overlay" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>

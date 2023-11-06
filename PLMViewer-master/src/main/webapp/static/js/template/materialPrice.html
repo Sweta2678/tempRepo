@@ -1,0 +1,43 @@
+  <fieldset>
+                                                <div class="head"><span class="header"><h5><b>Material Pricing Entries</b></h5></span></div>
+
+
+                                                <div style="padding-left: 20px;padding-right: 20px;">
+                                                    <div >
+
+														<div ng-show="materialPriceLists.length" align = "right">
+
+                                                            <button type="button" class="btn-link" ng-disabled="curPage == 0" ng-click="curPage = curPage - 1">  <span class="glyphicon sort-icon"><b> &lt;&lt; </b></span></button>
+
+                                                            <span class="glyphicon sort-icon">{{curPage + 1}} of {{ numberOfMaterialPricePages }}</span>
+
+                                                            <button type="button" class="btn-link"
+                                                                    ng-disabled="curPage >= materialPriceLists.length / pageSize - 1"
+                                                                    ng-click="curPage = curPage + 1"><span class="glyphicon sort-icon"><b> &gt;&gt;</b></span></button>
+                                                        </div>
+                                                             <table class="table table-striped table-hover" width="90%">
+                                                                <tr class="tr">
+
+                                                                    <th class="imagetableth"><span class="glyphicon sort-icon"><b>From</b></span></th>
+                                                                    <th class="imagetableth"><span class="glyphicon sort-icon"><b>To</b></span></th>
+                                                                    <th class="imagetableth"><span class="glyphicon sort-icon"><b>Material Color</b></span></th>
+                                                                    <th class="imagetableth"><span class="glyphicon sort-icon"><b>Cost Type</b></span></th>
+																	<th class="imagetableth"><span class="glyphicon sort-icon"><b>Price</b></span></th>
+																	<th class="imagetableth"><span class="glyphicon sort-icon"><b>Updated By</span></th>
+																	<td class="imagetableth"><span class="glyphicon sort-icon"><b>Currency</b></span></th>
+                                                                </tr>
+                                                                <tr  ng-repeat="materialPriceList in materialPriceLists | pagination: curPage * pageSize | limitTo: pageSize">
+                                                                    <td class="val"><span class="glyphicon sort-icon">{{materialPriceList.fromDate}} </span></td>
+                                                                    <td class="val"><span class="glyphicon sort-icon">{{materialPriceList.toDate}} </span></td>
+																	<td class="val"><span class="glyphicon sort-icon">{{materialPriceList.color}}</span></td>
+                                                                    <td class="val"><span class="glyphicon sort-icon">{{materialPriceList.costType}}</span></td>
+																	 <td class="val"><span class="glyphicon sort-icon">{{materialPriceList.price}}</span></td>
+																	 <td class="val"><span class="glyphicon sort-icon">{{materialPriceList.updatedBy}}</span></td>
+																	 <td class="val"><span class="glyphicon sort-icon">{{materialPriceList.currency}}</span></td>
+                                                                </tr>
+                                                            </table>
+													</div>
+													
+                                                </div>
+
+                                            </fieldset>
